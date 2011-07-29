@@ -7,11 +7,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ExtraLINQ.UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class EnumerableExtensionsTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void None_NullArgument_ThrowsArgumentNullException()
         {
+
         }
     }
 }
