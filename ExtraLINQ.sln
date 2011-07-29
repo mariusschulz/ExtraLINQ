@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraLINQ", "ExtraLINQ\ExtraLINQ.csproj", "{C58F133E-FC14-4911-A71A-DE2B3EBBA27F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraLINQ.UnitTests", "ExtraLINQ.UnitTests\ExtraLINQ.UnitTests.csproj", "{A941D091-94AA-4DA0-9176-1EAE30EB9CD2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28E6EB58-69A3-49BE-B5FD-28EABBBA7981}"
+	ProjectSection(SolutionItems) = preProject
+		ExtraLINQ.vsmdi = ExtraLINQ.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ExtraLINQ.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -13,6 +25,10 @@ Global
 		{C58F133E-FC14-4911-A71A-DE2B3EBBA27F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C58F133E-FC14-4911-A71A-DE2B3EBBA27F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C58F133E-FC14-4911-A71A-DE2B3EBBA27F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A941D091-94AA-4DA0-9176-1EAE30EB9CD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A941D091-94AA-4DA0-9176-1EAE30EB9CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A941D091-94AA-4DA0-9176-1EAE30EB9CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A941D091-94AA-4DA0-9176-1EAE30EB9CD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

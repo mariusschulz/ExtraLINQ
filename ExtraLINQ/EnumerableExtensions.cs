@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ExtraLINQ
 {
-    public class Class1
+    public class EnumerableExtensions
     {
     }
 }
