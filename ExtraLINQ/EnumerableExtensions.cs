@@ -12,5 +12,10 @@ namespace ExtraLINQ
         {
             throw new NotImplementedException();
         }
+
+        public static bool None<TSource>(this IEnumerable source, Func<TSource, bool> predicate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
