@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,12 @@ namespace ExtraLINQ.UnitTests
     public class EnumerableExtensionsTests
     {
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void None_NullArgument_ThrowsArgumentNullException()
         {
+            IEnumerable nullCollection = null;
 
+            nullCollection.None();
         }
     }
 }

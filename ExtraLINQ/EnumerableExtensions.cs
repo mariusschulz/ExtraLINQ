@@ -10,6 +10,11 @@ namespace ExtraLINQ
     {
         public static bool None(this IEnumerable source)
         {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
             throw new NotImplementedException();
         }
 
