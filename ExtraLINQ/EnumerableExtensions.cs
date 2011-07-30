@@ -5,7 +5,7 @@ namespace ExtraLINQ
 {
     public static class EnumerableExtensions
     {
-        public static bool None(this IEnumerable source)
+        public static bool IsEmpty(this IEnumerable source)
         {
             if (source == null)
             {

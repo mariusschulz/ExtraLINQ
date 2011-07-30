@@ -13,7 +13,7 @@ namespace ExtraLINQ.UnitTests
         {
             IEnumerable nullCollection = null;
 
-            nullCollection.None();
+            nullCollection.IsEmpty();
         }
     }
 }
