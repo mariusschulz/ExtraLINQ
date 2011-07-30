@@ -19,5 +19,19 @@ namespace ExtraLINQ.UnitTests
         }
 
         #endregion
+
+        #region
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void None_NullCollectionNullPredicate_ThrowsArgumentNullException()
+        {
+            IEnumerable<object> nullCollection = null;
+            Func<object, bool> nullPredicate = null;
+
+            nullCollection.None(nullPredicate);
+        }
+
+        #endregion
     }
 }
