@@ -24,12 +24,22 @@ namespace ExtraLINQ.UnitTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void None_NullCollectionNullPredicate_ThrowsArgumentNullException()
+        public void None_NullCollectionValidPredicate_ThrowsArgumentNullException()
         {
             IEnumerable<object> nullCollection = null;
+            Func<object, bool> alwaysTruePredicate = _ => true;
+
+            nullCollection.None(alwaysTruePredicate);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void None_ValidCollectionNullPredicate_ThrowsArgumentNullException()
+        {
+            IEnumerable<object> validCollection = new List<string> { string.Empty };
             Func<object, bool> nullPredicate = null;
 
-            nullCollection.None(nullPredicate);
+            validCollection.None(nullPredicate);
         }
 
         #endregion
