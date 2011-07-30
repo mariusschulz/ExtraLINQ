@@ -7,13 +7,17 @@ namespace ExtraLINQ.UnitTests
     [TestClass]
     public class EnumerableExtensionsTests
     {
+        #region IsEmpty()
+
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void None_NullArgument_ThrowsArgumentNullException()
+        public void IsEmpty_NullCollection_ThrowsArgumentNullException()
         {
             IEnumerable<object> nullCollection = null;
 
             nullCollection.IsEmpty();
         }
+
+        #endregion
     }
 }
