@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ExtraLINQ.UnitTests
@@ -11,7 +11,7 @@ namespace ExtraLINQ.UnitTests
         [ExpectedException(typeof(ArgumentNullException))]
         public void None_NullArgument_ThrowsArgumentNullException()
         {
-            IEnumerable nullCollection = null;
+            IEnumerable<object> nullCollection = null;
 
             nullCollection.IsEmpty();
         }
