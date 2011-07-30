@@ -19,6 +19,16 @@ namespace ExtraLINQ
 
         public static bool None<TSource>(this IEnumerable source, Func<TSource, bool> predicate)
         {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            if (predicate == null)
+            {
+                throw new ArgumentNullException("predicate");
+            }
+
             throw new NotImplementedException();
         }
     }
