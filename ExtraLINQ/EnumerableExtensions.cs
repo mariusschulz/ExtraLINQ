@@ -17,7 +17,7 @@ namespace ExtraLINQ
             return !source.Any();
         }
 
-        public static bool None<TSource>(this IEnumerable source, Func<TSource, bool> predicate)
+        public static bool None<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
         {
             if (source == null)
             {
@@ -29,7 +29,7 @@ namespace ExtraLINQ
                 throw new ArgumentNullException("predicate");
             }
 
-            throw new NotImplementedException();
+            return !source.Any(predicate);
         }
     }
 }
