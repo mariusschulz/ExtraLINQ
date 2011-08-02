@@ -21,7 +21,7 @@ namespace ExtraLINQ.UnitTests
 
         #endregion
 
-        #region
+        #region None()
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
