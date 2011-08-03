@@ -8,14 +8,14 @@ namespace ExtraLINQ.UnitTests
     [TestClass]
     public class EnumerableExtensionsTests
     {
-        #region CountsExactly()
+        #region CountsExactly<TSource>(IEnumerable<TSource>, int)
 
         [ExpectedException(typeof(ArgumentNullException))]
         [TestMethod]
         public void CountsExactly_NullCollection_ThrowsArgumentNullException()
         {
             IEnumerable<object> nullCollection = null;
-            
+
             nullCollection.CountsExactly(1);
         }
 
@@ -46,6 +46,62 @@ namespace ExtraLINQ.UnitTests
             bool lettersCountEquals100 = letters.CountsExactly(100);
 
             lettersCountEquals100.ShouldBeFalse();
+        }
+
+        #endregion
+
+        #region CountsExactly<TSource>(IEnumerable<TSource>, int, Func<TSource, bool>)
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void CountsExactly_NullCollectionValidPredicate_ThrowsArgumentNullException()
+        {
+            IEnumerable<object> nullCollection = null;
+            Func<object, bool> alwaysTruePredicate = _ => true;
+
+            nullCollection.CountsExactly(1, alwaysTruePredicate);
+        }
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void CountsExactly_ValidCollectionNullPredicate_ThrowsArgumentNullException()
+        {
+            IEnumerable<char> validCollection = "abcd".ToCharArray();
+            Func<char, bool> nullPredicate = null;
+
+            validCollection.CountsExactly(1, nullPredicate);
+        }
+
+        [TestMethod]
+        public void CountsExactly_CollectionContainingOneMatchingItemExpectingOneMatchingItem_ReturnsTrue()
+        {
+            IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
+            Func<string, bool> startsWithLowercasedA = fruit => fruit.StartsWith("a");
+
+            bool collectionContainsOneMatchingItem = fruits.CountsExactly(2, startsWithLowercasedA);
+
+            collectionContainsOneMatchingItem.ShouldBeTrue();
+        }
+
+        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = false)]
+        [TestMethod]
+        public void CountsExactly_NegativeExpectedCountValidPredicate_ThrowsArgumentException()
+        {
+            IEnumerable<char> letters = "abcde".ToCharArray();
+            Func<char, bool> alwaysTruePredicate = _ => true;
+
+            letters.CountsExactly(-10, alwaysTruePredicate);
+        }
+
+        [TestMethod]
+        public void CountsExactly_CollectionContainingOneMatchingItemExpectingTwoMatchingItems_ReturnsFalse()
+        {
+            IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
+            Func<string, bool> startsWithLowercasedB = fruit => fruit.StartsWith("b");
+
+            bool collectionContainsOneMatchingItem = fruits.CountsExactly(2, startsWithLowercasedB);
+
+            collectionContainsOneMatchingItem.ShouldBeFalse();
         }
 
         #endregion
