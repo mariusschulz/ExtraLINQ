@@ -29,6 +29,24 @@ namespace ExtraLINQ
         }
 
         /// <summary>
+        /// Determines whether the specified collection is null or empty.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The <see cref="System.Collections.Generic.IEnumerable{TSource}"/> to check for null or emptiness.</param>
+        /// <returns>
+        ///   <c>true</c> if <paramref name="source"/> is null or empty; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsNullOrEmpty<TSource>(this IEnumerable<TSource> source)
+        {
+            if (source == null)
+            {
+                return true;
+            }
+
+            return !source.Any();
+        }
+
+        /// <summary>
         /// Determines whether none of the elements of a collection satisfy a condition.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of source.</typeparam>
