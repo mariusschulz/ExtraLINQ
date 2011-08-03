@@ -21,6 +21,40 @@ namespace ExtraLINQ.UnitTests
 
         #endregion
 
+        #region IsNullOrEmpty()
+
+        [TestMethod]
+        public void IsNullOrEmpty_Null_ReturnsTrue()
+        {
+            IEnumerable<object> nullCollection = null;
+
+            bool isNullOrEmpty = nullCollection.IsNullOrEmpty();
+
+            isNullOrEmpty.ShouldBeTrue();
+        }
+
+        [TestMethod]
+        public void IsNullOrEmpty_EmptyCollection_ReturnsTrue()
+        {
+            IEnumerable<string> emptyCollection = new string[0];
+
+            bool isNullOrEmpty = emptyCollection.IsNullOrEmpty();
+
+            isNullOrEmpty.ShouldBeTrue();
+        }
+
+        [TestMethod]
+        public void IsNullOrEmpty_CollectionContainingOneElement_ReturnsFalse()
+        {
+            IEnumerable<string> collectionContainingOneElements = new[]{ "test" };
+
+            bool isNullOrEmpty = collectionContainingOneElements.IsNullOrEmpty();
+
+            isNullOrEmpty.ShouldBeFalse();
+        }
+
+        #endregion
+
         #region None()
 
         [TestMethod]
