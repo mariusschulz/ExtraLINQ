@@ -20,6 +20,23 @@ namespace ExtraLINQ
         /// </returns>
         public static bool CountsExactly<TSource>(this IEnumerable<TSource> source, int expectedItemCount)
         {
+            Func<TSource, bool> matchesEveryItem = _ => true;
+
+            return CountsExactly(source, expectedItemCount, matchesEveryItem);
+        }
+
+        /// <summary>
+        /// Determines whether the specified collection contains exactly the specified number of items satisfying the specified condition.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The <see cref="System.Collections.Generic.IEnumerable{TSource}"/> to count satisfying items.</param>
+        /// <param name="expectedItemCount">The number of satisfying items the specified collection is expected to contain.</param>
+        /// <param name="predicate">A function to test each element for a condition.</param>
+        /// <returns>
+        ///   <c>true</c> if <paramref name="source"/> contains exactly <paramref name="expectedItemCount"/> items satisfying the condition; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool CountsExactly<TSource>(this IEnumerable<TSource> source, int expectedItemCount, Func<TSource, bool> predicate)
+        {
             if (source == null)
             {
                 throw new ArgumentNullException("source");
@@ -30,7 +47,12 @@ namespace ExtraLINQ
                 throw new ArgumentException("The expected item count must not be negative.", "expectedItemCount");
             }
 
-            return source.Count() == expectedItemCount;
+            if (predicate == null)
+            {
+                throw new ArgumentNullException("predicate");
+            }
+
+            return source.Count(predicate) == expectedItemCount;
         }
 
         /// <summary>
