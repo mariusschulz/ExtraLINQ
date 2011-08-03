@@ -10,6 +10,30 @@ namespace ExtraLINQ
     public static class EnumerableExtensions
     {
         /// <summary>
+        /// Determines whether the specified collection contains exactly the specified number of items.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The <see cref="System.Collections.Generic.IEnumerable{TSource}"/> to count.</param>
+        /// <param name="expectedItemCount">The number of items the specified collection is expected to contain.</param>
+        /// <returns>
+        ///   <c>true</c> if <paramref name="source"/> contains exactly <paramref name="expectedItemCount"/> items; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool CountsExactly<TSource>(this IEnumerable<TSource> source, int expectedItemCount)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            if (expectedItemCount < 0)
+            {
+                throw new ArgumentException("The expected item count must not be negative.", "expectedItemCount");
+            }
+
+            return source.Count() == expectedItemCount;
+        }
+
+        /// <summary>
         /// Determines whether the specified collection is empty.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
