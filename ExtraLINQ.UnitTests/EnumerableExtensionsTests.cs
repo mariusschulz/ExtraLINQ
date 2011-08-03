@@ -8,6 +8,48 @@ namespace ExtraLINQ.UnitTests
     [TestClass]
     public class EnumerableExtensionsTests
     {
+        #region CountsExactly()
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void CountsExactly_NullCollection_ThrowsArgumentNullException()
+        {
+            IEnumerable<object> nullCollection = null;
+            
+            nullCollection.CountsExactly(1);
+        }
+
+        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = false)]
+        [TestMethod]
+        public void CountsExactly_NegativeExpectedCount_ThrowsArgumentException()
+        {
+            IEnumerable<char> letters = "abcde".ToCharArray();
+
+            letters.CountsExactly(-10);
+        }
+
+        [TestMethod]
+        public void CountsExactly_MatchingActualAndExpectedItemCount_ReturnsTrue()
+        {
+            IEnumerable<char> letters = "abcde".ToCharArray();
+
+            bool lettersCountEquals5 = letters.CountsExactly(5);
+
+            lettersCountEquals5.ShouldBeTrue();
+        }
+
+        [TestMethod]
+        public void CountsExactly_DifferentActualAndExpectedItemCount_ReturnsTrue()
+        {
+            IEnumerable<char> letters = "abcde".ToCharArray();
+
+            bool lettersCountEquals5 = letters.CountsExactly(100);
+
+            lettersCountEquals5.ShouldBeFalse();
+        }
+
+        #endregion
+
         #region IsEmpty()
 
         [TestMethod]
