@@ -31,21 +31,21 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void CountsExactly_MatchingActualAndExpectedItemCount_ReturnsTrue()
         {
-            IEnumerable<char> letters = "abcde".ToCharArray();
+            IEnumerable<char> letters = "abcd".ToCharArray();
 
-            bool lettersCountEquals5 = letters.CountsExactly(5);
+            bool lettersCountEquals4 = letters.CountsExactly(4);
 
-            lettersCountEquals5.ShouldBeTrue();
+            lettersCountEquals4.ShouldBeTrue();
         }
 
         [TestMethod]
         public void CountsExactly_DifferentActualAndExpectedItemCount_ReturnsTrue()
         {
-            IEnumerable<char> letters = "abcde".ToCharArray();
+            IEnumerable<char> letters = "abcd".ToCharArray();
 
-            bool lettersCountEquals5 = letters.CountsExactly(100);
+            bool lettersCountEquals100 = letters.CountsExactly(100);
 
-            lettersCountEquals5.ShouldBeFalse();
+            lettersCountEquals100.ShouldBeFalse();
         }
 
         #endregion
