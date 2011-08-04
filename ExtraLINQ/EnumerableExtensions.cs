@@ -227,6 +227,26 @@ namespace ExtraLINQ
         }
 
         /// <summary>
+        /// Returns a collection that contains all elements of <paramref name="source"/> except <paramref name="item"/>.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The <see cref="IEnumerable{TSource}"/>containing the item.</param>
+        /// <param name="item">The item to remove.</param>
+        /// <returns>A collection that contains all elements of <paramref name="source"/> except <paramref name="item"/>.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
+        public static IEnumerable<TSource> Except<TSource>(this IEnumerable<TSource> source, TSource item)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            TSource[] singleItemArray = new[] { item };
+
+            return source.Except(singleItemArray);
+        }
+
+        /// <summary>
         /// Determines whether the specified collection is empty.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
