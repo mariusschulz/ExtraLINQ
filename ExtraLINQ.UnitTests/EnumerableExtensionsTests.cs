@@ -110,6 +110,54 @@ namespace ExtraLINQ.UnitTests
 
         #endregion
 
+        #region CountsMax()
+
+        #region CountsMax<TSource>(IEnumerable<TSource>, int)
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void CountsMax_NullCollection_ThrowsArgumentNullException()
+        {
+            IEnumerable<object> nullCollection = null;
+
+            nullCollection.CountsMax(1);
+        }
+
+        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = false)]
+        [TestMethod]
+        public void CountsMax_NegativeExpectedMaxItemCount_ThrowsArgumentException()
+        {
+            IEnumerable<char> letters = "abcde".ToCharArray();
+
+            letters.CountsMax(-10);
+        }
+
+        [TestMethod]
+        public void CountsMax_ActualItemCountEqualsExpectedMaxItemCount_ReturnsTrue()
+        {
+            IEnumerable<char> letters = "abcd".ToCharArray();
+
+            bool lettersContainsAtMost4Items = letters.CountsMax(4);
+            bool lettersContainsAtMost5Items = letters.CountsMax(5);
+
+            lettersContainsAtMost4Items.ShouldBeTrue();
+            lettersContainsAtMost5Items.ShouldBeTrue();
+        }
+
+        [TestMethod]
+        public void CountsMax_ActualItemCountGreaterThanExpectedMinItemCount_ReturnsFalse()
+        {
+            IEnumerable<char> letters = "abcd".ToCharArray();
+
+            bool lettersContainsAtMost2Items = letters.CountsMax(2);
+
+            lettersContainsAtMost2Items.ShouldBeFalse();
+        }
+
+        #endregion
+
+        #endregion
+
         #region CountsMin()
 
         #region CountsMin<TSource>(IEnumerable<TSource>, int)
@@ -243,7 +291,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void IsNullOrEmpty_CollectionContainingOneElement_ReturnsFalse()
         {
-            IEnumerable<string> collectionContainingOneElements = new[]{ "test" };
+            IEnumerable<string> collectionContainingOneElements = new[] { "test" };
 
             bool isNullOrEmpty = collectionContainingOneElements.IsNullOrEmpty();
 
