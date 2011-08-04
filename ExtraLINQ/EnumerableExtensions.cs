@@ -20,9 +20,17 @@ namespace ExtraLINQ
         /// </returns>
         public static bool CountsExactly<TSource>(this IEnumerable<TSource> source, int expectedItemCount)
         {
-            Func<TSource, bool> matchesEveryItem = _ => true;
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
 
-            return CountsExactly(source, expectedItemCount, matchesEveryItem);
+            if (expectedItemCount < 0)
+            {
+                throw new ArgumentException("The expected item count must not be negative.", "expectedItemCount");
+            }
+
+            return source.Count() == expectedItemCount;
         }
 
         /// <summary>
