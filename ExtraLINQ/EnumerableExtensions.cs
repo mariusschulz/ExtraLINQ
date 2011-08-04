@@ -63,20 +63,46 @@ namespace ExtraLINQ
         /// <param name="expectedMinItemCount">The minimum number of items the specified collection is expected to contain.</param>
         /// <returns>
         ///   <c>true</c> if the item count of <paramref name="source"/> is equal to or greater than <paramref name="expectedMinItemCount"/>; otherwise, <c>false</c>.
-        /// </returns>
+        /// </returns> 
+        /// <remarks>
+        /// No exception is thrown in case a negative <paramref name="expectedMinItemCount"/> is passed.
+        /// </remarks>
         public static bool CountsMin<TSource>(this IEnumerable<TSource> source, int expectedMinItemCount)
         {
             if (source == null)
             {
                 throw new ArgumentNullException("source");
             }
-            
-            if (expectedMinItemCount < 0)
-            {
-                throw new ArgumentException("The expected minimum item count must not be negative.", "expectedMinItemCount");
-            }
 
             return source.Count() >= expectedMinItemCount;
+        }
+
+        /// <summary>
+        /// Determines whether the specified collection contains exactly <paramref name="expectedMinItemCount"/> or more items satisfying a condition.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The <see cref="System.Collections.Generic.IEnumerable{TSource}"/> whose items to count.</param>
+        /// <param name="expectedMinItemCount">The minimum number of items satisfying the specified condition the specified collection is expected to contain.</param>
+        /// <param name="predicate">A function to test each element for a condition.</param>
+        /// <returns>
+        ///   <c>true</c> if the item count of satisfying items is equal to or greater than <paramref name="expectedMinItemCount"/>; otherwise, <c>false</c>.
+        /// </returns>
+        /// <remarks>
+        /// No exception is thrown in case a negative <paramref name="expectedMinItemCount"/> is passed.
+        /// </remarks>
+        public static bool CountsMin<TSource>(this IEnumerable<TSource> source, int expectedMinItemCount, Func<TSource, bool> predicate)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            if (predicate == null)
+            {
+                throw new ArgumentNullException("predicate");
+            }
+
+            return source.Count(predicate) >= expectedMinItemCount;
         }
 
         /// <summary>
