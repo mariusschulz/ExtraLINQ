@@ -8,6 +8,8 @@ namespace ExtraLINQ.UnitTests
     [TestClass]
     public class EnumerableExtensionsTests
     {
+        #region CountsExactly()
+
         #region CountsExactly<TSource>(IEnumerable<TSource>, int)
 
         [ExpectedException(typeof(ArgumentNullException))]
@@ -103,6 +105,64 @@ namespace ExtraLINQ.UnitTests
 
             collectionContainsOneMatchingItem.ShouldBeFalse();
         }
+
+        #endregion
+
+        #endregion
+
+        #region CountsMin()
+
+        #region CountsMin<TSource>(IEnumerable<TSource>, int)
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void CountsMin_NullCollection_ThrowsArgumentNullException()
+        {
+            IEnumerable<object> nullCollection = null;
+
+            nullCollection.CountsMin(1);
+        }
+
+        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = false)]
+        [TestMethod]
+        public void CountsMin_NegativeExpectedMinCount_ThrowsArgumentException()
+        {
+            IEnumerable<char> letters = "abcde".ToCharArray();
+
+            letters.CountsMin(-10);
+        }
+
+        [TestMethod]
+        public void CountsMin_ActualItemCountEqualsExpectedMinItemCount_ReturnsTrue()
+        {
+            IEnumerable<char> letters = "abcd".ToCharArray();
+
+            bool lettersContainsAtLeast4Items = letters.CountsMin(4);
+
+            lettersContainsAtLeast4Items.ShouldBeTrue();
+        }
+
+        [TestMethod]
+        public void CountsMin_ActualItemCountGreaterThanExpectedMinItemCount_ReturnsTrue()
+        {
+            IEnumerable<char> letters = "abcd".ToCharArray();
+
+            bool lettersContainsAtLeast2Items = letters.CountsMin(2);
+
+            lettersContainsAtLeast2Items.ShouldBeTrue();
+        }
+
+        [TestMethod]
+        public void CountsMin_ActualItemCountLowerThanExpectedMinItemCount_ReturnsFalse()
+        {
+            IEnumerable<char> letters = "abcd".ToCharArray();
+
+            bool lettersContainsAtLeast10Items = letters.CountsMin(10);
+
+            lettersContainsAtLeast10Items.ShouldBeFalse();
+        }
+
+        #endregion
 
         #endregion
 
