@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Should;
 
@@ -294,7 +295,7 @@ namespace ExtraLINQ.UnitTests
         #endregion
 
         #region ElementAt()
-        
+
         [ExpectedException(typeof(ArgumentNullException))]
         [TestMethod]
         public void ElementAt_NullCollection_ThrowsArgumentNullException()
@@ -371,6 +372,42 @@ namespace ExtraLINQ.UnitTests
             letters.ElementAt(7, IndexingStrategy.Cyclic).ShouldEqual('d');
             letters.ElementAt(11, IndexingStrategy.Cyclic).ShouldEqual('d');
             letters.ElementAt(15, IndexingStrategy.Cyclic).ShouldEqual('d');
+        }
+
+        #endregion
+
+        #region Except()
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void Except_NullCollecion_ThrowsArgumentNullException()
+        {
+            IEnumerable<char> nullCollection = null;
+
+            nullCollection.Except('c');
+        }
+
+        [TestMethod]
+        public void Except_ItemThatTheCollectionContains_ReturnsCollectionWithoutItem()
+        {
+            IEnumerable<char> letters = "abcd".ToCharArray();
+            const char letterToRemove = 'a';
+
+            letters = letters.Except(letterToRemove);
+
+            letters.ShouldNotContain('a');
+            letters.Count().ShouldEqual(3);
+        }
+
+        [TestMethod]
+        public void Except_ItemThatTheCollectionDoesNotContain_ReturnsUnmodifiedCollection()
+        {
+            IEnumerable<char> letters = "abcd".ToCharArray();
+            const char letterToRemove = 'z';
+
+            letters = letters.Except(letterToRemove);
+
+            letters.Count().ShouldEqual(4);
         }
 
         #endregion
