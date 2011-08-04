@@ -293,6 +293,88 @@ namespace ExtraLINQ.UnitTests
 
         #endregion
 
+        #region ElementAt()
+        
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void ElementAt_NullCollection_ThrowsArgumentNullException()
+        {
+            IEnumerable<object> nullCollection = null;
+
+            nullCollection.ElementAt(1, IndexingStrategy.Regular);
+        }
+
+        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = false)]
+        [TestMethod]
+        public void ElementAt_ClampIndexingStrategyEmptyCollection_ThrowsArgumentOutOfRangeException()
+        {
+            IEnumerable<char> letters = new char[0];
+
+            letters.ElementAt(0, IndexingStrategy.Clamp);
+        }
+
+        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = false)]
+        [TestMethod]
+        public void ElementAt_CyclicIndexingStrategyEmptyCollection_ThrowsArgumentOutOfRangeException()
+        {
+            IEnumerable<char> letters = new char[0];
+
+            letters.ElementAt(0, IndexingStrategy.Cyclic);
+        }
+
+        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = false)]
+        [TestMethod]
+        public void ElementAt_RegularIndexingStrategyEmptyCollection_ThrowsArgumentOutOfRangeException()
+        {
+            IEnumerable<char> letters = new char[0];
+
+            letters.ElementAt(0, IndexingStrategy.Regular);
+        }
+
+        [TestMethod]
+        public void ElementAt_ClampStrategyNegativeIndex_ReturnsFirstElement()
+        {
+            IEnumerable<char> letters = "abcd".ToCharArray();
+
+            char characterForNegativeIndex = letters.ElementAt(-10, IndexingStrategy.Clamp);
+
+            characterForNegativeIndex.ShouldEqual('a');
+        }
+
+        [TestMethod]
+        public void ElementAt_ClampStrategyIndexGreaterThanItemCount_ReturnsLastElement()
+        {
+            IEnumerable<char> letters = "abcd".ToCharArray();
+
+            char characterForNegativeIndex = letters.ElementAt(100, IndexingStrategy.Clamp);
+
+            characterForNegativeIndex.ShouldEqual('d');
+        }
+
+        [TestMethod]
+        public void ElementAt_CyclicIndexingStrategyIndexGreaterThanItemCount()
+        {
+            IEnumerable<char> letters = "abcd".ToCharArray();
+
+            letters.ElementAt(4, IndexingStrategy.Cyclic).ShouldEqual('a');
+            letters.ElementAt(8, IndexingStrategy.Cyclic).ShouldEqual('a');
+            letters.ElementAt(12, IndexingStrategy.Cyclic).ShouldEqual('a');
+
+            letters.ElementAt(5, IndexingStrategy.Cyclic).ShouldEqual('b');
+            letters.ElementAt(9, IndexingStrategy.Cyclic).ShouldEqual('b');
+            letters.ElementAt(13, IndexingStrategy.Cyclic).ShouldEqual('b');
+
+            letters.ElementAt(6, IndexingStrategy.Cyclic).ShouldEqual('c');
+            letters.ElementAt(10, IndexingStrategy.Cyclic).ShouldEqual('c');
+            letters.ElementAt(14, IndexingStrategy.Cyclic).ShouldEqual('c');
+
+            letters.ElementAt(7, IndexingStrategy.Cyclic).ShouldEqual('d');
+            letters.ElementAt(11, IndexingStrategy.Cyclic).ShouldEqual('d');
+            letters.ElementAt(15, IndexingStrategy.Cyclic).ShouldEqual('d');
+        }
+
+        #endregion
+
         #region IsEmpty()
 
         [TestMethod]
