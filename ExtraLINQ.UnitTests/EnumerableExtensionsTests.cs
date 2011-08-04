@@ -378,9 +378,11 @@ namespace ExtraLINQ.UnitTests
 
         #region Except()
 
+        #region Except(IEnumerable<TSource>, TSource)
+
         [ExpectedException(typeof(ArgumentNullException))]
         [TestMethod]
-        public void Except_NullCollecion_ThrowsArgumentNullException()
+        public void Except_NullCollection_ThrowsArgumentNullException()
         {
             IEnumerable<char> nullCollection = null;
 
@@ -409,6 +411,58 @@ namespace ExtraLINQ.UnitTests
 
             letters.Count().ShouldEqual(4);
         }
+
+        #endregion
+
+        #region Except(IEnumerable<TSource>, TSource, IEqualityComparer<TSource>)
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void Except_NullCollectionUsingEqualityComparer_ThrowsArgumentNullException()
+        {
+            IEnumerable<char> nullCollection = null;
+            IEqualityComparer<char> stringLengthEqualityComparer = new StringLengthEqualityComparer<char>();
+
+            nullCollection.Except('c', stringLengthEqualityComparer);
+        }
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void Except_NullEqualityComparer_ThrowsArgumentNullException()
+        {
+            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEqualityComparer<char> nullEqualityComparer = null;
+
+            letters.Except('c', nullEqualityComparer);
+        }
+
+        [TestMethod]
+        public void Except_StringLengthEqualityComparer_ReturnsCollectionWithoutItemsWithSameStringLength()
+        {
+            IEnumerable<string> fruits = new[] { "apple", "apricot", "banana", "cherry" };
+            const string itemToRemove = "banana";
+            IEqualityComparer<string> stringLengthEqualityComparer = new StringLengthEqualityComparer<string>();
+
+            fruits = fruits.Except(itemToRemove, stringLengthEqualityComparer);
+
+            fruits.ShouldNotContain("banana");
+            fruits.ShouldNotContain("cherry");
+            fruits.Count().ShouldEqual(2);
+        }
+
+        [TestMethod]
+        public void Except_ItemThatTheCollectionDoesNotContainAndStringLengthEqualityComparer_ReturnsUnmodifiedCollection()
+        {
+            IEnumerable<string> stringNumbers = new[] { "1", "22", "333", "4444" };
+            const string itemToRemove = "55555";
+            IEqualityComparer<string> stringLengthEqualityComparer = new StringLengthEqualityComparer<string>();
+
+            stringNumbers = stringNumbers.Except(itemToRemove, stringLengthEqualityComparer);
+
+            stringNumbers.Count().ShouldEqual(4);
+        }
+
+        #endregion
 
         #endregion
 
