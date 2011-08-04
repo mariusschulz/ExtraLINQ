@@ -172,23 +172,15 @@ namespace ExtraLINQ.UnitTests
         }
 
         [TestMethod]
-        public void CountsMin_ActualItemCountEqualsExpectedMinItemCount_ReturnsTrue()
-        {
-            IEnumerable<char> letters = "abcd".ToCharArray();
-
-            bool lettersContainsAtLeast4Items = letters.CountsMin(4);
-
-            lettersContainsAtLeast4Items.ShouldBeTrue();
-        }
-
-        [TestMethod]
-        public void CountsMin_ActualItemCountGreaterThanExpectedMinItemCount_ReturnsTrue()
+        public void CountsMin_ActualItemCountGreaterThanOrEqualsToExpectedMinItemCount_ReturnsTrue()
         {
             IEnumerable<char> letters = "abcd".ToCharArray();
 
             bool lettersContainsAtLeast2Items = letters.CountsMin(2);
+            bool lettersContainsAtLeast4Items = letters.CountsMin(4);
 
             lettersContainsAtLeast2Items.ShouldBeTrue();
+            lettersContainsAtLeast4Items.ShouldBeTrue();
         }
 
         [TestMethod]
