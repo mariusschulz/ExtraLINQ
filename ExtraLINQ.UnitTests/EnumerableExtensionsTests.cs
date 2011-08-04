@@ -74,6 +74,16 @@ namespace ExtraLINQ.UnitTests
             validCollection.CountsExactly(1, nullPredicate);
         }
 
+        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = false)]
+        [TestMethod]
+        public void CountsExactly_NegativeExpectedCountValidPredicate_ThrowsArgumentException()
+        {
+            IEnumerable<char> letters = "abcde".ToCharArray();
+            Func<char, bool> alwaysTruePredicate = _ => true;
+
+            letters.CountsExactly(-10, alwaysTruePredicate);
+        }
+
         [TestMethod]
         public void CountsExactly_CollectionContainingOneMatchingItemExpectingOneMatchingItem_ReturnsTrue()
         {
@@ -83,16 +93,6 @@ namespace ExtraLINQ.UnitTests
             bool collectionContainsOneMatchingItem = fruits.CountsExactly(2, startsWithLowercasedA);
 
             collectionContainsOneMatchingItem.ShouldBeTrue();
-        }
-
-        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = false)]
-        [TestMethod]
-        public void CountsExactly_NegativeExpectedCountValidPredicate_ThrowsArgumentException()
-        {
-            IEnumerable<char> letters = "abcde".ToCharArray();
-            Func<char, bool> alwaysTruePredicate = _ => true;
-
-            letters.CountsExactly(-10, alwaysTruePredicate);
         }
 
         [TestMethod]
@@ -123,15 +123,6 @@ namespace ExtraLINQ.UnitTests
             nullCollection.CountsMin(1);
         }
 
-        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = false)]
-        [TestMethod]
-        public void CountsMin_NegativeExpectedMinCount_ThrowsArgumentException()
-        {
-            IEnumerable<char> letters = "abcde".ToCharArray();
-
-            letters.CountsMin(-10);
-        }
-
         [TestMethod]
         public void CountsMin_ActualItemCountEqualsExpectedMinItemCount_ReturnsTrue()
         {
@@ -160,6 +151,54 @@ namespace ExtraLINQ.UnitTests
             bool lettersContainsAtLeast10Items = letters.CountsMin(10);
 
             lettersContainsAtLeast10Items.ShouldBeFalse();
+        }
+
+        #endregion
+
+        #region CountsMin<TSource>(IEnumerable<TSource>, int, Func<TSource, bool>)
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void CountsMin_NullCollectionValidPredicate_ThrowsArgumentNullException()
+        {
+            IEnumerable<object> nullCollection = null;
+            Func<object, bool> alwaysTruePredicate = _ => true;
+
+            nullCollection.CountsMin(1, alwaysTruePredicate);
+        }
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void CountsMin_ValidCollectionNullPredicate_ThrowsArgumentNullException()
+        {
+            IEnumerable<char> validCollection = "abcd".ToCharArray();
+            Func<char, bool> nullPredicate = null;
+
+            validCollection.CountsMin(1, nullPredicate);
+        }
+
+        [TestMethod]
+        public void CountsMin_CollectionContainingOneMatchingItemExpectingAtLeastOneMatchingItem_ReturnsTrue()
+        {
+            IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
+            Func<string, bool> startsWithLowercasedA = fruit => fruit.StartsWith("a");
+
+            bool collectionContainsAtLeastOneMatchingItem = fruits.CountsMin(1, startsWithLowercasedA);
+            bool collectionContainsAtLeastTwoMatchingItems = fruits.CountsMin(2, startsWithLowercasedA);
+
+            collectionContainsAtLeastOneMatchingItem.ShouldBeTrue();
+            collectionContainsAtLeastTwoMatchingItems.ShouldBeTrue();
+        }
+
+        [TestMethod]
+        public void CountsMin_CollectionContainingOneMatchingItemExpectingTwoMatchingItems_ReturnsFalse()
+        {
+            IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
+            Func<string, bool> startsWithLowercasedB = fruit => fruit.StartsWith("b");
+
+            bool collectionContainsAtLeastTwoMatchingItems = fruits.CountsMin(2, startsWithLowercasedB);
+
+            collectionContainsAtLeastTwoMatchingItems.ShouldBeFalse();
         }
 
         #endregion
