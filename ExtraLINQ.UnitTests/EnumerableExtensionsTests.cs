@@ -156,6 +156,54 @@ namespace ExtraLINQ.UnitTests
 
         #endregion
 
+        #region CountsMax<TSource>(IEnumerable<TSource>, int, Func<TSource, bool>)
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void CountsMax_NullCollectionValidPredicate_ThrowsArgumentNullException()
+        {
+            IEnumerable<object> nullCollection = null;
+            Func<object, bool> alwaysTruePredicate = _ => true;
+
+            nullCollection.CountsMax(1, alwaysTruePredicate);
+        }
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void CountsMax_ValidCollectionNullPredicate_ThrowsArgumentNullException()
+        {
+            IEnumerable<char> validCollection = "abcd".ToCharArray();
+            Func<char, bool> nullPredicate = null;
+
+            validCollection.CountsMax(1, nullPredicate);
+        }
+
+        [TestMethod]
+        public void CountsMax_CollectionContainingOneMatchingItemExpectingAtMostTwoMatchingItems_ReturnsTrue()
+        {
+            IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
+            Func<string, bool> startsWithLowercasedA = fruit => fruit.StartsWith("a");
+
+            bool collectionContainsAtMostTwoMatchingItems = fruits.CountsMax(2, startsWithLowercasedA);
+            bool collectionContainsAtMostThreeMatchingItems = fruits.CountsMax(3, startsWithLowercasedA);
+
+            collectionContainsAtMostTwoMatchingItems.ShouldBeTrue();
+            collectionContainsAtMostThreeMatchingItems.ShouldBeTrue();
+        }
+
+        [TestMethod]
+        public void CountsMax_CollectionContainingTwoMatchingItemsExpectingAtMostOneMatchingItem_ReturnsFalse()
+        {
+            IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
+            Func<string, bool> startsWithLowercasedA = fruit => fruit.StartsWith("a");
+
+            bool collectionContainsAtMostOneMatchingItem = fruits.CountsMax(1, startsWithLowercasedA);
+
+            collectionContainsAtMostOneMatchingItem.ShouldBeFalse();
+        }
+
+        #endregion
+
         #endregion
 
         #region CountsMin()
@@ -231,7 +279,7 @@ namespace ExtraLINQ.UnitTests
         }
 
         [TestMethod]
-        public void CountsMin_CollectionContainingOneMatchingItemExpectingTwoMatchingItems_ReturnsFalse()
+        public void CountsMin_CollectionContainingOneMatchingItemExpectingAtLeastTwoMatchingItems_ReturnsFalse()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
             Func<string, bool> startsWithLowercasedB = fruit => fruit.StartsWith("b");
