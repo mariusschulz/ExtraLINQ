@@ -18,6 +18,7 @@ namespace ExtraLINQ
         /// <returns>
         ///   <c>true</c> if <paramref name="source"/> contains exactly <paramref name="expectedItemCount"/> items; otherwise, <c>false</c>.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
         public static bool CountsExactly<TSource>(this IEnumerable<TSource> source, int expectedItemCount)
         {
             if (source == null)
@@ -43,6 +44,11 @@ namespace ExtraLINQ
         /// <returns>
         ///   <c>true</c> if <paramref name="source"/> contains exactly <paramref name="expectedItemCount"/> items satisfying the condition; otherwise, <c>false</c>.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        ///   <para><paramref name="source"/> is null.</para>
+        ///   <para>- or - </para>
+        ///   <para><paramref name="predicate"/> is null.</para>
+        /// </exception>
         public static bool CountsExactly<TSource>(this IEnumerable<TSource> source, int expectedItemCount, Func<TSource, bool> predicate)
         {
             if (source == null)
@@ -72,6 +78,7 @@ namespace ExtraLINQ
         /// <returns>
         ///   <c>true</c> if the item count of <paramref name="source"/> is equal to or lower than <paramref name="expectedMaxItemCount"/>; otherwise, <c>false</c>.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
         public static bool CountsMax<TSource>(this IEnumerable<TSource> source, int expectedMaxItemCount)
         {
             if (source == null)
@@ -97,6 +104,11 @@ namespace ExtraLINQ
         /// <returns>
         ///   <c>true</c> if the item count of satisfying items is equal to or less than <paramref name="expectedMaxItemCount"/>; otherwise, <c>false</c>.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        ///   <para><paramref name="source"/> is null.</para>
+        ///   <para>- or - </para>
+        ///   <para><paramref name="predicate"/> is null.</para>
+        /// </exception>
         public static bool CountsMax<TSource>(this IEnumerable<TSource> source, int expectedMaxItemCount, Func<TSource, bool> predicate)
         {
             if (source == null)
@@ -120,7 +132,8 @@ namespace ExtraLINQ
         /// <param name="expectedMinItemCount">The minimum number of items the specified collection is expected to contain.</param>
         /// <returns>
         ///   <c>true</c> if the item count of <paramref name="source"/> is equal to or greater than <paramref name="expectedMinItemCount"/>; otherwise, <c>false</c>.
-        /// </returns> 
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
         /// <remarks>
         /// No exception is thrown in case a negative <paramref name="expectedMinItemCount"/> is passed.
         /// </remarks>
@@ -144,6 +157,11 @@ namespace ExtraLINQ
         /// <returns>
         ///   <c>true</c> if the item count of satisfying items is equal to or greater than <paramref name="expectedMinItemCount"/>; otherwise, <c>false</c>.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">
+        ///   <para><paramref name="source"/> is null.</para>
+        ///   <para>- or - </para>
+        ///   <para><paramref name="predicate"/> is null.</para>
+        ///   </exception>
         /// <remarks>
         /// No exception is thrown in case a negative <paramref name="expectedMinItemCount"/> is passed.
         /// </remarks>
