@@ -80,6 +80,31 @@ namespace ExtraLINQ
         }
 
         /// <summary>
+        /// Determines whether the specified collection contains exactly <paramref name="expectedMaxItemCount"/> or less items satisfying a condition.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The <see cref="System.Collections.Generic.IEnumerable{TSource}"/> whose items to count.</param>
+        /// <param name="expectedMaxItemCount">The maximum number of items satisfying the specified condition the specified collection is expected to contain.</param>
+        /// <param name="predicate">A function to test each element for a condition.</param>
+        /// <returns>
+        ///   <c>true</c> if the item count of satisfying items is equal to or less than <paramref name="expectedMaxItemCount"/>; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool CountsMax<TSource>(this IEnumerable<TSource> source, int expectedMaxItemCount, Func<TSource, bool> predicate)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            if (predicate == null)
+            {
+                throw new ArgumentNullException("predicate");
+            }
+
+            return source.Count(predicate) <= expectedMaxItemCount;
+        }
+
+        /// <summary>
         /// Determines whether the specified collection's item count is equal to or greater than <paramref name="expectedMinItemCount"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
