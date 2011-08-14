@@ -45,6 +45,7 @@
     <Compile Include="IndexingStrategy.cs" />
     <Compile Include="MathHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CollectionItemPicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="EnumerableExtensions.cd" />
