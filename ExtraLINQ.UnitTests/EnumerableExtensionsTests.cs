@@ -529,6 +529,53 @@ namespace ExtraLINQ.UnitTests
 
         #endregion
 
+        #region Random<TSource>(IEnumerable<TSource>, int)
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void Random_NullCollectionValidItemCount_ThrowsArgumentNullException()
+        {
+            IEnumerable<char> nullCollection = null;
+            const int validItemCount = 0;
+
+            nullCollection.Random(validItemCount);
+        }
+
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [TestMethod]
+        public void Random_ValidCollectionNegativeRandomElementsCount_ThrowsArgumentOutOfRangeException()
+        {
+            IEnumerable<char> letters = "abcde".ToCharArray();
+            const int invalidItemCount = -5;
+
+            letters.Random(invalidItemCount);
+        }
+
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [TestMethod]
+        public void Random_ValidCollectionTooLargeRandomElementsCount_ThrowsArgumentOutOfRangeException()
+        {
+            IEnumerable<char> letters = "abcde".ToCharArray();
+            const int invalidItemCount = 100;
+
+            letters.Random(invalidItemCount);
+        }
+
+        [TestMethod]
+        public void Random_ValidParameters_ReturnsValidCollectionItems()
+        {
+            IEnumerable<char> letters = "abcde".ToCharArray();
+
+            IEnumerable<char> threeRandomLetters = letters.Random(3);
+
+            foreach (char letter in threeRandomLetters)
+            {
+                letters.ShouldContain(letter);
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Without()
