@@ -294,6 +294,28 @@ namespace ExtraLINQ
         }
 
         /// <summary>
+        /// Returns a random element from <paramref name="source"/>.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to return an element from.</param>
+        /// <returns>
+        /// A random element from <paramref name="source"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
+        public static TSource Random<TSource>(this IEnumerable<TSource> source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            CollectionElementsPicker<TSource> elementsPicker = new CollectionElementsPicker<TSource>(source);
+            TSource randomItem = elementsPicker.PickRandomElement();
+
+            return randomItem;
+        }
+
+        /// <summary>
         /// Returns the specified number of distinct random elements from <paramref name="source"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
@@ -328,28 +350,6 @@ namespace ExtraLINQ
             IEnumerable<TSource> randomElements = elementsPicker.PickRandomElements(randomElementsCount);
 
             return randomElements;
-        }
-
-        /// <summary>
-        /// Returns a random element from <paramref name="source"/>.
-        /// </summary>
-        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to return an element from.</param>
-        /// <returns>
-        /// A random element from <paramref name="source"/>.
-        /// </returns>
-        /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
-        public static TSource Random<TSource>(this IEnumerable<TSource> source)
-        {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
-
-            CollectionElementsPicker<TSource> elementsPicker = new CollectionElementsPicker<TSource>(source);
-            TSource randomItem = elementsPicker.PickRandomElement();
-
-            return randomItem;
         }
 
         /// <summary>
