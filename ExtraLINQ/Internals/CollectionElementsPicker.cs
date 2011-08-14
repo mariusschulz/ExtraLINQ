@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace ExtraLINQ.Internals
 {
-    internal class CollectionItemPicker<TSource>
+    internal class CollectionElementsPicker<TSource>
     {
         private readonly IEnumerable<TSource> _source;
         private readonly Random _randomNumberGenerator;
 
-        public CollectionItemPicker(IEnumerable<TSource> source)
+        public CollectionElementsPicker(IEnumerable<TSource> source)
         {
             _source = source;
             _randomNumberGenerator = new Random();
