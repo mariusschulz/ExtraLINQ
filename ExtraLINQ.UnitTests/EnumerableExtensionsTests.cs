@@ -658,6 +658,43 @@ namespace ExtraLINQ.UnitTests
         
         #endregion
 
+        #region Shuffle<TSource>(IEnumerable<TSource>, Random)
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void Shuffle_NullCollectionValidRandomNumberGenerator_ThrowsArgumentNullException()
+        {
+            IEnumerable<char> nullCollection = null;
+            Random randomNumberGenerator = new Random();
+
+            nullCollection.Shuffle(randomNumberGenerator);
+        }
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void Shuffle_ValidCollectionNullRandomNumberGenerator_ThrowsArgumentNullException()
+        {
+            IEnumerable<char> letters = "abcde";
+            Random nullRandomNumberGenerator = null;
+
+            letters.Shuffle(nullRandomNumberGenerator);
+        }
+
+        [TestMethod]
+        public void Shuffle_ValidCollectionValidRandomNumberGenerator_ReturnsCorrectlyShuffledCollection()
+        {
+            IEnumerable<char> letters = "abcde";
+            const int arbitrarySeed = 1337;
+            Random randomNumberGenerator = new Random(arbitrarySeed);
+
+            IEnumerable<char> shuffledLetters = letters.Shuffle(randomNumberGenerator);
+            char[] shuffledLettersArray = shuffledLetters.ToArray();
+
+            shuffledLettersArray.ShouldEqual(new[] { 'b', 'a', 'c', 'e', 'd' });
+        }
+        
+        #endregion
+
         #endregion
 
         #region Without()
