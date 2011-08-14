@@ -31,8 +31,13 @@ namespace ExtraLINQ.Internals
 
         public IEnumerable<TSource> PickRandomElements(int randomElementsCount)
         {
+            return PickRandomElements(randomElementsCount, _randomNumberGenerator);
+        }
+
+        public IEnumerable<TSource> PickRandomElements(int randomElementsCount, Random randomNumberGenerator)
+        {
             CollectionShuffler<TSource> shuffler = new CollectionShuffler<TSource>(_source);
-            IEnumerable<TSource> shuffledCollection = shuffler.ShuffleCollection();
+            IEnumerable<TSource> shuffledCollection = shuffler.ShuffleCollection(randomNumberGenerator);
             IEnumerable<TSource> randomElements = shuffledCollection.Take(randomElementsCount);
 
             return randomElements;
