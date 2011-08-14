@@ -293,6 +293,28 @@ namespace ExtraLINQ
         }
 
         /// <summary>
+        /// Returns a random element from <paramref name="source"/>.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of source.</typeparam>
+        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to return an element from.</param>
+        /// <returns>
+        /// A random element from <paramref name="source"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
+        public static TSource Random<TSource>(this IEnumerable<TSource> source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            CollectionItemPicker<TSource> itemPicker = new CollectionItemPicker<TSource>(source);
+            TSource randomItem = itemPicker.PickRandomItem();
+
+            return randomItem;
+        }
+
+        /// <summary>
         /// Returns all elements of <paramref name="source"/> except <paramref name="item"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
