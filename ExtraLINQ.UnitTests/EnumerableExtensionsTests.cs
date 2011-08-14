@@ -630,6 +630,34 @@ namespace ExtraLINQ.UnitTests
 
         #endregion
 
+        #region Shuffle()
+
+        #region Shuffle<TSource>(IEnumerable<TSource>)
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void Shuffle_NullCollection_ThrowsArgumentNullException()
+        {
+            IEnumerable<char> nullCollection = null;
+
+            nullCollection.Shuffle();
+        }
+
+        [TestMethod]
+        public void Shuffle_ValidCollection_ReturnsCorrectlyShuffledCollection()
+        {
+            IEnumerable<char> letters = "abcde";
+
+            IEnumerable<char> shuffledLetters = letters.Shuffle();
+
+            foreach (char letter in shuffledLetters)
+            {
+                letters.ShouldContain(letter);
+            }
+        }
+        
+        #endregion
+
         #endregion
 
         #region Without()
