@@ -578,6 +578,56 @@ namespace ExtraLINQ.UnitTests
 
         #endregion
 
+        #region Random<TSource>(IEnumerable<TSource>, int, Random)
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void Random_NullCollectionValidElementCountAndRandom_ThrowsArgumentNullExeption()
+        {
+            IEnumerable<char> nullCollection = null;
+            const int validItemCount = 0;
+            Random randomNumberGenerator = new Random();
+
+            nullCollection.Random(validItemCount, randomNumberGenerator);
+        }
+
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [TestMethod]
+        public void Random_ValidCollectionNegativeItemCountValidRandom_ThrowsArgumentOutOfRangeExeption()
+        {
+            IEnumerable<char> letters = "abcde";
+            const int negativeElementsCount = -5;
+            Random randomNumberGenerator = new Random();
+
+            letters.Random(negativeElementsCount, randomNumberGenerator);
+        }
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void Random_ValidCollectionValidElementsNullRandomNumberGenerator_ThrowsArgumentNullExeption()
+        {
+            IEnumerable<char> letters = "abcde";
+            const int negativeElementsCount = 2;
+            Random nullRandomNumberGenerator = null;
+
+            letters.Random(negativeElementsCount, nullRandomNumberGenerator);
+        }
+
+        [TestMethod]
+        public void Random_ValidCollectionValidElementsValidRandomNumberGenerator_ReturnsValidCollectionElements()
+        {
+            IEnumerable<char> letters = "abcde".ToCharArray();
+            const int arbitrarySeed = 1337;
+            Random randomNumberGenerator = new Random(arbitrarySeed);
+
+            IEnumerable<char> threeRandomCharacters = letters.Random(3, randomNumberGenerator);
+            char[] threeRandomCharactersArray = threeRandomCharacters.ToArray();
+
+            threeRandomCharactersArray.ShouldEqual(new[] { 'b', 'a', 'c' });
+        }
+
+        #endregion
+
         #endregion
 
         #region Without()
