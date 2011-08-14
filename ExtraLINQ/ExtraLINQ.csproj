@@ -46,7 +46,7 @@
     <Compile Include="Internals\CollectionShuffler.cs" />
     <Compile Include="Internals\MathHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Internals\CollectionItemPicker.cs" />
+    <Compile Include="Internals\CollectionElementsPicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="EnumerableExtensions.cd" />
