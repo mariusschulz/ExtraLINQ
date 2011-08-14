@@ -432,6 +432,25 @@ namespace ExtraLINQ
         }
 
         /// <summary>
+        /// Shuffles and returns the specified collection.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to return an element from.</param>
+        /// <returns>A shuffled collection containing the elements of <paramref name="source"/>.</returns>
+        public static IEnumerable<TSource> Shuffle<TSource>(this IEnumerable<TSource> source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            CollectionShuffler<TSource> shuffler = new CollectionShuffler<TSource>(source);
+            IEnumerable<TSource> shuffledCollection = shuffler.ShuffleCollection();
+
+            return shuffledCollection;
+        }
+
+        /// <summary>
         /// Returns all elements of <paramref name="source"/> except <paramref name="item"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
