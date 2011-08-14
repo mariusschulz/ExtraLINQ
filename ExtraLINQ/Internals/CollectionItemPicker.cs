@@ -6,8 +6,8 @@ namespace ExtraLINQ.Internals
 {
     internal class CollectionItemPicker<TSource>
     {
-        private readonly Random _randomNumberGenerator;
         private readonly IEnumerable<TSource> _source;
+        private readonly Random _randomNumberGenerator;
 
         public CollectionItemPicker(IEnumerable<TSource> source)
         {
