@@ -471,9 +471,11 @@ namespace ExtraLINQ.UnitTests
 
         #region Random()
 
+        #region Random<TSource>(IEnumerable<TSource>)
+
         [ExpectedException(typeof(ArgumentNullException))]
         [TestMethod]
-        public void Random_NullCollection_ThrowArgumentNullExeption()
+        public void Random_NullCollection_ThrowsArgumentNullExeption()
         {
             IEnumerable<char> nullCollection = null;
 
@@ -489,6 +491,43 @@ namespace ExtraLINQ.UnitTests
 
             letters.ShouldContain(randomCharacter);
         }
+
+        #endregion
+
+        #region Random<TSource>(IEnumerable<TSource>, Random)
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void Random_NullCollectionValidRandom_ThrowsArgumentNullExeption()
+        {
+            IEnumerable<char> nullCollection = null;
+            Random randomNumberGenerator = new Random();
+            
+            nullCollection.Random(randomNumberGenerator);
+        }
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void Random_ValidCollectionNullRandom_ThrowsArgumentNullExeption()
+        {
+            IEnumerable<char> letters = "abcde";
+            Random nullRandomNumberGenerator = null;
+
+            letters.Random(nullRandomNumberGenerator);
+        }
+
+        [TestMethod]
+        public void Random_ValidParameters_ReturnsValidCollectionElement()
+        {
+            IEnumerable<char> letters = "abcde".ToCharArray();
+            Random randomNumberGenerator = new Random();
+
+            char randomCharacter = letters.Random(randomNumberGenerator);
+
+            letters.ShouldContain(randomCharacter);
+        }
+
+        #endregion
 
         #endregion
 
