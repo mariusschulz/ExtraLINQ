@@ -40,12 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CollectionIndexCalculator.cs" />
+    <Compile Include="Internals\CollectionIndexCalculator.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="IndexingStrategy.cs" />
-    <Compile Include="MathHelper.cs" />
+    <Compile Include="Internals\MathHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CollectionItemPicker.cs" />
+    <Compile Include="Internals\CollectionItemPicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="EnumerableExtensions.cd" />

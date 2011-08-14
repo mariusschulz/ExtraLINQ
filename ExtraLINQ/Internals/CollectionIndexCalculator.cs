@@ -1,5 +1,5 @@
 ﻿
-namespace ExtraLINQ
+namespace ExtraLINQ.Internals
 {
     internal static class CollectionIndexCalculator
     {
