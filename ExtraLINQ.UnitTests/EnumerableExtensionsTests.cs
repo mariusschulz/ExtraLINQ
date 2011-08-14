@@ -469,6 +469,29 @@ namespace ExtraLINQ.UnitTests
 
         #endregion
 
+        #region Random()
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void Random_NullCollection_ThrowArgumentNullExeption()
+        {
+            IEnumerable<char> nullCollection = null;
+
+            nullCollection.Random();
+        }
+
+        [TestMethod]
+        public void Random_Empty_ReturnsValidCollectionElement()
+        {
+            IEnumerable<char> letters = "abcde";
+
+            char randomCharacter = letters.Random();
+
+            letters.ShouldContain(randomCharacter);
+        }
+
+        #endregion
+
         #region Without()
 
         #region Without(IEnumerable<TSource>, TSource)
