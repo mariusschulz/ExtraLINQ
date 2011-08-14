@@ -26,7 +26,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void CountsExactly_NegativeExpectedCount_ThrowsArgumentException()
         {
-            IEnumerable<char> letters = "abcde".ToCharArray();
+            IEnumerable<char> letters = "abcde";
 
             letters.CountsExactly(-10);
         }
@@ -34,7 +34,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void CountsExactly_MatchingActualAndExpectedItemCount_ReturnsTrue()
         {
-            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEnumerable<char> letters = "abcd";
 
             bool lettersCountEquals4 = letters.CountsExactly(4);
 
@@ -44,7 +44,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void CountsExactly_DifferentActualAndExpectedItemCount_ReturnsTrue()
         {
-            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEnumerable<char> letters = "abcd";
 
             bool lettersCountEquals100 = letters.CountsExactly(100);
 
@@ -69,7 +69,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void CountsExactly_ValidCollectionNullPredicate_ThrowsArgumentNullException()
         {
-            IEnumerable<char> validCollection = "abcd".ToCharArray();
+            IEnumerable<char> validCollection = "abcd";
             Func<char, bool> nullPredicate = null;
 
             validCollection.CountsExactly(1, nullPredicate);
@@ -79,7 +79,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void CountsExactly_NegativeExpectedCountValidPredicate_ThrowsArgumentException()
         {
-            IEnumerable<char> letters = "abcde".ToCharArray();
+            IEnumerable<char> letters = "abcde";
             Func<char, bool> alwaysTruePredicate = _ => true;
 
             letters.CountsExactly(-10, alwaysTruePredicate);
@@ -128,7 +128,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void CountsMax_NegativeExpectedMaxItemCount_ThrowsArgumentException()
         {
-            IEnumerable<char> letters = "abcde".ToCharArray();
+            IEnumerable<char> letters = "abcde";
 
             letters.CountsMax(-10);
         }
@@ -136,7 +136,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void CountsMax_ActualItemCountEqualsExpectedMaxItemCount_ReturnsTrue()
         {
-            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEnumerable<char> letters = "abcd";
 
             bool lettersContainsAtMost4Items = letters.CountsMax(4);
             bool lettersContainsAtMost5Items = letters.CountsMax(5);
@@ -148,7 +148,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void CountsMax_ActualItemCountGreaterThanExpectedMinItemCount_ReturnsFalse()
         {
-            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEnumerable<char> letters = "abcd";
 
             bool lettersContainsAtMost2Items = letters.CountsMax(2);
 
@@ -173,7 +173,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void CountsMax_ValidCollectionNullPredicate_ThrowsArgumentNullException()
         {
-            IEnumerable<char> validCollection = "abcd".ToCharArray();
+            IEnumerable<char> validCollection = "abcd";
             Func<char, bool> nullPredicate = null;
 
             validCollection.CountsMax(1, nullPredicate);
@@ -223,7 +223,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void CountsMin_ActualItemCountGreaterThanOrEqualsToExpectedMinItemCount_ReturnsTrue()
         {
-            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEnumerable<char> letters = "abcd";
 
             bool lettersContainsAtLeast2Items = letters.CountsMin(2);
             bool lettersContainsAtLeast4Items = letters.CountsMin(4);
@@ -235,7 +235,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void CountsMin_ActualItemCountLowerThanExpectedMinItemCount_ReturnsFalse()
         {
-            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEnumerable<char> letters = "abcd";
 
             bool lettersContainsAtLeast10Items = letters.CountsMin(10);
 
@@ -260,7 +260,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void CountsMin_ValidCollectionNullPredicate_ThrowsArgumentNullException()
         {
-            IEnumerable<char> validCollection = "abcd".ToCharArray();
+            IEnumerable<char> validCollection = "abcd";
             Func<char, bool> nullPredicate = null;
 
             validCollection.CountsMin(1, nullPredicate);
@@ -335,7 +335,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void ElementAt_ClampStrategyNegativeIndex_ReturnsFirstElement()
         {
-            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEnumerable<char> letters = "abcd";
 
             char characterForNegativeIndex = letters.ElementAt(-10, IndexingStrategy.Clamp);
 
@@ -345,7 +345,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void ElementAt_ClampStrategyIndexGreaterThanItemCount_ReturnsLastElement()
         {
-            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEnumerable<char> letters = "abcd";
 
             char characterForNegativeIndex = letters.ElementAt(100, IndexingStrategy.Clamp);
 
@@ -355,7 +355,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void ElementAt_CyclicIndexingStrategyIndexGreaterThanItemCount()
         {
-            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEnumerable<char> letters = "abcd";
 
             letters.ElementAt(4, IndexingStrategy.Cyclic).ShouldEqual('a');
             letters.ElementAt(8, IndexingStrategy.Cyclic).ShouldEqual('a');
@@ -519,7 +519,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void Random_ValidParameters_ReturnsValidCollectionElement()
         {
-            IEnumerable<char> letters = "abcde".ToCharArray();
+            IEnumerable<char> letters = "abcde";
             const int arbitrarySeed = 1337;
             Random randomNumberGenerator = new Random(arbitrarySeed);
             const char expectedCharacter = 'b';
@@ -547,7 +547,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void Random_ValidCollectionNegativeRandomElementsCount_ThrowsArgumentOutOfRangeException()
         {
-            IEnumerable<char> letters = "abcde".ToCharArray();
+            IEnumerable<char> letters = "abcde";
             const int invalidItemCount = -5;
 
             letters.Random(invalidItemCount);
@@ -557,7 +557,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void Random_ValidCollectionTooLargeRandomElementsCount_ThrowsArgumentOutOfRangeException()
         {
-            IEnumerable<char> letters = "abcde".ToCharArray();
+            IEnumerable<char> letters = "abcde";
             const int invalidItemCount = 100;
 
             letters.Random(invalidItemCount);
@@ -566,7 +566,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void Random_ValidParameters_ReturnsValidCollectionItems()
         {
-            IEnumerable<char> letters = "abcde".ToCharArray();
+            IEnumerable<char> letters = "abcde";
 
             IEnumerable<char> threeRandomLetters = letters.Random(3);
 
@@ -616,7 +616,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void Random_ValidCollectionValidElementsValidRandomNumberGenerator_ReturnsValidCollectionElements()
         {
-            IEnumerable<char> letters = "abcde".ToCharArray();
+            IEnumerable<char> letters = "abcde";
             const int arbitrarySeed = 1337;
             Random randomNumberGenerator = new Random(arbitrarySeed);
 
@@ -625,6 +625,8 @@ namespace ExtraLINQ.UnitTests
 
             threeRandomCharactersArray.ShouldEqual(new[] { 'b', 'a', 'c' });
         }
+
+        #endregion
 
         #endregion
 
@@ -646,7 +648,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void Without_ItemThatTheCollectionContains_ReturnsCollectionWithoutItem()
         {
-            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEnumerable<char> letters = "abcd";
             const char letterToRemove = 'a';
 
             letters = letters.Without(letterToRemove);
@@ -658,7 +660,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void Without_ItemThatTheCollectionDoesNotContain_ReturnsUnmodifiedCollection()
         {
-            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEnumerable<char> letters = "abcd";
             const char letterToRemove = 'z';
 
             letters = letters.Without(letterToRemove);
@@ -684,7 +686,7 @@ namespace ExtraLINQ.UnitTests
         [TestMethod]
         public void Without_NullEqualityComparer_ThrowsArgumentNullException()
         {
-            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEnumerable<char> letters = "abcd";
             IEqualityComparer<char> nullEqualityComparer = null;
 
             letters.Without('c', nullEqualityComparer);
