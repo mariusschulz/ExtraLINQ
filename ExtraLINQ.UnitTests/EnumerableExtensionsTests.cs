@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Should;
 
-namespace ExtraLINQ.UnitTests
+namespace ExtraLinq.UnitTests
 {
     [TestClass]
     public class EnumerableExtensionsTests

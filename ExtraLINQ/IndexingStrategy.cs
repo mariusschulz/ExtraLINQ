@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExtraLINQ
+namespace ExtraLinq
 {
     /// <summary>
     /// Represents the indexing strategy that

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExtraLINQ.Internals
+namespace ExtraLinq.Internals
 {
     internal class CollectionShuffler<TSource>
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ExtraLINQ.Internals;
+using ExtraLinq.Internals;
 
-namespace ExtraLINQ
+namespace ExtraLinq
 {
     /// <summary>
     /// Provides handy extension methods for collections.

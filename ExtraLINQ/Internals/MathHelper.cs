@@ -1,5 +1,5 @@
 ﻿
-namespace ExtraLINQ.Internals
+namespace ExtraLinq.Internals
 {
     internal static class MathHelper
     {
