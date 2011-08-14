@@ -17,6 +17,11 @@ namespace ExtraLINQ.Internals
 
         public TSource PickRandomItem()
         {
+            return PickRandomItem(_randomNumberGenerator);
+        }
+
+        public TSource PickRandomItem(Random randomNumberGenerator)
+        {
             int itemCount = _source.Count();
             int randomIndex = _randomNumberGenerator.Next(itemCount);
             TSource randomItem = _source.ElementAt(randomIndex);
