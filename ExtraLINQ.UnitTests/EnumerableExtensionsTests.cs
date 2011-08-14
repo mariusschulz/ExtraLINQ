@@ -520,11 +520,13 @@ namespace ExtraLINQ.UnitTests
         public void Random_ValidParameters_ReturnsValidCollectionElement()
         {
             IEnumerable<char> letters = "abcde".ToCharArray();
-            Random randomNumberGenerator = new Random();
+            const int arbitrarySeed = 1337;
+            Random randomNumberGenerator = new Random(arbitrarySeed);
+            const char expectedCharacter = 'b';
 
             char randomCharacter = letters.Random(randomNumberGenerator);
 
-            letters.ShouldContain(randomCharacter);
+            randomCharacter.ShouldEqual(expectedCharacter);
         }
 
         #endregion
