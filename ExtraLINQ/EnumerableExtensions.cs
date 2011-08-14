@@ -343,8 +343,46 @@ namespace ExtraLINQ
 
             CollectionItemPicker<TSource> itemPicker = new CollectionItemPicker<TSource>(source);
             TSource randomItem = itemPicker.PickRandomItem(randomNumberGenerator);
-            
+
             return randomItem;
+        }
+
+        /// <summary>
+        /// Returns the specified number of distinct random elements from <paramref name="source"/>.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to return the elements from.</param>
+        /// <param name="randomElementsCount">The number of random elements to return.</param>
+        /// <returns>
+        /// A collection of distinct random elements from <paramref name="source"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>   
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown when <paramref name="randomElementsCount"/> is negative or greater than the collection's element count.
+        ///   </exception>
+        public static IEnumerable<TSource> Random<TSource>(this IEnumerable<TSource> source, int randomElementsCount)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            // Create array from source to avoid multiple enumeration
+            TSource[] sourceArray = source.ToArray();
+
+            bool randomElementsIsOutOfRange = randomElementsCount < 0
+                || randomElementsCount > sourceArray.Length;
+            
+            if (randomElementsIsOutOfRange)
+            {
+                throw new ArgumentOutOfRangeException("randomElementsCount");
+            }
+
+            CollectionShuffler<TSource> shuffler = new CollectionShuffler<TSource>(sourceArray);
+            IEnumerable<TSource> shuffledCollection = shuffler.ShuffleCollection();
+            IEnumerable<TSource> randomElements = shuffledCollection.Take(randomElementsCount);
+
+            return randomElements;
         }
 
         /// <summary>
