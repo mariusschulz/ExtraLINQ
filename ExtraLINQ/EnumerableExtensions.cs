@@ -267,7 +267,7 @@ namespace ExtraLINQ
         /// <summary>
         /// Determines whether none of the elements of a collection satisfy a condition.
         /// </summary>
-        /// <typeparam name="TSource">The type of the elements of source.</typeparam>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The <see cref="IEnumerable{TSource}"/> to check for matches.</param>
         /// <param name="predicate">A function to test each element for a condition.</param>
         /// <returns>
@@ -296,7 +296,7 @@ namespace ExtraLINQ
         /// <summary>
         /// Returns a random element from <paramref name="source"/>.
         /// </summary>
-        /// <typeparam name="TSource">The type of the elements of source.</typeparam>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The <see cref="IEnumerable{TSource}"/> to return an element from.</param>
         /// <returns>
         /// A random element from <paramref name="source"/>.
@@ -312,6 +312,38 @@ namespace ExtraLINQ
             CollectionItemPicker<TSource> itemPicker = new CollectionItemPicker<TSource>(source);
             TSource randomItem = itemPicker.PickRandomItem();
 
+            return randomItem;
+        }
+
+        /// <summary>
+        /// Returns a random element from <paramref name="source"/> using the specified random number generator.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to return an element from.</param>
+        /// <param name="randomNumberGenerator">The random number generator used to select a random element.</param>
+        /// <returns>
+        /// A random element from <paramref name="source"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///   <para><paramref name="source"/> is null.</para>
+        ///   <para>- or - </para>
+        ///   <para><paramref name="randomNumberGenerator"/> is null.</para>
+        ///   </exception>
+        public static TSource Random<TSource>(this IEnumerable<TSource> source, Random randomNumberGenerator)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            if (randomNumberGenerator == null)
+            {
+                throw new ArgumentNullException("randomNumberGenerator");
+            }
+
+            CollectionItemPicker<TSource> itemPicker = new CollectionItemPicker<TSource>(source);
+            TSource randomItem = itemPicker.PickRandomItem(randomNumberGenerator);
+            
             return randomItem;
         }
 
