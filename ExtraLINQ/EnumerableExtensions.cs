@@ -32,7 +32,18 @@ namespace ExtraLinq
                 throw new ArgumentException("The expected item count must not be negative.", "expectedItemCount");
             }
 
-            return source.Count() == expectedItemCount;
+            int itemCount = 0;
+            foreach (TSource item in source)
+            {
+                itemCount++;
+
+                if (itemCount > expectedItemCount)
+                {
+                    return false;
+                }
+            }
+
+            return itemCount == expectedItemCount;
         }
 
         /// <summary>
@@ -94,7 +105,18 @@ namespace ExtraLinq
                 throw new ArgumentOutOfRangeException("expectedMaxItemCount", "The expected item count must not be negative.");
             }
 
-            return source.Count() <= expectedMaxItemCount;
+            int itemCount = 0;
+            foreach (TSource item in source)
+            {
+                itemCount++;
+
+                if (itemCount > expectedMaxItemCount)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -124,7 +146,21 @@ namespace ExtraLinq
                 throw new ArgumentNullException("predicate");
             }
 
-            return source.Count(predicate) <= expectedMaxItemCount;
+            int matchedItemsCount = 0;
+            foreach (TSource item in source)
+            {
+                if (predicate(item))
+                {
+                    matchedItemsCount++;
+                }
+
+                if (matchedItemsCount > expectedMaxItemCount)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -146,8 +182,19 @@ namespace ExtraLinq
             {
                 throw new ArgumentNullException("source");
             }
+            
+            int itemCount = 0;
+            foreach (TSource item in source)
+            {
+                itemCount++;
 
-            return source.Count() >= expectedMinItemCount;
+                if (itemCount == expectedMinItemCount)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -180,7 +227,21 @@ namespace ExtraLinq
                 throw new ArgumentNullException("predicate");
             }
 
-            return source.Count(predicate) >= expectedMinItemCount;
+            int matchedItemsCount = 0;
+            foreach (TSource item in source)
+            {
+                if (predicate(item))
+                {
+                    matchedItemsCount++;
+                }
+
+                if (matchedItemsCount == expectedMinItemCount)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>
