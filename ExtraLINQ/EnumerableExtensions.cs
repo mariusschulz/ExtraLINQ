@@ -91,7 +91,7 @@ namespace ExtraLinq
 
             if (expectedMaxItemCount < 0)
             {
-                throw new ArgumentException("The expected item count must not be negative.", "expectedMaxItemCount");
+                throw new ArgumentOutOfRangeException("expectedMaxItemCount", "The expected item count must not be negative.");
             }
 
             return source.Count() <= expectedMaxItemCount;

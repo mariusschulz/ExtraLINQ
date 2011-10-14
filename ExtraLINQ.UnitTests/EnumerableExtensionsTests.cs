@@ -124,9 +124,9 @@ namespace ExtraLinq.UnitTests
             nullCollection.CountsMax(1);
         }
 
-        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = false)]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [TestMethod]
-        public void CountsMax_NegativeExpectedMaxItemCount_ThrowsArgumentException()
+        public void CountsMax_NegativeExpectedMaxItemCount_ThrowsArgumentOutOfRangeException()
         {
             IEnumerable<char> letters = "abcde";
 
