@@ -146,6 +146,11 @@ namespace ExtraLinq
                 throw new ArgumentNullException("predicate");
             }
 
+            if (expectedMaxItemCount < 0)
+            {
+                throw new ArgumentOutOfRangeException("expectedMaxItemCount", "The expected item count must not be negative.");
+            }
+
             int matchedItemsCount = 0;
             foreach (TSource item in source)
             {

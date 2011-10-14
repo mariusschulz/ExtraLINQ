@@ -179,6 +179,16 @@ namespace ExtraLinq.UnitTests
             validCollection.CountsMax(1, nullPredicate);
         }
 
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [TestMethod]
+        public void CountsMax_ValidCollectionValidPredicateNegativeExpectedItemCount_ThrowsArgumentOutOfRangeException()
+        {
+            IEnumerable<char> validCollection = "abcd";
+            Func<char, bool> validPredicate = c => c == 'a';
+
+            validCollection.CountsMax(-1, validPredicate);
+        }
+
         [TestMethod]
         public void CountsMax_CollectionContainingOneMatchingItemExpectingAtMostTwoMatchingItems_ReturnsTrue()
         {
