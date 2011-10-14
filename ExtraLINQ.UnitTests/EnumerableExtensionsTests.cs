@@ -22,9 +22,9 @@ namespace ExtraLinq.UnitTests
             nullCollection.CountsExactly(1);
         }
 
-        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = false)]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [TestMethod]
-        public void CountsExactly_NegativeExpectedCount_ThrowsArgumentException()
+        public void CountsExactly_NegativeExpectedCount_ThrowsArgumentOutOfRangeException()
         {
             IEnumerable<char> letters = "abcde";
 
@@ -75,9 +75,9 @@ namespace ExtraLinq.UnitTests
             validCollection.CountsExactly(1, nullPredicate);
         }
 
-        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = false)]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [TestMethod]
-        public void CountsExactly_NegativeExpectedCountValidPredicate_ThrowsArgumentException()
+        public void CountsExactly_NegativeExpectedCountValidPredicate_ThrowsArgumentOutOfRangeException()
         {
             IEnumerable<char> letters = "abcde";
             Func<char, bool> alwaysTruePredicate = _ => true;
@@ -220,6 +220,15 @@ namespace ExtraLinq.UnitTests
             nullCollection.CountsMin(1);
         }
 
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [TestMethod]
+        public void CountsMin_NegativeExpectedItemCount_ThrowsArgumentOutOfRangeException()
+        {
+            IEnumerable<char> letters = "abcd".ToCharArray();
+
+            letters.CountsMin(-1);
+        }
+
         [TestMethod]
         public void CountsMin_ActualItemCountGreaterThanOrEqualsToExpectedMinItemCount_ReturnsTrue()
         {
@@ -264,6 +273,15 @@ namespace ExtraLinq.UnitTests
             Func<char, bool> nullPredicate = null;
 
             validCollection.CountsMin(1, nullPredicate);
+        }
+
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [TestMethod]
+        public void CountsMin_ValidCollectionValidPredicateNegativeExpectedItemCount_ThrowsArgumentOutOfRangeException()
+        {
+            IEnumerable<char> letters = "abcd".ToCharArray();
+
+            letters.CountsMin(-1, c => c == 'a');
         }
 
         [TestMethod]

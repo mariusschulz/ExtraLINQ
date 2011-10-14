@@ -29,7 +29,7 @@ namespace ExtraLinq
 
             if (expectedItemCount < 0)
             {
-                throw new ArgumentException("The expected item count must not be negative.", "expectedItemCount");
+                throw new ArgumentOutOfRangeException("expectedItemCount", "The expected item count must not be negative.");
             }
 
             int itemCount = 0;
@@ -71,7 +71,7 @@ namespace ExtraLinq
 
             if (expectedItemCount < 0)
             {
-                throw new ArgumentException("The expected item count must not be negative.", "expectedItemCount");
+                throw new ArgumentOutOfRangeException("expectedItemCount", "The expected item count must not be negative.");
             }
 
             if (predicate == null)
@@ -182,6 +182,11 @@ namespace ExtraLinq
             {
                 throw new ArgumentNullException("source");
             }
+
+            if (expectedMinItemCount < 0)
+            {
+                throw new ArgumentOutOfRangeException("expectedMinItemCount", "The expected item count must not be negative.");
+            }
             
             int itemCount = 0;
             foreach (TSource item in source)
@@ -225,6 +230,11 @@ namespace ExtraLinq
             if (predicate == null)
             {
                 throw new ArgumentNullException("predicate");
+            }
+
+            if (expectedMinItemCount < 0)
+            {
+                throw new ArgumentOutOfRangeException("expectedMinItemCount", "The expected item count must not be negative.");
             }
 
             int matchedItemsCount = 0;
