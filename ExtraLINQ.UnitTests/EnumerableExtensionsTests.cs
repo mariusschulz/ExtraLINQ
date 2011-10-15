@@ -234,7 +234,7 @@ namespace ExtraLinq.UnitTests
         [TestMethod]
         public void CountsMin_NegativeExpectedItemCount_ThrowsArgumentOutOfRangeException()
         {
-            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEnumerable<char> letters = "abcd";
 
             letters.CountsMin(-1);
         }
@@ -289,7 +289,7 @@ namespace ExtraLinq.UnitTests
         [TestMethod]
         public void CountsMin_ValidCollectionValidPredicateNegativeExpectedItemCount_ThrowsArgumentOutOfRangeException()
         {
-            IEnumerable<char> letters = "abcd".ToCharArray();
+            IEnumerable<char> letters = "abcd";
 
             letters.CountsMin(-1, c => c == 'a');
         }
