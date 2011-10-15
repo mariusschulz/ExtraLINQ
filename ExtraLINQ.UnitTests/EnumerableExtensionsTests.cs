@@ -36,9 +36,10 @@ namespace ExtraLinq.UnitTests
         {
             IEnumerable<char> letters = "abcd";
 
-            bool lettersCountEquals4 = letters.CountsExactly(4);
+            letters.CountsExactly(4).ShouldBeTrue();
 
-            lettersCountEquals4.ShouldBeTrue();
+            // test ICollection.Count early exit strategy
+            letters.ToList().CountsExactly(4).ShouldBeTrue();
         }
 
         [TestMethod]
@@ -46,9 +47,10 @@ namespace ExtraLinq.UnitTests
         {
             IEnumerable<char> letters = "abcd";
 
-            bool lettersCountEquals100 = letters.CountsExactly(100);
+            letters.CountsExactly(100).ShouldBeFalse();
 
-            lettersCountEquals100.ShouldBeFalse();
+            // test ICollection.Count early exit strategy
+            letters.ToList().CountsExactly(100).ShouldBeFalse();
         }
 
         #endregion
@@ -138,11 +140,12 @@ namespace ExtraLinq.UnitTests
         {
             IEnumerable<char> letters = "abcd";
 
-            bool lettersContainsAtMost4Items = letters.CountsMax(4);
-            bool lettersContainsAtMost5Items = letters.CountsMax(5);
+            letters.CountsMax(4).ShouldBeTrue();
+            letters.CountsMax(5).ShouldBeTrue();
 
-            lettersContainsAtMost4Items.ShouldBeTrue();
-            lettersContainsAtMost5Items.ShouldBeTrue();
+            // test ICollection.Count early exit strategy
+            letters.ToList().CountsMax(4).ShouldBeTrue();
+            letters.ToList().CountsMax(5).ShouldBeTrue();
         }
 
         [TestMethod]
@@ -150,9 +153,12 @@ namespace ExtraLinq.UnitTests
         {
             IEnumerable<char> letters = "abcd";
 
-            bool lettersContainsAtMost2Items = letters.CountsMax(2);
+            letters.CountsMax(4).ShouldBeTrue();
+            letters.CountsMax(5).ShouldBeTrue();
 
-            lettersContainsAtMost2Items.ShouldBeFalse();
+            // test ICollection.Count early exit strategy
+            letters.ToList().CountsMax(4).ShouldBeTrue();
+            letters.ToList().CountsMax(5).ShouldBeTrue();
         }
 
         #endregion
@@ -244,11 +250,12 @@ namespace ExtraLinq.UnitTests
         {
             IEnumerable<char> letters = "abcd";
 
-            bool lettersContainsAtLeast2Items = letters.CountsMin(2);
-            bool lettersContainsAtLeast4Items = letters.CountsMin(4);
-
-            lettersContainsAtLeast2Items.ShouldBeTrue();
-            lettersContainsAtLeast4Items.ShouldBeTrue();
+            letters.CountsMin(2).ShouldBeTrue();
+            letters.CountsMin(4).ShouldBeTrue();
+            
+            // test ICollection.Count early exit strategy
+            letters.ToList().CountsMin(2).ShouldBeTrue();
+            letters.ToList().CountsMin(4).ShouldBeTrue();
         }
 
         [TestMethod]
@@ -256,9 +263,10 @@ namespace ExtraLinq.UnitTests
         {
             IEnumerable<char> letters = "abcd";
 
-            bool lettersContainsAtLeast10Items = letters.CountsMin(10);
+            letters.CountsMin(10).ShouldBeFalse();
 
-            lettersContainsAtLeast10Items.ShouldBeFalse();
+            // test ICollection.Count early exit strategy
+            letters.ToList().CountsMin(10).ShouldBeFalse();
         }
 
         #endregion

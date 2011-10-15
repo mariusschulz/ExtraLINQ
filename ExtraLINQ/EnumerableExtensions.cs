@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using ExtraLinq.Internals;
@@ -30,6 +31,12 @@ namespace ExtraLinq
             if (expectedItemCount < 0)
             {
                 throw new ArgumentOutOfRangeException("expectedItemCount", "The expected item count must not be negative.");
+            }
+
+            ICollection collection = source as ICollection;
+            if (collection != null)
+            {
+                return collection.Count == expectedItemCount;
             }
 
             int itemCount = 0;
@@ -103,6 +110,12 @@ namespace ExtraLinq
             if (expectedMaxItemCount < 0)
             {
                 throw new ArgumentOutOfRangeException("expectedMaxItemCount", "The expected item count must not be negative.");
+            }
+
+            ICollection collection = source as ICollection;
+            if (collection != null)
+            {
+                return collection.Count <= expectedMaxItemCount;
             }
 
             int itemCount = 0;
@@ -191,6 +204,12 @@ namespace ExtraLinq
             if (expectedMinItemCount < 0)
             {
                 throw new ArgumentOutOfRangeException("expectedMinItemCount", "The expected item count must not be negative.");
+            }
+
+            ICollection collection = source as ICollection;
+            if (collection != null)
+            {
+                return collection.Count >= expectedMinItemCount;
             }
             
             int itemCount = 0;
