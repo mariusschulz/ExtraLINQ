@@ -206,6 +206,11 @@ namespace ExtraLinq
                 throw new ArgumentOutOfRangeException("expectedMinItemCount", "The expected item count must not be negative.");
             }
 
+            if (expectedMinItemCount == 0)
+            {
+                return true;
+            }
+
             ICollection collection = source as ICollection;
             if (collection != null)
             {
