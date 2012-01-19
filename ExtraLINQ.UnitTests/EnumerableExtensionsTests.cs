@@ -696,6 +696,35 @@ namespace ExtraLinq.UnitTests
                 nullCollection.Without('c');
             }
 
+            [ExpectedException(typeof(ArgumentNullException))]
+            [TestMethod]
+            public void ThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNull()
+            {
+                IEnumerable<char> letters = "abcd";
+                IEnumerable<char> itemsToRemove = null;
+
+                letters.Without(itemsToRemove);
+            }
+
+            [ExpectedException(typeof(ArgumentNullException))]
+            [TestMethod]
+            public void ThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNullWithArray()
+            {
+                IEnumerable<char> letters = "abcd";
+                char[] itemsToRemove = null;
+
+                letters.Without(itemsToRemove);
+            }
+
+            [ExpectedException(typeof(ArgumentNullException))]
+            [TestMethod]
+            public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithCollection()
+            {
+                IEnumerable<char> nullCollection = null;
+
+                nullCollection.Without(new List<char> { 'c' });
+            }
+
             [TestMethod]
             public void ReturnsCollectionWithoutSpecifiedItem()
             {
@@ -706,6 +735,18 @@ namespace ExtraLinq.UnitTests
 
                 letters.ShouldNotContain('a');
                 letters.Count().ShouldEqual(3);
+            }
+
+            [TestMethod]
+            public void ReturnsCollectionWithoutSpecifiedItems()
+            {
+                IEnumerable<char> letters = "abcd";
+
+                letters = letters.Without(new[] { 'a', 'c' });
+
+                letters.ShouldNotContain('a');
+                letters.ShouldNotContain('c');
+                letters.Count().ShouldEqual(2);
             }
 
             [TestMethod]
@@ -726,7 +767,17 @@ namespace ExtraLinq.UnitTests
                 IEnumerable<char> nullCollection = null;
                 IEqualityComparer<char> stringLengthEqualityComparer = new StringLengthEqualityComparer<char>();
 
-                nullCollection.Without('c', stringLengthEqualityComparer);
+                nullCollection.Without(stringLengthEqualityComparer, 'c');
+            }
+
+            [ExpectedException(typeof(ArgumentNullException))]
+            [TestMethod]
+            public void ThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNullWithEqualityComparer()
+            {
+                IEnumerable<char> letters = "abcd";
+                IEqualityComparer<char> stringLengthEqualityComparer = new StringLengthEqualityComparer<char>();
+
+                letters.Without(stringLengthEqualityComparer, null);
             }
 
             [ExpectedException(typeof(ArgumentNullException))]
@@ -736,7 +787,7 @@ namespace ExtraLinq.UnitTests
                 IEnumerable<char> letters = "abcd";
                 IEqualityComparer<char> nullEqualityComparer = null;
 
-                letters.Without('c', nullEqualityComparer);
+                letters.Without(nullEqualityComparer, 'c');
             }
 
             [TestMethod]
@@ -746,7 +797,7 @@ namespace ExtraLinq.UnitTests
                 const string itemToRemove = "banana";
                 IEqualityComparer<string> stringLengthEqualityComparer = new StringLengthEqualityComparer<string>();
 
-                fruits = fruits.Without(itemToRemove, stringLengthEqualityComparer);
+                fruits = fruits.Without(stringLengthEqualityComparer, itemToRemove);
 
                 fruits.ShouldNotContain("banana");
                 fruits.ShouldNotContain("cherry");
@@ -760,7 +811,7 @@ namespace ExtraLinq.UnitTests
                 const string itemToRemove = "apricot";
                 IEqualityComparer<string> stringLengthEqualityComparer = new StringLengthEqualityComparer<string>();
 
-                IEnumerable<string> fruitsWithoutItem = fruits.Without(itemToRemove, stringLengthEqualityComparer);
+                IEnumerable<string> fruitsWithoutItem = fruits.Without(stringLengthEqualityComparer, itemToRemove);
                 fruitsWithoutItem.ShouldNotContain("apricot");
                 fruitsWithoutItem.Count().ShouldEqual(3);
             }
@@ -772,7 +823,7 @@ namespace ExtraLinq.UnitTests
                 const string itemToRemove = "55555";
                 IEqualityComparer<string> stringLengthEqualityComparer = new StringLengthEqualityComparer<string>();
 
-                stringNumbers = stringNumbers.Without(itemToRemove, stringLengthEqualityComparer);
+                stringNumbers = stringNumbers.Without(stringLengthEqualityComparer, itemToRemove);
 
                 stringNumbers.Count().ShouldEqual(4);
             }
