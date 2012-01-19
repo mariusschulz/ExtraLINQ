@@ -266,6 +266,11 @@ namespace ExtraLinq
                 throw new ArgumentOutOfRangeException("expectedMinItemCount", "The expected item count must not be negative.");
             }
 
+            if (expectedMinItemCount == 0)
+            {
+                return true;
+            }
+
             int matchedItemsCount = 0;
             foreach (TSource item in source)
             {

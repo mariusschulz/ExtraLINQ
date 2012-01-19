@@ -285,12 +285,13 @@ namespace ExtraLinq.UnitTests
             public void ReturnsTrueWhenActualCountIsGreaterThanOrEqualToExpectedMinCountWithPredicate()
             {
                 IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
-                Func<string, bool> startsWithLowercasedA = fruit => fruit.StartsWith("a");
-                Func<string, bool> startsWithLowercasedB = fruit => fruit.StartsWith("b");
+                IEnumerable<string> emptyCollection = Enumerable.Empty<string>();
 
-                fruits.CountsMin(1, startsWithLowercasedA).ShouldBeTrue();
-                fruits.CountsMin(2, startsWithLowercasedA).ShouldBeTrue();
-                fruits.CountsMin(1, startsWithLowercasedB).ShouldBeTrue();
+                fruits.CountsMin(1, fruit => fruit.StartsWith("a")).ShouldBeTrue();
+                fruits.CountsMin(2, fruit => fruit.StartsWith("a")).ShouldBeTrue();
+                fruits.CountsMin(1, fruit => fruit.StartsWith("b")).ShouldBeTrue();
+
+                emptyCollection.CountsMin(0, _ => true).ShouldBeTrue();
             }
 
             [TestMethod]
