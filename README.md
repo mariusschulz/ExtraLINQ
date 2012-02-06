@@ -11,5 +11,7 @@ ExtraLINQ provides additional extension methods for collections.
   - None
   - Random
   - Shuffle
-  - Shuffle
   - Without
+
+## Download ##
+The easiest way to integrate ExtraLINQ into your .NET project is through the NuGet package *ExtraLINQ*.
