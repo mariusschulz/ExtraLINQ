@@ -1,4 +1,4 @@
-﻿# ExtraLINQ #
+# ExtraLINQ #
 ExtraLINQ provides additional extension methods for collections.
 
 ## Collection Extension Methods ##
