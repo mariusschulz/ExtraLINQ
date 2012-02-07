@@ -24,8 +24,6 @@ namespace ExtraLinq
         /// <summary>
         /// Represents the lookup strategy used by
         /// <see cref="Enumerable.ElementAt{T}(IEnumerable{T}, int)" />.
-        /// If the index is out of range or equal to the collection's item count,
-        /// an <see cref="ArgumentOutOfRangeException"/> will be thrown.
         /// </summary>
         Regular
     }
