@@ -1,5 +1,5 @@
 # ExtraLINQ #
-ExtraLINQ provides additional extension methods for collections.
+ExtraLINQ provides additional extension methods for collections that improve the readability of .
 
 ## Collection Extension Methods ##
   - **CountsExactly** — Determines whether a collection contains exactly a certain number of items.
@@ -14,4 +14,4 @@ ExtraLINQ provides additional extension methods for collections.
   - **Without** — Returns the specified collection without certain specified items.
 
 ## Download ##
-The easiest way to integrate ExtraLINQ into your .NET project is through the NuGet package *ExtraLINQ*.
+The easiest way to integrate ExtraLINQ into your .NET project is through the [NuGet package *ExtraLINQ*](http://www.nuget.org/packages/ExtraLINQ).
