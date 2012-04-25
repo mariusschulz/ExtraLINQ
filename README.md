@@ -6,6 +6,7 @@ ExtraLINQ provides additional extension methods for collections that improve the
   - **CountsMax** — Determines whether a collection contains at most certain number of items.
   - **CountsMin** — Determines whether a collection contains at least a certain number of items.
   - **ElementAt** — Returns the item at a specified position in a collection using a specified indexing strategy.
+  - **Intersperse** — Returns all elements of the specified collection separated by the specified separator.
   - **IsEmpty** — Determines whether a collection is empty.
   - **IsNullOrEmpty** — Determines whether a collection is null or empty.
   - **None** — Determines whether a collections does not contain any elements.
