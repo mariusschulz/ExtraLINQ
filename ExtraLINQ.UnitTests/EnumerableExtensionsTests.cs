@@ -390,6 +390,30 @@ namespace ExtraLinq.UnitTests
         }
 
         [TestClass]
+        public class TheIntersperseMethod
+        {
+            [ExpectedException(typeof(ArgumentNullException))]
+            [TestMethod]
+            public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+            {
+                IEnumerable<string> nullCollection = null;
+
+                nullCollection.Intersperse("c").ToArray();
+            }
+
+            [TestMethod]
+            public void InsertsSeparatorCorrectly()
+            {
+                int[] numbers = new[] { 1, 2, 3, 4, 5 };
+                int[] expectedNumbers = new[] { 1, 0, 2, 0, 3, 0, 4, 0, 5 };
+
+                int[] separatedNumbers = numbers.Intersperse(0).ToArray();
+
+                separatedNumbers.ShouldEqual(expectedNumbers);
+            }
+        }
+
+        [TestClass]
         public class TheIsEmptyMethod
         {
             [TestMethod]
