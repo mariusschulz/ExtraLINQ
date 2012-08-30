@@ -102,34 +102,7 @@ namespace ExtraLinq
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
         public static bool CountsMax<TSource>(this IEnumerable<TSource> source, int expectedMaxItemCount)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
-
-            if (expectedMaxItemCount < 0)
-            {
-                throw new ArgumentOutOfRangeException("expectedMaxItemCount", "The expected item count must not be negative.");
-            }
-
-            ICollection collection = source as ICollection;
-            if (collection != null)
-            {
-                return collection.Count <= expectedMaxItemCount;
-            }
-
-            int itemCount = 0;
-            foreach (TSource item in source)
-            {
-                itemCount++;
-
-                if (itemCount > expectedMaxItemCount)
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return CountsMax(source, expectedMaxItemCount, _ => true);
         }
 
         /// <summary>
@@ -196,39 +169,7 @@ namespace ExtraLinq
         /// </remarks>
         public static bool CountsMin<TSource>(this IEnumerable<TSource> source, int expectedMinItemCount)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
-
-            if (expectedMinItemCount < 0)
-            {
-                throw new ArgumentOutOfRangeException("expectedMinItemCount", "The expected item count must not be negative.");
-            }
-
-            if (expectedMinItemCount == 0)
-            {
-                return true;
-            }
-
-            ICollection collection = source as ICollection;
-            if (collection != null)
-            {
-                return collection.Count >= expectedMinItemCount;
-            }
-
-            int itemCount = 0;
-            foreach (TSource item in source)
-            {
-                itemCount++;
-
-                if (itemCount == expectedMinItemCount)
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return CountsMin(source, expectedMinItemCount, _ => true);
         }
 
         /// <summary>
@@ -316,17 +257,12 @@ namespace ExtraLinq
             switch (indexingStrategy)
             {
                 case IndexingStrategy.Cyclic:
-                {
                     index = CollectionIndexCalculator.CalculateCyclicIndex(index, sourceList.Count);
-
                     break;
-                }
+
                 case IndexingStrategy.Clamp:
-                {
                     index = CollectionIndexCalculator.CalculateClampIndex(index, sourceList.Count);
-
                     break;
-                }
             }
 
             return sourceList.ElementAt(index);
@@ -392,12 +328,7 @@ namespace ExtraLinq
         /// </returns>
         public static bool IsNullOrEmpty<TSource>(this IEnumerable<TSource> source)
         {
-            if (source == null)
-            {
-                return true;
-            }
-
-            return !source.Any();
+            return source == null || !source.Any();
         }
 
         /// <summary>
@@ -445,10 +376,9 @@ namespace ExtraLinq
                 throw new ArgumentNullException("source");
             }
 
-            CollectionElementsPicker<TSource> elementsPicker = new CollectionElementsPicker<TSource>(source);
-            TSource randomItem = elementsPicker.PickRandomElement();
+            var elementsPicker = new CollectionElementsPicker<TSource>(source);
 
-            return randomItem;
+            return elementsPicker.PickRandomElement();
         }
 
         /// <summary>
@@ -482,10 +412,9 @@ namespace ExtraLinq
                 throw new ArgumentOutOfRangeException("randomElementsCount");
             }
 
-            CollectionElementsPicker<TSource> elementsPicker = new CollectionElementsPicker<TSource>(sourceArray);
-            IEnumerable<TSource> randomElements = elementsPicker.PickRandomElements(randomElementsCount);
+            var elementsPicker = new CollectionElementsPicker<TSource>(sourceArray);
 
-            return randomElements;
+            return elementsPicker.PickRandomElements(randomElementsCount);
         }
 
         /// <summary>
@@ -529,10 +458,9 @@ namespace ExtraLinq
                 throw new ArgumentOutOfRangeException("randomElementsCount");
             }
 
-            CollectionElementsPicker<TSource> elementsPicker = new CollectionElementsPicker<TSource>(sourceArray);
-            IEnumerable<TSource> randomElements = elementsPicker.PickRandomElements(randomElementsCount, randomNumberGenerator);
+            var elementsPicker = new CollectionElementsPicker<TSource>(sourceArray);
 
-            return randomElements;
+            return elementsPicker.PickRandomElements(randomElementsCount, randomNumberGenerator);
         }
 
         /// <summary>
@@ -561,10 +489,9 @@ namespace ExtraLinq
                 throw new ArgumentNullException("randomNumberGenerator");
             }
 
-            CollectionElementsPicker<TSource> elementsPicker = new CollectionElementsPicker<TSource>(source);
-            TSource randomItem = elementsPicker.PickRandomElement(randomNumberGenerator);
+            var elementsPicker = new CollectionElementsPicker<TSource>(source);
 
-            return randomItem;
+            return elementsPicker.PickRandomElement(randomNumberGenerator);
         }
 
         /// <summary>
@@ -581,10 +508,9 @@ namespace ExtraLinq
                 throw new ArgumentNullException("source");
             }
 
-            CollectionShuffler<TSource> shuffler = new CollectionShuffler<TSource>(source);
-            IEnumerable<TSource> shuffledCollection = shuffler.ShuffleCollection();
+            var shuffler = new CollectionShuffler<TSource>(source);
 
-            return shuffledCollection;
+            return shuffler.ShuffleCollection();
         }
 
         /// <summary>
@@ -611,10 +537,9 @@ namespace ExtraLinq
                 throw new ArgumentNullException("randomNumberGenerator");
             }
 
-            CollectionShuffler<TSource> shuffler = new CollectionShuffler<TSource>(source);
-            IEnumerable<TSource> shuffledCollection = shuffler.ShuffleCollection(randomNumberGenerator);
+            var shuffler = new CollectionShuffler<TSource>(source);
 
-            return shuffledCollection;
+            return shuffler.ShuffleCollection(randomNumberGenerator);
         }
 
         /// <summary>

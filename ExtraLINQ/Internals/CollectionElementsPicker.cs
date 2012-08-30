@@ -24,9 +24,8 @@ namespace ExtraLinq.Internals
         {
             int itemCount = _source.Count();
             int randomIndex = randomNumberGenerator.Next(itemCount);
-            TSource randomItem = _source.ElementAt(randomIndex);
 
-            return randomItem;
+            return _source.ElementAt(randomIndex);
         }
 
         public IEnumerable<TSource> PickRandomElements(int randomElementsCount)
@@ -36,11 +35,10 @@ namespace ExtraLinq.Internals
 
         public IEnumerable<TSource> PickRandomElements(int randomElementsCount, Random randomNumberGenerator)
         {
-            CollectionShuffler<TSource> shuffler = new CollectionShuffler<TSource>(_source);
-            IEnumerable<TSource> shuffledCollection = shuffler.ShuffleCollection(randomNumberGenerator);
-            IEnumerable<TSource> randomElements = shuffledCollection.Take(randomElementsCount);
-
-            return randomElements;
+            var shuffler = new CollectionShuffler<TSource>(_source);
+            var shuffledCollection = shuffler.ShuffleCollection(randomNumberGenerator);
+            
+            return shuffledCollection.Take(randomElementsCount);
         }
     }
 }
