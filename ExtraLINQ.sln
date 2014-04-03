@@ -1,22 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraLINQ", "ExtraLINQ\ExtraLINQ.csproj", "{C58F133E-FC14-4911-A71A-DE2B3EBBA27F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraLINQ.UnitTests", "ExtraLINQ.UnitTests\ExtraLINQ.UnitTests.csproj", "{A941D091-94AA-4DA0-9176-1EAE30EB9CD2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28E6EB58-69A3-49BE-B5FD-28EABBBA7981}"
-	ProjectSection(SolutionItems) = preProject
-		ExtraLINQ.vsmdi = ExtraLINQ.vsmdi
-		Local.testsettings = Local.testsettings
-		README.md = README.md
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-	EndProjectSection
-EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = ExtraLINQ.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -33,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ExtraLINQ.vsmdi
 	EndGlobalSection
 EndGlobal
