@@ -1,15 +1,16 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ExtraLINQ")]
+[assembly: AssemblyTitle("ExtraLINQ.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ExtraLINQ")]
-[assembly: AssemblyCopyright("Copyright © Marius Schulz")]
+[assembly: AssemblyProduct("ExtraLINQ.Tests")]
+[assembly: AssemblyCopyright("Copyright © Marius Schulz 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8269e986-f931-4695-a8aa-eaf0f437b2c4")]
+[assembly: Guid("032b2aa9-3158-4fc7-907e-1ded01fc9dd8")]
 
 // Version information for an assembly consists of the following four values:
 //
