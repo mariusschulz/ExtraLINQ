@@ -40,8 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CountsExactly.cs" />
+    <Compile Include="Where.cs" />
+    <Compile Include="Shuffle.cs" />
+    <Compile Include="Random.cs" />
+    <Compile Include="None.cs" />
+    <Compile Include="IsNullOrEmpty.cs" />
+    <Compile Include="IsEmpty.cs" />
+    <Compile Include="Intersperse.cs" />
+    <Compile Include="CountsMin.cs" />
+    <Compile Include="CountsMax.cs" />
+    <Compile Include="ElementAt.cs" />
     <Compile Include="Internals\CollectionIndexCalculator.cs" />
-    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="IndexingStrategy.cs" />
     <Compile Include="Internals\CollectionShuffler.cs" />
     <Compile Include="Internals\MathHelper.cs" />
