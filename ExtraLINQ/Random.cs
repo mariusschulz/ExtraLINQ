@@ -7,6 +7,8 @@ namespace ExtraLinq
 {
     public static partial class EnumerableExtensions
     {
+        private static readonly Random _random = new Random();
+
         /// <summary>
         /// Returns a random element from <paramref name="source"/>.
         /// </summary>
@@ -23,9 +25,7 @@ namespace ExtraLinq
                 throw new ArgumentNullException("source");
             }
 
-            var elementsPicker = new CollectionElementsPicker<TSource>(source);
-
-            return elementsPicker.PickRandomElement();
+            return PickRandomElement(source, _random);
         }
 
         /// <summary>
@@ -59,9 +59,36 @@ namespace ExtraLinq
                 throw new ArgumentOutOfRangeException("randomElementsCount");
             }
 
-            var elementsPicker = new CollectionElementsPicker<TSource>(sourceArray);
+            return PickRandomElements(sourceArray, randomElementsCount);
+        }
 
-            return elementsPicker.PickRandomElements(randomElementsCount);
+        /// <summary>
+        /// Returns a random element from <paramref name="source"/> using the specified random number generator.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to return an element from.</param>
+        /// <param name="randomNumberGenerator">The random number generator used to select a random element.</param>
+        /// <returns>
+        /// A random element from <paramref name="source"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///   <para><paramref name="source"/> is null.</para>
+        ///   <para>- or - </para>
+        ///   <para><paramref name="randomNumberGenerator"/> is null.</para>
+        ///   </exception>
+        public static TSource Random<TSource>(this IEnumerable<TSource> source, Random randomNumberGenerator)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            if (randomNumberGenerator == null)
+            {
+                throw new ArgumentNullException("randomNumberGenerator");
+            }
+
+            return PickRandomElement(source, randomNumberGenerator);
         }
 
         /// <summary>
@@ -105,40 +132,28 @@ namespace ExtraLinq
                 throw new ArgumentOutOfRangeException("randomElementsCount");
             }
 
-            var elementsPicker = new CollectionElementsPicker<TSource>(sourceArray);
-
-            return elementsPicker.PickRandomElements(randomElementsCount, randomNumberGenerator);
+            return PickRandomElements(source, randomElementsCount, randomNumberGenerator);
         }
 
-        /// <summary>
-        /// Returns a random element from <paramref name="source"/> using the specified random number generator.
-        /// </summary>
-        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to return an element from.</param>
-        /// <param name="randomNumberGenerator">The random number generator used to select a random element.</param>
-        /// <returns>
-        /// A random element from <paramref name="source"/>.
-        /// </returns>
-        /// <exception cref="ArgumentNullException">
-        ///   <para><paramref name="source"/> is null.</para>
-        ///   <para>- or - </para>
-        ///   <para><paramref name="randomNumberGenerator"/> is null.</para>
-        ///   </exception>
-        public static TSource Random<TSource>(this IEnumerable<TSource> source, Random randomNumberGenerator)
+        private static TSource PickRandomElement<TSource>(IEnumerable<TSource> source, Random randomNumberGenerator)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
+            int itemCount = source.Count();
+            int randomIndex = randomNumberGenerator.Next(itemCount);
 
-            if (randomNumberGenerator == null)
-            {
-                throw new ArgumentNullException("randomNumberGenerator");
-            }
+            return source.ElementAt(randomIndex);
+        }
 
-            var elementsPicker = new CollectionElementsPicker<TSource>(source);
+        private static IEnumerable<TSource> PickRandomElements<TSource>(IEnumerable<TSource> source, int randomElementsCount)
+        {
+            return PickRandomElements(source, randomElementsCount, _random);
+        }
 
-            return elementsPicker.PickRandomElement(randomNumberGenerator);
+        private static IEnumerable<TSource> PickRandomElements<TSource>(IEnumerable<TSource> source, int randomElementsCount, Random randomNumberGenerator)
+        {
+            var shuffler = new CollectionShuffler<TSource>(source);
+            var shuffledCollection = shuffler.ShuffleCollection(randomNumberGenerator);
+
+            return shuffledCollection.Take(randomElementsCount);
         }
     }
 }
