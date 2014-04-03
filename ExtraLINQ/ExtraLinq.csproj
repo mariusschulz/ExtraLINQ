@@ -51,10 +51,8 @@
     <Compile Include="CountsMin.cs" />
     <Compile Include="CountsMax.cs" />
     <Compile Include="ElementAt.cs" />
-    <Compile Include="Internals\CollectionIndexCalculator.cs" />
     <Compile Include="IndexingStrategy.cs" />
     <Compile Include="Internals\CollectionShuffler.cs" />
-    <Compile Include="Extensions\IntegerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

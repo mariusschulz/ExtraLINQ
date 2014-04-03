@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ExtraLinq.Internals;
 
 namespace ExtraLinq
 {
@@ -35,15 +34,45 @@ namespace ExtraLinq
             switch (indexingStrategy)
             {
                 case IndexingStrategy.Cyclic:
-                    index = CollectionIndexCalculator.CalculateCyclicIndex(index, sourceList.Count);
+                    index = CalculateCyclicIndex(index, sourceList.Count);
                     break;
 
                 case IndexingStrategy.Clamp:
-                    index = CollectionIndexCalculator.CalculateClampIndex(index, sourceList.Count);
+                    index = CalculateClampIndex(index, sourceList.Count);
                     break;
             }
 
             return sourceList.ElementAt(index);
+        }
+
+        private static int CalculateCyclicIndex(int index, int sourceItemCount)
+        {
+            while (index < 0)
+            {
+                index += sourceItemCount;
+            }
+
+            return index % sourceItemCount;
+        }
+
+        private static int CalculateClampIndex(int index, int sourceItemCount)
+        {
+            return Clamp(index, 0, sourceItemCount - 1);
+        }
+
+        private static int Clamp(int value, int lowerBorder, int upperBorder)
+        {
+            if (value < lowerBorder)
+            {
+                return lowerBorder;
+            }
+
+            if (value > upperBorder)
+            {
+                return upperBorder;
+            }
+
+            return value;
         }
     }
 }
