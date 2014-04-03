@@ -8,7 +8,7 @@
     <ProjectGuid>{C58F133E-FC14-4911-A71A-DE2B3EBBA27F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExtraLINQ</RootNamespace>
+    <RootNamespace>ExtraLinq</RootNamespace>
     <AssemblyName>ExtraLINQ</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

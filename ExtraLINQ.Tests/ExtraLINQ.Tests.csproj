@@ -45,19 +45,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Methods\WithoutTests.cs" />
+    <Compile Include="WithoutTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringLengthEqualityComparer.cs" />
-    <Compile Include="Methods\CountsExactlyTests.cs" />
-    <Compile Include="Methods\CountsMaxTests.cs" />
-    <Compile Include="Methods\CountsMinTests.cs" />
-    <Compile Include="Methods\ElementAtTests.cs" />
-    <Compile Include="Methods\IntersperseTests.cs" />
-    <Compile Include="Methods\IsEmptyTests.cs" />
-    <Compile Include="Methods\IsNullOrEmptyTests.cs" />
-    <Compile Include="Methods\NoneTests.cs" />
-    <Compile Include="Methods\RandomTests.cs" />
-    <Compile Include="Methods\ShuffleTests.cs" />
+    <Compile Include="Setup\StringLengthEqualityComparer.cs" />
+    <Compile Include="CountsExactlyTests.cs" />
+    <Compile Include="CountsMaxTests.cs" />
+    <Compile Include="CountsMinTests.cs" />
+    <Compile Include="ElementAtTests.cs" />
+    <Compile Include="IntersperseTests.cs" />
+    <Compile Include="IsEmptyTests.cs" />
+    <Compile Include="IsNullOrEmptyTests.cs" />
+    <Compile Include="NoneTests.cs" />
+    <Compile Include="RandomTests.cs" />
+    <Compile Include="ShuffleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

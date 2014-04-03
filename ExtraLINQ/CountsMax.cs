@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ExtraLINQ
+namespace ExtraLinq
 {
     public static partial class EnumerableExtensions
     {

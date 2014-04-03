@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ExtraLinq;
 using ExtraLinq.Internals;
 
-namespace ExtraLINQ
+namespace ExtraLinq
 {
     public static partial class EnumerableExtensions
     {

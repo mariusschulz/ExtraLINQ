@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using ExtraLinq;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace ExtraLINQ.Tests.Methods
+namespace ExtraLinq.Tests
 {
     [TestFixture]
     public class IsNullOrEmptyTests

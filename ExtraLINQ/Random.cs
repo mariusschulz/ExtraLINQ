@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ExtraLinq.Internals;
 
-namespace ExtraLINQ
+namespace ExtraLinq
 {
     public static partial class EnumerableExtensions
     {
