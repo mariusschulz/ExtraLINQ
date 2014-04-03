@@ -758,7 +758,7 @@ namespace ExtraLinq.Tests
                 letters = letters.Without(letterToRemove);
 
                 letters.Should().NotContain('a');
-                letters.Count().Should().Be(3);
+                letters.Should().HaveCount(3);
             }
 
             [Test]
@@ -770,7 +770,7 @@ namespace ExtraLinq.Tests
 
                 letters.Should().NotContain('a');
                 letters.Should().NotContain('c');
-                letters.Count().Should().Be(2);
+                letters.Should().HaveCount(2);
             }
 
             [Test]
@@ -781,7 +781,7 @@ namespace ExtraLinq.Tests
 
                 letters = letters.Without(letterToRemove);
 
-                letters.Count().Should().Be(4);
+                letters.Should().HaveCount(4);
             }
 
             [ExpectedException(typeof(ArgumentNullException))]
@@ -849,7 +849,7 @@ namespace ExtraLinq.Tests
 
                 stringNumbers = stringNumbers.Without(stringLengthEqualityComparer, itemToRemove);
 
-                stringNumbers.Count().Should().Be(4);
+                stringNumbers.Should().HaveCount(4);
             }
         }
     }
