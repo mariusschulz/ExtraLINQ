@@ -1,15 +1,15 @@
 ﻿
-namespace ExtraLinq.Internals
+namespace ExtraLinq.Extensions
 {
-    internal static class MathHelper
+    internal static class IntegerExtensions
     {
-        public static int Clamp(int value, int lowerBorder, int upperBorder)
+        public static int Clamp(this int value, int lowerBorder, int upperBorder)
         {
             if (value < lowerBorder)
             {
                 return lowerBorder;
             }
-            
+
             if (value > upperBorder)
             {
                 return upperBorder;

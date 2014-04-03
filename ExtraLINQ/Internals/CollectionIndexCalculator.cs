@@ -1,4 +1,5 @@
-﻿
+﻿using ExtraLinq.Extensions;
+
 namespace ExtraLinq.Internals
 {
     internal static class CollectionIndexCalculator
@@ -9,13 +10,13 @@ namespace ExtraLinq.Internals
             {
                 index += sourceItemCount;
             }
-            
+
             return index % sourceItemCount;
         }
 
         public static int CalculateClampIndex(int index, int sourceItemCount)
         {
-            return MathHelper.Clamp(index, 0, sourceItemCount - 1);
+            return index.Clamp(0, sourceItemCount - 1);
         }
     }
 }

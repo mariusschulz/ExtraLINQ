@@ -54,7 +54,7 @@
     <Compile Include="Internals\CollectionIndexCalculator.cs" />
     <Compile Include="IndexingStrategy.cs" />
     <Compile Include="Internals\CollectionShuffler.cs" />
-    <Compile Include="Internals\MathHelper.cs" />
+    <Compile Include="Extensions\IntegerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Internals\CollectionElementsPicker.cs" />
   </ItemGroup>
