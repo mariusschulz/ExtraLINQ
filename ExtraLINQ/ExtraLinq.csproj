@@ -52,7 +52,6 @@
     <Compile Include="CountsMax.cs" />
     <Compile Include="ElementAt.cs" />
     <Compile Include="IndexingStrategy.cs" />
-    <Compile Include="Internals\CollectionShuffler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

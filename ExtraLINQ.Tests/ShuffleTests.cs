@@ -38,7 +38,7 @@ namespace ExtraLinq.Tests
             IEnumerable<char> nullCollection = null;
             Random randomNumberGenerator = new Random();
 
-            nullCollection.Shuffle(randomNumberGenerator);
+            nullCollection.Shuffle(randomNumberGenerator).ToList();
         }
 
         [ExpectedException(typeof(ArgumentNullException))]
@@ -48,7 +48,7 @@ namespace ExtraLinq.Tests
             IEnumerable<char> letters = "abcde";
             Random nullRandomNumberGenerator = null;
 
-            letters.Shuffle(nullRandomNumberGenerator);
+            letters.Shuffle(nullRandomNumberGenerator).ToList();
         }
 
         [Test]

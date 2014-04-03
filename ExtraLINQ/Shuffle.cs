@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using ExtraLinq.Internals;
+using System.Linq;
 
 namespace ExtraLinq
 {
@@ -20,9 +20,7 @@ namespace ExtraLinq
                 throw new ArgumentNullException("source");
             }
 
-            var shuffler = new CollectionShuffler<TSource>(source);
-
-            return shuffler.ShuffleCollection();
+            return ShuffleCollection(source, _random);
         }
 
         /// <summary>
@@ -49,9 +47,15 @@ namespace ExtraLinq
                 throw new ArgumentNullException("randomNumberGenerator");
             }
 
-            var shuffler = new CollectionShuffler<TSource>(source);
+            TSource[] items = source.ToArray();
 
-            return shuffler.ShuffleCollection(randomNumberGenerator);
+            for (int n = 0; n < items.Length; n++)
+            {
+                int k = randomNumberGenerator.Next(n, items.Length);
+                yield return items[k];
+
+                items[k] = items[n];
+            }
         }
     }
 }

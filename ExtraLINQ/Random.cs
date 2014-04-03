@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ExtraLinq.Internals;
 
 namespace ExtraLinq
 {
@@ -150,10 +149,25 @@ namespace ExtraLinq
 
         private static IEnumerable<TSource> PickRandomElements<TSource>(IEnumerable<TSource> source, int randomElementsCount, Random randomNumberGenerator)
         {
-            var shuffler = new CollectionShuffler<TSource>(source);
-            var shuffledCollection = shuffler.ShuffleCollection(randomNumberGenerator);
+            return ShuffleCollection(source, randomNumberGenerator).Take(randomElementsCount);
+        }
 
-            return shuffledCollection.Take(randomElementsCount);
+        private static IEnumerable<TSource> ShuffleCollection<TSource>(IEnumerable<TSource> source)
+        {
+            return ShuffleCollection(source, _random);
+        }
+
+        public static IEnumerable<TSource> ShuffleCollection<TSource>(IEnumerable<TSource> source, Random random)
+        {
+            TSource[] items = source.ToArray();
+
+            for (int n = 0; n < items.Length; n++)
+            {
+                int k = random.Next(n, items.Length);
+                yield return items[k];
+
+                items[k] = items[n];
+            }
         }
     }
 }
