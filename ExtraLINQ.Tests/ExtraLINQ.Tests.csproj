@@ -45,19 +45,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WithoutTests.cs" />
+    <Compile Include="Extensions\IEnumerable\WithoutTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Setup\StringLengthEqualityComparer.cs" />
-    <Compile Include="CountsExactlyTests.cs" />
-    <Compile Include="CountsMaxTests.cs" />
-    <Compile Include="CountsMinTests.cs" />
-    <Compile Include="ElementAtTests.cs" />
-    <Compile Include="IntersperseTests.cs" />
-    <Compile Include="IsEmptyTests.cs" />
-    <Compile Include="IsNullOrEmptyTests.cs" />
-    <Compile Include="NoneTests.cs" />
-    <Compile Include="RandomTests.cs" />
-    <Compile Include="ShuffleTests.cs" />
+    <Compile Include="StringLengthEqualityComparer.cs" />
+    <Compile Include="Extensions\IEnumerable\CountsExactlyTests.cs" />
+    <Compile Include="Extensions\IEnumerable\CountsMaxTests.cs" />
+    <Compile Include="Extensions\IEnumerable\CountsMinTests.cs" />
+    <Compile Include="Extensions\IEnumerable\ElementAtTests.cs" />
+    <Compile Include="Extensions\IEnumerable\IntersperseTests.cs" />
+    <Compile Include="Extensions\IEnumerable\IsEmptyTests.cs" />
+    <Compile Include="Extensions\IEnumerable\IsNullOrEmptyTests.cs" />
+    <Compile Include="Extensions\IEnumerable\NoneTests.cs" />
+    <Compile Include="Extensions\IEnumerable\RandomTests.cs" />
+    <Compile Include="Extensions\IEnumerable\ShuffleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
