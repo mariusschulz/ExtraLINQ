@@ -40,17 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CountsExactly.cs" />
-    <Compile Include="Without.cs" />
-    <Compile Include="Shuffle.cs" />
-    <Compile Include="Random.cs" />
-    <Compile Include="None.cs" />
-    <Compile Include="IsNullOrEmpty.cs" />
-    <Compile Include="IsEmpty.cs" />
-    <Compile Include="Intersperse.cs" />
-    <Compile Include="CountsMin.cs" />
-    <Compile Include="CountsMax.cs" />
-    <Compile Include="ElementAt.cs" />
+    <Compile Include="Extensions\IEnumerable\CountsExactly.cs" />
+    <Compile Include="Extensions\IEnumerable\Without.cs" />
+    <Compile Include="Extensions\IEnumerable\Shuffle.cs" />
+    <Compile Include="Extensions\IEnumerable\Random.cs" />
+    <Compile Include="Extensions\IEnumerable\None.cs" />
+    <Compile Include="Extensions\IEnumerable\IsNullOrEmpty.cs" />
+    <Compile Include="Extensions\IEnumerable\IsEmpty.cs" />
+    <Compile Include="Extensions\IEnumerable\Intersperse.cs" />
+    <Compile Include="Extensions\IEnumerable\CountsMin.cs" />
+    <Compile Include="Extensions\IEnumerable\CountsMax.cs" />
+    <Compile Include="Extensions\IEnumerable\ElementAt.cs" />
     <Compile Include="IndexingStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
