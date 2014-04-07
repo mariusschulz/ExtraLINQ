@@ -6,6 +6,12 @@ namespace ExtraLinq
 {
     public static class NameValueCollectionExtensions
     {
+        /// <summary>
+        /// Creates and returns a new <see cref="Dictionary&lt;TKey, TValue&gt;"/>
+        /// from the specified <see cref="NameValueCollection"/>.
+        /// </summary>
+        /// <param name="collection">The collection.</param>
+        /// <returns>A <see cref="Dictionary&lt;TKey, TValue&gt;"/>.</returns>
         public static Dictionary<string, string> ToDictionary(this NameValueCollection collection)
         {
             if (collection == null)
