@@ -37,5 +37,15 @@ namespace ExtraLINQ.Tests
                 { "c", "3" }
             });
         }
+
+        [Test]
+        public void ReturnsAnEmptyDictionaryForAnEmptyNameValueCollection()
+        {
+            var emptyCollection = new NameValueCollection();
+
+            Dictionary<string, string> dictionary = emptyCollection.ToDictionary();
+
+            dictionary.Should().HaveCount(0);
+        }
     }
 }
