@@ -51,6 +51,7 @@
     <Compile Include="Extensions\IEnumerable\CountsMin.cs" />
     <Compile Include="Extensions\IEnumerable\CountsMax.cs" />
     <Compile Include="Extensions\IEnumerable\ElementAt.cs" />
+    <Compile Include="Extensions\NameValueCollection\ToKeyValuePairs.cs" />
     <Compile Include="Extensions\NameValueCollection\ToDictionary.cs" />
     <Compile Include="IndexingStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

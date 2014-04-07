@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 
 namespace ExtraLinq
 {
-    public static class NameValueCollectionExtensions
+    public static partial class NameValueCollectionExtensions
     {
         /// <summary>
         /// Creates and returns a new <see cref="Dictionary&lt;TKey, TValue&gt;"/>

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\IEnumerable\WithoutTests.cs" />
+    <Compile Include="Extensions\NameValueCollection\ToKeyValuePairsTests.cs" />
     <Compile Include="Extensions\NameValueCollection\ToDictionaryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringLengthEqualityComparer.cs" />
