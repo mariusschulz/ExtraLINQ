@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CountsExactly.cs" />
-    <Compile Include="Where.cs" />
+    <Compile Include="Without.cs" />
     <Compile Include="Shuffle.cs" />
     <Compile Include="Random.cs" />
     <Compile Include="None.cs" />
