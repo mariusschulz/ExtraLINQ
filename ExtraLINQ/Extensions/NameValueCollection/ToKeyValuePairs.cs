@@ -6,6 +6,12 @@ namespace ExtraLinq
 {
     public static partial class NameValueCollectionExtensions
     {
+        /// <summary>
+        /// Enumerates the specified <see cref="NameValueCollection"/>
+        /// as a sequence of key-value pairs of type <see cref="KeyValuePair&lt;TKey,TValue&gt;"/>.
+        /// </summary>
+        /// <param name="collection">The collection.</param>
+        /// <returns>A sequence of key-value pairs of type <see cref="KeyValuePair&lt;TKey,TValue&gt;"/>.</returns>
         public static IEnumerable<KeyValuePair<string, string>> ToKeyValuePairs(this NameValueCollection collection)
         {
             if (collection == null)

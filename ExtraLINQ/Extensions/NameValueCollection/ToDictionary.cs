@@ -7,7 +7,7 @@ namespace ExtraLinq
     public static partial class NameValueCollectionExtensions
     {
         /// <summary>
-        /// Creates and returns a new <see cref="Dictionary&lt;TKey, TValue&gt;"/>
+        /// Returns a new <see cref="Dictionary&lt;TKey,TValue&gt;"/>
         /// from the specified <see cref="NameValueCollection"/>.
         /// </summary>
         /// <param name="collection">The collection.</param>
