@@ -10,8 +10,8 @@ namespace ExtraLINQ.Tests
     [TestFixture]
     public class ToDictionaryTests
     {
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             NameValueCollection collection = null;

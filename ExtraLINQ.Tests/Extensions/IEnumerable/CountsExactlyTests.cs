@@ -9,8 +9,8 @@ namespace ExtraLinq.Tests
     [TestFixture]
     public class CountsExactlyTests
     {
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<object> nullCollection = null;
@@ -18,8 +18,8 @@ namespace ExtraLinq.Tests
             nullCollection.CountsExactly(1);
         }
 
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void ThrowsArgumentOutOfRangeExceptionWhenExpectedCountIsNegative()
         {
             IEnumerable<char> letters = "abcde";
@@ -49,8 +49,8 @@ namespace ExtraLinq.Tests
             letters.ToList().CountsExactly(100).Should().BeFalse();
         }
 
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithPredicate()
         {
             IEnumerable<object> nullCollection = null;
@@ -59,8 +59,8 @@ namespace ExtraLinq.Tests
             nullCollection.CountsExactly(1, alwaysTruePredicate);
         }
 
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenPredicateIsNull()
         {
             IEnumerable<char> validCollection = "abcd";
@@ -68,8 +68,8 @@ namespace ExtraLinq.Tests
             validCollection.CountsExactly(1, null);
         }
 
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void ThrowsArgumentOutOfRangeExceptionWhenExpectedCountIsNegativeAndPredicateIsValid()
         {
             IEnumerable<char> letters = "abcde";

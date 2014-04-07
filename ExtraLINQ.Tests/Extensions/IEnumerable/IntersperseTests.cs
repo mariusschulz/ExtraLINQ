@@ -9,8 +9,8 @@ namespace ExtraLinq.Tests
     [TestFixture]
     public class IntersperseTests
     {
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<string> nullCollection = null;

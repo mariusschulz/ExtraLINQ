@@ -9,8 +9,8 @@ namespace ExtraLinq.Tests
     [TestFixture]
     public class ShuffleTests
     {
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<char> nullCollection = null;
@@ -31,8 +31,8 @@ namespace ExtraLinq.Tests
             }
         }
 
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithRandom()
         {
             IEnumerable<char> nullCollection = null;
@@ -41,8 +41,8 @@ namespace ExtraLinq.Tests
             nullCollection.Shuffle(randomNumberGenerator).ToList();
         }
 
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenRandomIsNull()
         {
             IEnumerable<char> letters = "abcde";

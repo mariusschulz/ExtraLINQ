@@ -9,8 +9,8 @@ namespace ExtraLinq.Tests
     [TestFixture]
     public class RandomTests
     {
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<char> nullCollection = null;
@@ -28,8 +28,8 @@ namespace ExtraLinq.Tests
             letters.Should().Contain(randomCharacter);
         }
 
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithRandom()
         {
             IEnumerable<char> nullCollection = null;
@@ -38,8 +38,8 @@ namespace ExtraLinq.Tests
             nullCollection.Random(randomNumberGenerator);
         }
 
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenRandomIsNull()
         {
             IEnumerable<char> letters = "abcde";
@@ -61,8 +61,8 @@ namespace ExtraLinq.Tests
             randomCharacter.Should().Be(expectedCharacter);
         }
 
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithCount()
         {
             IEnumerable<char> nullCollection = null;
@@ -71,8 +71,8 @@ namespace ExtraLinq.Tests
             nullCollection.Random(validItemCount);
         }
 
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void ThrowsArgumentOutOfRangeExceptionWhenCountIsNegative()
         {
             IEnumerable<char> letters = "abcde";
@@ -81,8 +81,8 @@ namespace ExtraLinq.Tests
             letters.Random(invalidItemCount);
         }
 
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void ThrowsArgumentOutOfRangeExceptionWhenCountIsGreaterThanCollectionCount()
         {
             IEnumerable<char> letters = "abcde";
@@ -104,8 +104,8 @@ namespace ExtraLinq.Tests
             }
         }
 
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithRandomAndCount()
         {
             IEnumerable<char> nullCollection = null;
@@ -115,8 +115,8 @@ namespace ExtraLinq.Tests
             nullCollection.Random(validItemCount, randomNumberGenerator);
         }
 
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void ThrowsArgumentOutOfRangeExceptionWhenCountIsNegativeWithRandomAndCount()
         {
             IEnumerable<char> letters = "abcde";
@@ -126,8 +126,8 @@ namespace ExtraLinq.Tests
             letters.Random(negativeElementsCount, randomNumberGenerator);
         }
 
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenRandomIsNullWithRandomAndCount()
         {
             IEnumerable<char> letters = "abcde";

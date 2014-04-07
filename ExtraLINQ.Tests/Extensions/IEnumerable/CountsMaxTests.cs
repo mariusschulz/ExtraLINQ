@@ -9,8 +9,8 @@ namespace ExtraLinq.Tests
     [TestFixture]
     public class CountsMaxTests
     {
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<object> nullCollection = null;
@@ -18,8 +18,8 @@ namespace ExtraLinq.Tests
             nullCollection.CountsMax(1);
         }
 
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void ThrowsArgumentOutOfRangeExceptionWhenExpectedCountIsNegative()
         {
             IEnumerable<char> letters = "abcde";
@@ -56,8 +56,8 @@ namespace ExtraLinq.Tests
             letters.ToList().CountsMax(5).Should().BeTrue();
         }
 
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithPredicate()
         {
             IEnumerable<object> nullCollection = null;
@@ -66,8 +66,8 @@ namespace ExtraLinq.Tests
             nullCollection.CountsMax(1, alwaysTruePredicate);
         }
 
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenPredicateIsNull()
         {
             IEnumerable<char> validCollection = "abcd";
@@ -75,8 +75,8 @@ namespace ExtraLinq.Tests
             validCollection.CountsMax(1, null);
         }
 
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void ThrowsArgumentOutOfRangeExceptionWhenExpectedMaxCountIsNegative()
         {
             IEnumerable<char> validCollection = "abcd";

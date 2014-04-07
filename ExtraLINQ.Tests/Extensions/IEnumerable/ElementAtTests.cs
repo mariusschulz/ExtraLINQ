@@ -8,8 +8,8 @@ namespace ExtraLinq.Tests
     [TestFixture]
     public class ElementAtTests
     {
-        [ExpectedException(typeof(ArgumentNullException))]
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<object> nullCollection = null;
@@ -17,8 +17,8 @@ namespace ExtraLinq.Tests
             nullCollection.ElementAt(1, IndexingStrategy.Regular);
         }
 
-        [ExpectedException(typeof(ArgumentException))]
         [Test]
+        [ExpectedException(typeof(ArgumentException))]
         public void ThrowsArgumentOutOfRangeExceptionWhenCollectionIsEmptyWithClampStrategy()
         {
             IEnumerable<char> letters = new char[0];
@@ -26,8 +26,8 @@ namespace ExtraLinq.Tests
             letters.ElementAt(0, IndexingStrategy.Clamp);
         }
 
-        [ExpectedException(typeof(ArgumentException))]
         [Test]
+        [ExpectedException(typeof(ArgumentException))]
         public void ThrowsArgumentOutOfRangeExceptionWhenCollectionIsEmptyWithCyclicStrategy()
         {
             IEnumerable<char> letters = new char[0];
@@ -35,8 +35,8 @@ namespace ExtraLinq.Tests
             letters.ElementAt(0, IndexingStrategy.Cyclic);
         }
 
-        [ExpectedException(typeof(ArgumentException))]
         [Test]
+        [ExpectedException(typeof(ArgumentException))]
         public void ThrowsArgumentOutOfRangeExceptionWhenCollectionIsEmptyWithRegularStrategy()
         {
             IEnumerable<char> letters = new char[0];
