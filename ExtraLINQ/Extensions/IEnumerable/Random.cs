@@ -6,8 +6,6 @@ namespace ExtraLinq
 {
     public static partial class EnumerableExtensions
     {
-        private static readonly Random _random = new Random();
-
         /// <summary>
         /// Returns a random element from <paramref name="source"/>.
         /// </summary>

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\IEnumerable\CountsExactly.cs" />
+    <Compile Include="Extensions\IEnumerable\EnumerableExtensions.cs" />
     <Compile Include="Extensions\IEnumerable\Without.cs" />
     <Compile Include="Extensions\IEnumerable\Shuffle.cs" />
     <Compile Include="Extensions\IEnumerable\Random.cs" />
