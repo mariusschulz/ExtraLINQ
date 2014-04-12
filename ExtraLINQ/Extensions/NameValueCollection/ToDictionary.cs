@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Specialized;
 
 namespace ExtraLinq
@@ -14,10 +13,7 @@ namespace ExtraLinq
         /// <returns>A <see cref="Dictionary&lt;TKey, TValue&gt;"/>.</returns>
         public static Dictionary<string, string> ToDictionary(this NameValueCollection collection)
         {
-            if (collection == null)
-            {
-                throw new ArgumentNullException("collection");
-            }
+            EnsureThat.Argument.IsNotNull(collection, "collection");
 
             var dictionary = new Dictionary<string, string>(collection.Count);
 
