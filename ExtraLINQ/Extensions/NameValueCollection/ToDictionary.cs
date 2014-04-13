@@ -13,7 +13,7 @@ namespace ExtraLinq
         /// <returns>A <see cref="Dictionary&lt;TKey, TValue&gt;"/>.</returns>
         public static Dictionary<string, string> ToDictionary(this NameValueCollection collection)
         {
-            EnsureThat.Argument.IsNotNull(collection, "collection");
+            ThrowIf.Argument.IsNull(collection, "collection");
 
             var dictionary = new Dictionary<string, string>(collection.Count);
 

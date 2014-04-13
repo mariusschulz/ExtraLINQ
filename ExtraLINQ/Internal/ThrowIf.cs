@@ -2,11 +2,11 @@
 
 namespace ExtraLinq
 {
-    internal static class EnsureThat
+    internal static class ThrowIf
     {
         public static class Argument
         {
-            public static void IsNotNull(object argument, string argumentName)
+            public static void IsNull(object argument, string argumentName)
             {
                 if (argument == null)
                 {
