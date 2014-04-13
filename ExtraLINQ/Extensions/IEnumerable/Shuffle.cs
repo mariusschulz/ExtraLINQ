@@ -7,51 +7,48 @@ namespace ExtraLinq
     public static partial class EnumerableExtensions
     {
         /// <summary>
-        /// Shuffles and returns the specified collection.
+        /// Enumerates the specified input sequence and returns a new sequence
+        /// which contains all input elements in random order.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to return an element from.</param>
-        /// <returns>A shuffled collection containing the elements of <paramref name="source"/>.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
+        /// <param name="source">The sequence to shuffle.</param>
+        /// <returns>A shuffled sequence containing the elements of <paramref name="source"/>.</returns>
+        /// <remarks>
+        /// This method uses the Fisher-Yates shuffle.
+        /// </remarks>
         public static IEnumerable<TSource> Shuffle<TSource>(this IEnumerable<TSource> source)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
+            ThrowIf.Argument.IsNull(source, "source");
 
-            return ShuffleCollection(source, _random);
+            return ShuffleIterator(source, _random);
         }
 
         /// <summary>
-        /// Shuffles the specified source using the specified random number generator.
+        /// Enumerates the specified input sequence and returns a new sequence
+        /// which contains all input elements in random order.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to shuffle.</param>
-        /// <param name="randomNumberGenerator">The random number generator used to shuffle the specified collection.</param>
-        /// <returns>A shuffled collection containing the elements of <paramref name="source"/>.</returns>
-        /// <exception cref="ArgumentNullException">
-        ///   <para><paramref name="source"/> is null.</para>
-        ///   <para>- or - </para>
-        ///   <para><paramref name="randomNumberGenerator"/> is null.</para>
-        ///   </exception>
-        public static IEnumerable<TSource> Shuffle<TSource>(this IEnumerable<TSource> source, Random randomNumberGenerator)
+        /// <param name="source">The sequence to shuffle.</param>
+        /// <param name="random">The random number generator used for shuffling.</param>
+        /// <returns>A shuffled sequence containing the elements of <paramref name="source"/>.</returns>
+        /// <remarks>
+        /// This method uses the Fisher-Yates shuffle.
+        /// </remarks>
+        public static IEnumerable<TSource> Shuffle<TSource>(this IEnumerable<TSource> source, Random random)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
+            ThrowIf.Argument.IsNull(source, "source");
+            ThrowIf.Argument.IsNull(random, "random");
 
-            if (randomNumberGenerator == null)
-            {
-                throw new ArgumentNullException("randomNumberGenerator");
-            }
+            return ShuffleIterator(source, random);
+        }
 
+        private static IEnumerable<TSource> ShuffleIterator<TSource>(IEnumerable<TSource> source, Random random)
+        {
             TSource[] items = source.ToArray();
 
             for (int n = 0; n < items.Length; n++)
             {
-                int k = randomNumberGenerator.Next(n, items.Length);
+                int k = random.Next(n, items.Length);
                 yield return items[k];
 
                 items[k] = items[n];

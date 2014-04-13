@@ -11,7 +11,7 @@ namespace ExtraLinq.Tests
     {
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<char> nullCollection = null;
 
@@ -21,19 +21,21 @@ namespace ExtraLinq.Tests
         [Test]
         public void OnlyReturnsItemsContainedWithinCollection()
         {
-            IEnumerable<char> letters = "abcde";
+            char[] letters = "abcde".ToCharArray();
 
-            IEnumerable<char> shuffledLetters = letters.Shuffle();
+            IEnumerable<char> shuffledLetters = letters.Shuffle().ToArray();
 
             foreach (char letter in shuffledLetters)
             {
                 letters.Should().Contain(letter);
             }
+
+            shuffledLetters.Should().HaveCount(letters.Length);
         }
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithRandom()
+        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNullWithRandom()
         {
             IEnumerable<char> nullCollection = null;
             Random randomNumberGenerator = new Random();
@@ -43,7 +45,7 @@ namespace ExtraLinq.Tests
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ThrowsArgumentNullExceptionWhenRandomIsNull()
+        public void EagerlyThrowsArgumentNullExceptionWhenRandomIsNull()
         {
             IEnumerable<char> letters = "abcde";
             Random nullRandomNumberGenerator = null;
@@ -52,16 +54,15 @@ namespace ExtraLinq.Tests
         }
 
         [Test]
-        public void OnlyReturnsItemsContainedWithinCollectionWithRandom()
+        public void UsesTheSpecifiedRandomNumberGenerator()
         {
             IEnumerable<char> letters = "abcde";
             const int arbitrarySeed = 1337;
             Random randomNumberGenerator = new Random(arbitrarySeed);
 
             IEnumerable<char> shuffledLetters = letters.Shuffle(randomNumberGenerator);
-            char[] shuffledLettersArray = shuffledLetters.ToArray();
 
-            shuffledLettersArray.Should().Equal(new[] { 'b', 'a', 'c', 'e', 'd' });
+            shuffledLetters.Should().Equal("baced");
         }
     }
 }
