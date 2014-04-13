@@ -11,18 +11,18 @@ namespace ExtraLinq.Tests
     {
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<string> nullCollection = null;
 
-            nullCollection.Intersperse("c").ToArray();
+            nullCollection.Intersperse("c");
         }
 
         [Test]
         public void InsertsSeparatorCorrectly()
         {
-            int[] numbers = new[] { 1, 2, 3, 4, 5 };
-            int[] expectedNumbers = new[] { 1, 0, 2, 0, 3, 0, 4, 0, 5 };
+            int[] numbers = { 1, 2, 3, 4, 5 };
+            int[] expectedNumbers = { 1, 0, 2, 0, 3, 0, 4, 0, 5 };
 
             int[] separatedNumbers = numbers.Intersperse(0).ToArray();
 
