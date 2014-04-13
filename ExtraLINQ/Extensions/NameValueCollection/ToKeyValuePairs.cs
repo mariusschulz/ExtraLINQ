@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Specialized;
 
 namespace ExtraLinq
@@ -14,10 +13,7 @@ namespace ExtraLinq
         /// <returns>A sequence of key-value pairs of type <see cref="KeyValuePair&lt;TKey,TValue&gt;"/>.</returns>
         public static IEnumerable<KeyValuePair<string, string>> ToKeyValuePairs(this NameValueCollection collection)
         {
-            if (collection == null)
-            {
-                throw new ArgumentNullException("collection");
-            }
+            ThrowIf.Argument.IsNull(collection, "collection");
 
             return ToKeyValuePairsIterator(collection);
         }
