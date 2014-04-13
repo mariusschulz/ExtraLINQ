@@ -20,9 +20,9 @@ namespace ExtraLinq.Tests
         [Test]
         public void ReturnsTrueWhenCollectionIsEmpty()
         {
-            IEnumerable<string> emptyCollection = new string[0];
+            IEnumerable<string> emptyArray = new string[0];
 
-            bool isNullOrEmpty = emptyCollection.IsNullOrEmpty();
+            bool isNullOrEmpty = emptyArray.IsNullOrEmpty();
 
             isNullOrEmpty.Should().BeTrue();
         }
@@ -30,9 +30,9 @@ namespace ExtraLinq.Tests
         [Test]
         public void ReturnsFalseWhenCollectionContainsElements()
         {
-            IEnumerable<string> collectionContainingOneElements = new[] { "test" };
+            IEnumerable<string> singleElementArray = new[] { "test" };
 
-            collectionContainingOneElements.IsNullOrEmpty().Should().BeFalse();
+            singleElementArray.IsNullOrEmpty().Should().BeFalse();
         }
     }
 }

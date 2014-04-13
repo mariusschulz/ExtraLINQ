@@ -22,7 +22,7 @@ namespace ExtraLinq.Tests
         [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowsArgumentNullExceptionWhenPredicateIsNull()
         {
-            IEnumerable<object> validCollection = new List<string> { string.Empty };
+            string[] validCollection = { string.Empty };
             Func<object, bool> nullPredicate = null;
 
             validCollection.None(nullPredicate);
@@ -31,23 +31,23 @@ namespace ExtraLinq.Tests
         [Test]
         public void ReturnsTrueWhenNoItemMatches()
         {
-            IEnumerable<string> validCollection = new List<string> { string.Empty };
+            string[] strings = { string.Empty };
             Func<string, bool> stringLengthGreaterThanZero = item => item.Length > 0;
 
-            bool noItemMatching = validCollection.None(stringLengthGreaterThanZero);
+            bool noMatchFound = strings.None(stringLengthGreaterThanZero);
 
-            noItemMatching.Should().BeTrue();
+            noMatchFound.Should().BeTrue();
         }
 
         [Test]
         public void ReturnsFalseWhenAtLeastOneItemMatches()
         {
-            IEnumerable<string> validCollection = new List<string> { "Non-empty string" };
+            string[] strings = { "Non-empty string" };
             Func<string, bool> stringLengthGreaterThanZero = item => item.Length > 0;
 
-            bool noItemMatching = validCollection.None(stringLengthGreaterThanZero);
+            bool noMatchFound = strings.None(stringLengthGreaterThanZero);
 
-            noItemMatching.Should().BeFalse();
+            noMatchFound.Should().BeFalse();
         }
     }
 }
