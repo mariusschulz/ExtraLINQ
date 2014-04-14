@@ -15,6 +15,7 @@ namespace ExtraLinq
         /// <returns>A shuffled sequence containing the elements of <paramref name="source"/>.</returns>
         /// <remarks>
         /// This method uses the Fisher-Yates shuffle.
+        /// For more information, see http://en.wikipedia.org/wiki/Fisher-Yates.
         /// </remarks>
         public static IEnumerable<TSource> Shuffle<TSource>(this IEnumerable<TSource> source)
         {
@@ -33,6 +34,7 @@ namespace ExtraLinq
         /// <returns>A shuffled sequence containing the elements of <paramref name="source"/>.</returns>
         /// <remarks>
         /// This method uses the Fisher-Yates shuffle.
+        /// For more information, see http://en.wikipedia.org/wiki/Fisher-Yates.
         /// </remarks>
         public static IEnumerable<TSource> Shuffle<TSource>(this IEnumerable<TSource> source, Random random)
         {
