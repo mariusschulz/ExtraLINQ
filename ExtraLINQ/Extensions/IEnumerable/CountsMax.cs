@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ExtraLinq
 {
     public static partial class EnumerableExtensions
     {
         /// <summary>
-        /// Determines whether the specified collection's item count is equal to or lower than <paramref name="expectedMaxItemCount"/>.
+        /// Determines whether the specified collection's item count is at most <paramref name="expectedMaxItemCount"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The <see cref="IEnumerable{TSource}"/> whose items to count.</param>
@@ -14,15 +15,13 @@ namespace ExtraLinq
         /// <returns>
         ///   <c>true</c> if the item count of <paramref name="source"/> is equal to or lower than <paramref name="expectedMaxItemCount"/>; otherwise, <c>false</c>.
         /// </returns>
-        /// <exception cref="ArgumentException">Thrown when <paramref name="expectedMaxItemCount"/> is negative.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
         public static bool CountsMax<TSource>(this IEnumerable<TSource> source, int expectedMaxItemCount)
         {
             return CountsMax(source, expectedMaxItemCount, _ => true);
         }
 
         /// <summary>
-        /// Determines whether the specified collection contains exactly <paramref name="expectedMaxItemCount"/> or less items satisfying a condition.
+        /// Determines whether the specified collection contains at most <paramref name="expectedMaxItemCount"/> items satisfying a condition.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The <see cref="IEnumerable{TSource}"/> whose items to count.</param>
@@ -31,37 +30,19 @@ namespace ExtraLinq
         /// <returns>
         ///   <c>true</c> if the item count of satisfying items is equal to or less than <paramref name="expectedMaxItemCount"/>; otherwise, <c>false</c>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
-        ///   <para><paramref name="source"/> is null.</para>
-        ///   <para>- or - </para>
-        ///   <para><paramref name="predicate"/> is null.</para>
-        /// </exception>
         public static bool CountsMax<TSource>(this IEnumerable<TSource> source, int expectedMaxItemCount, Func<TSource, bool> predicate)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
+            ThrowIf.Argument.IsNull(source, "source");
+            ThrowIf.Argument.IsNull(predicate, "predicate");
+            ThrowIf.Argument.IsNegative(expectedMaxItemCount, "expectedMaxItemCount");
 
-            if (predicate == null)
-            {
-                throw new ArgumentNullException("predicate");
-            }
+            int matches = 0;
 
-            if (expectedMaxItemCount < 0)
+            foreach (TSource item in source.Where(predicate))
             {
-                throw new ArgumentOutOfRangeException("expectedMaxItemCount", "The expected item count must not be negative.");
-            }
+                matches++;
 
-            int matchedItemsCount = 0;
-            foreach (TSource item in source)
-            {
-                if (predicate(item))
-                {
-                    matchedItemsCount++;
-                }
-
-                if (matchedItemsCount > expectedMaxItemCount)
+                if (matches > expectedMaxItemCount)
                 {
                     return false;
                 }
