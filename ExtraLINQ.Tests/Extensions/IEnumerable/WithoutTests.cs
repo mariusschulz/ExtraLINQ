@@ -11,7 +11,7 @@ namespace ExtraLinq.Tests
     {
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<char> nullCollection = null;
 
@@ -20,7 +20,7 @@ namespace ExtraLinq.Tests
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNull()
+        public void EagerlyThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNull()
         {
             IEnumerable<char> letters = "abcd";
             IEnumerable<char> itemsToRemove = null;
@@ -30,7 +30,7 @@ namespace ExtraLinq.Tests
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNullWithArray()
+        public void EagerlyThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNullWithArray()
         {
             IEnumerable<char> letters = "abcd";
             char[] itemsToRemove = null;
@@ -40,7 +40,7 @@ namespace ExtraLinq.Tests
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithCollection()
+        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNullWithCollection()
         {
             IEnumerable<char> nullCollection = null;
 
@@ -84,7 +84,7 @@ namespace ExtraLinq.Tests
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithEqualityComparer()
+        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNullWithEqualityComparer()
         {
             IEnumerable<char> nullCollection = null;
             IEqualityComparer<char> stringLengthEqualityComparer = new StringLengthEqualityComparer<char>();
@@ -94,7 +94,7 @@ namespace ExtraLinq.Tests
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNullWithEqualityComparer()
+        public void EagerlyThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNullWithEqualityComparer()
         {
             IEnumerable<char> letters = "abcd";
             IEqualityComparer<char> stringLengthEqualityComparer = new StringLengthEqualityComparer<char>();
@@ -104,7 +104,7 @@ namespace ExtraLinq.Tests
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ThrowsArgumentNullExceptionWhenEqualityComparerIsNull()
+        public void EagerlyThrowsArgumentNullExceptionWhenEqualityComparerIsNull()
         {
             IEnumerable<char> letters = "abcd";
             IEqualityComparer<char> nullEqualityComparer = null;
