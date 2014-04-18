@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ExtraLinq
 {
@@ -14,10 +15,6 @@ namespace ExtraLinq
         /// <returns>
         ///   <c>true</c> if the item count of <paramref name="source"/> is equal to or greater than <paramref name="expectedMinItemCount"/>; otherwise, <c>false</c>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
-        /// <remarks>
-        /// No exception is thrown in case a negative <paramref name="expectedMinItemCount"/> is passed.
-        /// </remarks>
         public static bool CountsMin<TSource>(this IEnumerable<TSource> source, int expectedMinItemCount)
         {
             return CountsMin(source, expectedMinItemCount, _ => true);
@@ -33,45 +30,24 @@ namespace ExtraLinq
         /// <returns>
         ///   <c>true</c> if the item count of satisfying items is equal to or greater than <paramref name="expectedMinItemCount"/>; otherwise, <c>false</c>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
-        ///   <para><paramref name="source"/> is null.</para>
-        ///   <para>- or - </para>
-        ///   <para><paramref name="predicate"/> is null.</para>
-        ///   </exception>
-        /// <remarks>
-        /// No exception is thrown in case a negative <paramref name="expectedMinItemCount"/> is passed.
-        /// </remarks>
         public static bool CountsMin<TSource>(this IEnumerable<TSource> source, int expectedMinItemCount, Func<TSource, bool> predicate)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
-
-            if (predicate == null)
-            {
-                throw new ArgumentNullException("predicate");
-            }
-
-            if (expectedMinItemCount < 0)
-            {
-                throw new ArgumentOutOfRangeException("expectedMinItemCount", "The expected item count must not be negative.");
-            }
+            ThrowIf.Argument.IsNull(source, "source");
+            ThrowIf.Argument.IsNull(predicate, "predicate");
+            ThrowIf.Argument.IsNegative(expectedMinItemCount, "expectedMinItemCount");
 
             if (expectedMinItemCount == 0)
             {
                 return true;
             }
 
-            int matchedItemsCount = 0;
-            foreach (TSource item in source)
-            {
-                if (predicate(item))
-                {
-                    matchedItemsCount++;
-                }
+            int matches = 0;
 
-                if (matchedItemsCount == expectedMinItemCount)
+            foreach (TSource item in source.Where(predicate))
+            {
+                matches++;
+
+                if (matches >= expectedMinItemCount)
                 {
                     return true;
                 }
