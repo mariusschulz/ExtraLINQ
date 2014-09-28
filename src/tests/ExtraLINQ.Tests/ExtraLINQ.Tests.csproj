@@ -65,9 +65,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExtraLINQ\ExtraLINQ.csproj">
+    <ProjectReference Include="..\..\app\ExtraLINQ\ExtraLinq.csproj">
       <Project>{c58f133e-fc14-4911-a71a-de2b3ebba27f}</Project>
-      <Name>ExtraLINQ</Name>
+      <Name>ExtraLinq</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
