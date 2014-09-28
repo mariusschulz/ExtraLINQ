@@ -33,9 +33,7 @@ Target "Test" (fun _ ->
                 OutputFile = testDir + "TestResults.xml" })
 )
 
-Target "Default" (fun _ ->
-    trace "Hello World from FAKE!"
-)
+Target "Default" DoNothing
 
 "Clean"
     ==> "BuildApp"
