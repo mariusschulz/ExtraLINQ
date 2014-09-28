@@ -1,16 +1,25 @@
 #r "packages/FAKE/tools/FakeLib.dll"
 open Fake
 
+RestorePackages()
+
 let buildDir = "./build/"
+let testDir = "./tests/"
 
 Target "Clean" (fun _ ->
-    CleanDir buildDir
+    CleanDirs [buildDir; testDir]
 )
 
-Target "Build" (fun _ ->
+Target "BuildApp" (fun _ ->
     !! "src/app/**/*.csproj"
         |> MSBuildRelease buildDir "Build"
-        |> Log "Build-Output: "
+        |> Log "BuildApp-Output: "
+)
+
+Target "BuildTests" (fun _ ->
+    !! "src/tests/ExtraLINQ.Tests/**/*.csproj"
+        |> MSBuildRelease testDir "Build"
+        |> Log "BuildTests-Output: "
 )
 
 Target "Default" (fun _ ->
@@ -18,6 +27,8 @@ Target "Default" (fun _ ->
 )
 
 "Clean"
-    ==> "Build"
+    ==> "BuildApp"
+    ==> "BuildTests"
+    ==> "Default"
 
 RunTargetOrDefault "Default"
