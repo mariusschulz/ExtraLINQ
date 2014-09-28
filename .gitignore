@@ -1,4 +1,7 @@
 packages/FAKE/**
+build/**
+tests/**
+
 
 Thumbs.db
 *.obj
