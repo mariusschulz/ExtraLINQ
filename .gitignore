@@ -1,4 +1,4 @@
-packages/FAKE/**
+packages/**
 build/**
 tests/**
 
