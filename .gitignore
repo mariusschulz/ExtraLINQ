@@ -1,7 +1,7 @@
 packages/**
 build/**
 tests/**
-
+nuget/**
 
 Thumbs.db
 *.obj

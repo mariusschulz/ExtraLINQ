@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>@project@</id>
+    <version>@build.number@</version>
+    <authors>@authors@</authors>
+    <language>en-US</language>
+    <summary>@summary@</summary>
+    <description>@description@</description>
+    <projectUrl>https://github.com/MariusSchulz/ExtraLINQ</projectUrl>
+    <iconUrl>http://www.mycsharp.de/wbb2/attachment.php?attachmentid=10974</iconUrl>	
+    <tags>LINQ, Extensions</tags>
+    <releaseNotes>@releaseNotes@</releaseNotes>
+    <licenseUrl>https://github.com/mariusschulz/ExtraLINQ/blob/master/LICENSE.txt</licenseUrl>
+    @dependencies@
+  </metadata>
+</package>
