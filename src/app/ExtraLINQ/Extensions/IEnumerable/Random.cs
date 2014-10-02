@@ -27,15 +27,15 @@ namespace ExtraLinq
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The <see cref="IEnumerable{TSource}"/> to return the elements from.</param>
-        /// <param name="randomElementsCount">The number of random elements to return.</param>
+        /// <param name="elementCount">The number of random elements to return.</param>
         /// <returns>
         /// A collection of distinct random elements from <paramref name="source"/>.
         /// </returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>   
         /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when <paramref name="randomElementsCount"/> is negative or greater than the collection's element count.
+        /// Thrown when <paramref name="elementCount"/> is negative or greater than the collection's element count.
         ///   </exception>
-        public static IEnumerable<TSource> Random<TSource>(this IEnumerable<TSource> source, int randomElementsCount)
+        public static IEnumerable<TSource> Random<TSource>(this IEnumerable<TSource> source, int elementCount)
         {
             if (source == null)
             {
@@ -45,15 +45,12 @@ namespace ExtraLinq
             // Create array from source for further use to avoid multiple enumeration
             TSource[] sourceArray = source.ToArray();
 
-            bool randomElementsIsOutOfRange = randomElementsCount < 0
-                || randomElementsCount > sourceArray.Length;
-
-            if (randomElementsIsOutOfRange)
+            if (elementCount < 0 || elementCount > sourceArray.Length)
             {
-                throw new ArgumentOutOfRangeException("randomElementsCount");
+                throw new ArgumentOutOfRangeException("elementCount");
             }
 
-            return PickRandomElements(sourceArray, randomElementsCount);
+            return PickRandomElements(sourceArray, elementCount);
         }
 
         /// <summary>
@@ -83,7 +80,7 @@ namespace ExtraLinq
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The <see cref="IEnumerable{TSource}"/> to return an element from.</param>
-        /// <param name="randomElementsCount">The number of random elements to return.</param>
+        /// <param name="elementCount">The number of random elements to return.</param>
         /// <param name="random">The random number generator used to select random elements.</param>
         /// <returns>
         /// A collection of random elements from <paramref name="source"/>.
@@ -94,9 +91,9 @@ namespace ExtraLinq
         ///   <para><paramref name="random"/> is null.</para>
         ///   </exception>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when <paramref name="randomElementsCount"/> is negative or greater than the collection's element count.
+        /// Thrown when <paramref name="elementCount"/> is negative or greater than the collection's element count.
         /// </exception>
-        public static IEnumerable<TSource> Random<TSource>(this IEnumerable<TSource> source, int randomElementsCount, Random random)
+        public static IEnumerable<TSource> Random<TSource>(this IEnumerable<TSource> source, int elementCount, Random random)
         {
             ThrowIf.Argument.IsNull(source, "source");
             ThrowIf.Argument.IsNull(random, "random");
@@ -104,15 +101,12 @@ namespace ExtraLinq
             // Create array from source for further use to avoid multiple enumeration
             TSource[] sourceArray = source.ToArray();
 
-            bool randomElementsIsOutOfRange = randomElementsCount < 0
-                || randomElementsCount > sourceArray.Length;
-
-            if (randomElementsIsOutOfRange)
+            if (elementCount < 0 || elementCount > sourceArray.Length)
             {
-                throw new ArgumentOutOfRangeException("randomElementsCount");
+                throw new ArgumentOutOfRangeException("elementCount");
             }
 
-            return PickRandomElements(sourceArray, randomElementsCount, random);
+            return PickRandomElements(sourceArray, elementCount, random);
         }
 
         private static TSource PickRandomElement<TSource>(IEnumerable<TSource> source, Random random)
@@ -123,14 +117,14 @@ namespace ExtraLinq
             return sourceArray[randomIndex];
         }
 
-        private static IEnumerable<TSource> PickRandomElements<TSource>(IEnumerable<TSource> source, int randomElementsCount)
+        private static IEnumerable<TSource> PickRandomElements<TSource>(IEnumerable<TSource> source, int elementCount)
         {
-            return PickRandomElements(source, randomElementsCount, _random);
+            return PickRandomElements(source, elementCount, _random);
         }
 
-        private static IEnumerable<TSource> PickRandomElements<TSource>(IEnumerable<TSource> source, int randomElementsCount, Random random)
+        private static IEnumerable<TSource> PickRandomElements<TSource>(IEnumerable<TSource> source, int elementCount, Random random)
         {
-            return ShuffleCollection(source, random).Take(randomElementsCount);
+            return ShuffleCollection(source, random).Take(elementCount);
         }
 
         public static IEnumerable<TSource> ShuffleCollection<TSource>(IEnumerable<TSource> source, Random random)
