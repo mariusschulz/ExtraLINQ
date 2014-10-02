@@ -13,7 +13,7 @@ Extensions for collections of type `IEnumerable<T>`:
 - `Intersperse` — Returns all elements of the collection separated by the given separator.
 - `IsEmpty` — Determines whether a collection is empty.
 - `IsNullOrEmpty` — Determines whether a collection is null or empty.
-- `None` — Determines whether a collections does not contain any elements matching a certain criterion.
+- `None` — Determines whether a collection doesn't contain any elements matching certain criteria.
 - `Random` — Returns a given number of random elements from a collection.
 - `Shuffle` — Returns the items of the given collection in random order.
 - `Without` — Returns the specified collection without the specified items.
