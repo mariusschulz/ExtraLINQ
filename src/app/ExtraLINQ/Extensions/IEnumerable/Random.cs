@@ -122,7 +122,7 @@ namespace ExtraLinq
             TSource[] sourceArray = source.ToArray();
 
             bool randomElementsIsOutOfRange = randomElementsCount < 0
-                                              || randomElementsCount > sourceArray.Length;
+                || randomElementsCount > sourceArray.Length;
 
             if (randomElementsIsOutOfRange)
             {
