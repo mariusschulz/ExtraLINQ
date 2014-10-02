@@ -33,9 +33,9 @@ namespace ExtraLinq.Tests
         public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithRandom()
         {
             IEnumerable<char> nullCollection = null;
-            Random randomNumberGenerator = new Random();
+            var random = new Random();
 
-            nullCollection.Random(randomNumberGenerator);
+            nullCollection.Random(random);
         }
 
         [Test]
@@ -43,9 +43,8 @@ namespace ExtraLinq.Tests
         public void ThrowsArgumentNullExceptionWhenRandomIsNull()
         {
             IEnumerable<char> letters = "abcde";
-            Random nullRandomNumberGenerator = null;
 
-            letters.Random(nullRandomNumberGenerator);
+            letters.Random(null);
         }
 
         [Test]
@@ -53,10 +52,10 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<char> letters = "abcde";
             const int arbitrarySeed = 1337;
-            Random randomNumberGenerator = new Random(arbitrarySeed);
+            var random = new Random(arbitrarySeed);
             const char expectedCharacter = 'b';
 
-            char randomCharacter = letters.Random(randomNumberGenerator);
+            char randomCharacter = letters.Random(random);
 
             randomCharacter.Should().Be(expectedCharacter);
         }
@@ -110,9 +109,9 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<char> nullCollection = null;
             const int validItemCount = 0;
-            Random randomNumberGenerator = new Random();
+            var random = new Random();
 
-            nullCollection.Random(validItemCount, randomNumberGenerator);
+            nullCollection.Random(validItemCount, random);
         }
 
         [Test]
@@ -121,9 +120,9 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<char> letters = "abcde";
             const int negativeElementsCount = -5;
-            Random randomNumberGenerator = new Random();
+            var random = new Random();
 
-            letters.Random(negativeElementsCount, randomNumberGenerator);
+            letters.Random(negativeElementsCount, random);
         }
 
         [Test]
@@ -132,9 +131,8 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<char> letters = "abcde";
             const int negativeElementsCount = 2;
-            Random nullRandomNumberGenerator = null;
 
-            letters.Random(negativeElementsCount, nullRandomNumberGenerator);
+            letters.Random(negativeElementsCount, null);
         }
 
         [Test]
@@ -142,9 +140,9 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<char> letters = "abcde";
             const int arbitrarySeed = 1337;
-            Random randomNumberGenerator = new Random(arbitrarySeed);
+            var random = new Random(arbitrarySeed);
 
-            IEnumerable<char> threeRandomCharacters = letters.Random(3, randomNumberGenerator);
+            IEnumerable<char> threeRandomCharacters = letters.Random(3, random);
             char[] threeRandomCharactersArray = threeRandomCharacters.ToArray();
 
             threeRandomCharactersArray.Should().Equal(new[] { 'b', 'a', 'c' });

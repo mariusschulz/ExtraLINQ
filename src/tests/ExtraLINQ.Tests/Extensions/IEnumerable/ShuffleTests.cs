@@ -38,9 +38,9 @@ namespace ExtraLinq.Tests
         public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNullWithRandom()
         {
             IEnumerable<char> nullCollection = null;
-            Random randomNumberGenerator = new Random();
+            var random = new Random();
 
-            nullCollection.Shuffle(randomNumberGenerator).ToList();
+            nullCollection.Shuffle(random).ToList();
         }
 
         [Test]
@@ -48,9 +48,8 @@ namespace ExtraLinq.Tests
         public void EagerlyThrowsArgumentNullExceptionWhenRandomIsNull()
         {
             IEnumerable<char> letters = "abcde";
-            Random nullRandomNumberGenerator = null;
 
-            letters.Shuffle(nullRandomNumberGenerator).ToList();
+            letters.Shuffle(null).ToList();
         }
 
         [Test]
@@ -58,9 +57,9 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<char> letters = "abcde";
             const int arbitrarySeed = 1337;
-            Random randomNumberGenerator = new Random(arbitrarySeed);
+            var random = new Random(arbitrarySeed);
 
-            IEnumerable<char> shuffledLetters = letters.Shuffle(randomNumberGenerator);
+            IEnumerable<char> shuffledLetters = letters.Shuffle(random);
 
             shuffledLetters.Should().Equal("baced");
         }
