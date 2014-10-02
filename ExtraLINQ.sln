@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraLinq", "src\app\ExtraLINQ\ExtraLinq.csproj", "{C58F133E-FC14-4911-A71A-DE2B3EBBA27F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraLINQ", "src\app\ExtraLINQ\ExtraLINQ.csproj", "{C58F133E-FC14-4911-A71A-DE2B3EBBA27F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraLINQ.Tests", "src\tests\ExtraLINQ.Tests\ExtraLINQ.Tests.csproj", "{7968B9BA-8B2B-45FF-ABFE-09A71BA224DD}"
 EndProject
