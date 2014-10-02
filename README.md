@@ -11,7 +11,7 @@ Extensions for collections of type `IEnumerable<T>`:
 - `CountsMax` — Determines whether a collection contains at most a certain number of items.
 - `CountsMin` — Determines whether a collection contains at least a certain number of items.
 - `Intersperse` — Returns all elements of the collection separated by the given separator.
-- `IsEmpty`` — Determines whether a collection is empty.
+- `IsEmpty` — Determines whether a collection is empty.
 - `IsNullOrEmpty` — Determines whether a collection is null or empty.
 - `None` — Determines whether a collections does not contain any elements matching a certain criterion.
 - `Random` — Returns a given number of random elements from a collection.
