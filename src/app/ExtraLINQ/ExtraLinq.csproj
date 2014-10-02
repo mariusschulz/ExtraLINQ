@@ -40,22 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\IEnumerable\CountsExactly.cs" />
-    <Compile Include="Extensions\IEnumerable\EnumerableExtensions.cs" />
-    <Compile Include="Extensions\IEnumerable\Without.cs" />
-    <Compile Include="Extensions\IEnumerable\Shuffle.cs" />
-    <Compile Include="Extensions\IEnumerable\Random.cs" />
-    <Compile Include="Extensions\IEnumerable\None.cs" />
-    <Compile Include="Extensions\IEnumerable\IsNullOrEmpty.cs" />
-    <Compile Include="Extensions\IEnumerable\IsEmpty.cs" />
-    <Compile Include="Extensions\IEnumerable\Intersperse.cs" />
-    <Compile Include="Extensions\IEnumerable\CountsMin.cs" />
-    <Compile Include="Extensions\IEnumerable\CountsMax.cs" />
-    <Compile Include="Extensions\IEnumerable\ElementAt.cs" />
-    <Compile Include="Extensions\NameValueCollection\ToKeyValuePairs.cs" />
-    <Compile Include="Extensions\NameValueCollection\ToDictionary.cs" />
-    <Compile Include="IndexingStrategy.cs" />
-    <Compile Include="Internal\ThrowIf.cs" />
+    <Compile Include="Extensions\IntExtensions.cs" />
+    <Compile Include="IEnumerable\CountsExactly.cs" />
+    <Compile Include="IEnumerable\EnumerableExtensions.cs" />
+    <Compile Include="IEnumerable\Without.cs" />
+    <Compile Include="IEnumerable\Shuffle.cs" />
+    <Compile Include="IEnumerable\Random.cs" />
+    <Compile Include="IEnumerable\None.cs" />
+    <Compile Include="IEnumerable\IsNullOrEmpty.cs" />
+    <Compile Include="IEnumerable\IsEmpty.cs" />
+    <Compile Include="IEnumerable\Intersperse.cs" />
+    <Compile Include="IEnumerable\CountsMin.cs" />
+    <Compile Include="IEnumerable\CountsMax.cs" />
+    <Compile Include="NameValueCollection\ToKeyValuePairs.cs" />
+    <Compile Include="NameValueCollection\ToDictionary.cs" />
+    <Compile Include="ThrowIf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

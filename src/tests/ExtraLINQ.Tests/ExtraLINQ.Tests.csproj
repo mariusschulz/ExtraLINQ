@@ -50,21 +50,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\IEnumerable\WithoutTests.cs" />
-    <Compile Include="Extensions\NameValueCollection\ToKeyValuePairsTests.cs" />
-    <Compile Include="Extensions\NameValueCollection\ToDictionaryTests.cs" />
+    <Compile Include="IEnumerable\WithoutTests.cs" />
+    <Compile Include="NameValueCollection\ToKeyValuePairsTests.cs" />
+    <Compile Include="NameValueCollection\ToDictionaryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringLengthEqualityComparer.cs" />
-    <Compile Include="Extensions\IEnumerable\CountsExactlyTests.cs" />
-    <Compile Include="Extensions\IEnumerable\CountsMaxTests.cs" />
-    <Compile Include="Extensions\IEnumerable\CountsMinTests.cs" />
-    <Compile Include="Extensions\IEnumerable\ElementAtTests.cs" />
-    <Compile Include="Extensions\IEnumerable\IntersperseTests.cs" />
-    <Compile Include="Extensions\IEnumerable\IsEmptyTests.cs" />
-    <Compile Include="Extensions\IEnumerable\IsNullOrEmptyTests.cs" />
-    <Compile Include="Extensions\IEnumerable\NoneTests.cs" />
-    <Compile Include="Extensions\IEnumerable\RandomTests.cs" />
-    <Compile Include="Extensions\IEnumerable\ShuffleTests.cs" />
+    <Compile Include="IEnumerable\CountsExactlyTests.cs" />
+    <Compile Include="IEnumerable\CountsMaxTests.cs" />
+    <Compile Include="IEnumerable\CountsMinTests.cs" />
+    <Compile Include="IEnumerable\IntersperseTests.cs" />
+    <Compile Include="IEnumerable\IsEmptyTests.cs" />
+    <Compile Include="IEnumerable\IsNullOrEmptyTests.cs" />
+    <Compile Include="IEnumerable\NoneTests.cs" />
+    <Compile Include="IEnumerable\RandomTests.cs" />
+    <Compile Include="IEnumerable\ShuffleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
