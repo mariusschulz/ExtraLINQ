@@ -8,8 +8,8 @@ RestorePackages()
 
 let authors = ["Marius Schulz"]
 let projectName = "ExtraLINQ"
-let projectSummary = "LINQ all the things!"
-let projectDescription = "Additional extension methods for LINQ"
+let projectSummary = "ExtraLINQ provides additional extension methods for working with .NET collections."
+let projectDescription = "ExtraLINQ provides additional extension methods for working with .NET collections."
 
 let buildDir = "./build/"
 let testDir = "./tests/"
