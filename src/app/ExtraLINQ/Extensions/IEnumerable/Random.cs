@@ -17,10 +17,7 @@ namespace ExtraLinq
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
         public static TSource Random<TSource>(this IEnumerable<TSource> source)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
+            ThrowIf.Argument.IsNull(source, "source");
 
             return PickRandomElement(source, _random);
         }
@@ -75,15 +72,8 @@ namespace ExtraLinq
         ///   </exception>
         public static TSource Random<TSource>(this IEnumerable<TSource> source, Random randomNumberGenerator)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
-
-            if (randomNumberGenerator == null)
-            {
-                throw new ArgumentNullException("randomNumberGenerator");
-            }
+            ThrowIf.Argument.IsNull(source, "source");
+            ThrowIf.Argument.IsNull(randomNumberGenerator, "randomNumberGenerator");
 
             return PickRandomElement(source, randomNumberGenerator);
         }
@@ -108,15 +98,8 @@ namespace ExtraLinq
         /// </exception>
         public static IEnumerable<TSource> Random<TSource>(this IEnumerable<TSource> source, int randomElementsCount, Random randomNumberGenerator)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
-
-            if (randomNumberGenerator == null)
-            {
-                throw new ArgumentNullException("randomNumberGenerator");
-            }
+            ThrowIf.Argument.IsNull(source, "source");
+            ThrowIf.Argument.IsNull(randomNumberGenerator, "randomNumberGenerator");
 
             // Create array from source for further use to avoid multiple enumeration
             TSource[] sourceArray = source.ToArray();
@@ -129,15 +112,15 @@ namespace ExtraLinq
                 throw new ArgumentOutOfRangeException("randomElementsCount");
             }
 
-            return PickRandomElements(source, randomElementsCount, randomNumberGenerator);
+            return PickRandomElements(sourceArray, randomElementsCount, randomNumberGenerator);
         }
 
         private static TSource PickRandomElement<TSource>(IEnumerable<TSource> source, Random randomNumberGenerator)
         {
-            int itemCount = source.Count();
-            int randomIndex = randomNumberGenerator.Next(itemCount);
+            var sourceArray = source as TSource[] ?? source.ToArray();
+            int randomIndex = randomNumberGenerator.Next(sourceArray.Length);
 
-            return source.ElementAt(randomIndex);
+            return sourceArray[randomIndex];
         }
 
         private static IEnumerable<TSource> PickRandomElements<TSource>(IEnumerable<TSource> source, int randomElementsCount)
@@ -148,11 +131,6 @@ namespace ExtraLinq
         private static IEnumerable<TSource> PickRandomElements<TSource>(IEnumerable<TSource> source, int randomElementsCount, Random randomNumberGenerator)
         {
             return ShuffleCollection(source, randomNumberGenerator).Take(randomElementsCount);
-        }
-
-        private static IEnumerable<TSource> ShuffleCollection<TSource>(IEnumerable<TSource> source)
-        {
-            return ShuffleCollection(source, _random);
         }
 
         public static IEnumerable<TSource> ShuffleCollection<TSource>(IEnumerable<TSource> source, Random random)
