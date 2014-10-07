@@ -49,9 +49,9 @@ namespace ExtraLinq
 
             int matches = 0;
 
-            foreach (TSource item in source.Where(predicate))
+            foreach (var item in source.Where(predicate))
             {
-                matches++;
+                ++matches;
 
                 if (matches > expectedItemCount)
                 {
