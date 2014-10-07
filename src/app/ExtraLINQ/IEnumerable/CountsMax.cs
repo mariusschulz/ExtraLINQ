@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -35,6 +36,15 @@ namespace ExtraLinq
             ThrowIf.Argument.IsNull(source, "source");
             ThrowIf.Argument.IsNull(predicate, "predicate");
             ThrowIf.Argument.IsNegative(expectedMaxItemCount, "expectedMaxItemCount");
+
+            ICollection sourceCollection = source as ICollection;
+
+            if (sourceCollection != null && sourceCollection.Count <= expectedMaxItemCount)
+            {
+                // If the collection doesn't contain more items
+                // than expected to match the predicate, we can stop here
+                return true;
+            }
 
             int matches = 0;
 
