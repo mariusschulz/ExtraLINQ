@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IEnumerable\WhereNotTests.cs" />
-    <Compile Include="IEnumerable\StringJoinTests.cs" />
+    <Compile Include="IEnumerable\JoinWithTests.cs" />
     <Compile Include="IEnumerable\WithoutTests.cs" />
     <Compile Include="NameValueCollection\ToKeyValuePairsTests.cs" />
     <Compile Include="NameValueCollection\ToDictionaryTests.cs" />
