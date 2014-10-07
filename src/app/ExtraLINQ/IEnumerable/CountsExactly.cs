@@ -47,6 +47,15 @@ namespace ExtraLinq
             ThrowIf.Argument.IsNull(predicate, "predicate");
             ThrowIf.Argument.IsNegative(expectedItemCount, "expectedItemCount");
 
+            ICollection sourceCollection = source as ICollection;
+
+            if (sourceCollection != null && sourceCollection.Count < expectedItemCount)
+            {
+                // If the collection doesn't even contain as many items
+                // as expected to match the predicate, we can stop here
+                return false;
+            }
+
             int matches = 0;
 
             foreach (var item in source.Where(predicate))
