@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -39,6 +40,15 @@ namespace ExtraLinq
             if (expectedMinItemCount == 0)
             {
                 return true;
+            }
+
+            ICollection sourceCollection = source as ICollection;
+
+            if (sourceCollection != null && sourceCollection.Count < expectedMinItemCount)
+            {
+                // If the collection doesn't even contain as many items
+                // as expected to match the predicate, we can stop here
+                return false;
             }
 
             int matches = 0;
