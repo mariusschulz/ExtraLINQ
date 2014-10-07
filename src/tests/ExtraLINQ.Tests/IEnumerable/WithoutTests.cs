@@ -2,52 +2,47 @@
 using System.Collections.Generic;
 using ExtraLinq.Tests.Setup;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestFixture]
     public class WithoutTests
     {
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<char> nullCollection = null;
 
-            nullCollection.Without('c');
+            Assert.Throws<ArgumentNullException>(() => nullCollection.Without('c'));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void EagerlyThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNull()
         {
             IEnumerable<char> letters = "abcd";
             IEnumerable<char> itemsToRemove = null;
 
-            letters.Without(itemsToRemove);
+            Assert.Throws<ArgumentNullException>(() => letters.Without(itemsToRemove));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void EagerlyThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNullWithArray()
         {
             IEnumerable<char> letters = "abcd";
             char[] itemsToRemove = null;
 
-            letters.Without(itemsToRemove);
+            Assert.Throws<ArgumentNullException>(() => letters.Without(itemsToRemove));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNullWithCollection()
         {
             IEnumerable<char> nullCollection = null;
 
-            nullCollection.Without(new List<char> { 'c' });
+            Assert.Throws<ArgumentNullException>(() => nullCollection.Without(new List<char> { 'c' }));
         }
 
-        [Test]
+        [Fact]
         public void ReturnsCollectionWithoutSpecifiedItem()
         {
             IEnumerable<char> letters = "abcd";
@@ -59,7 +54,7 @@ namespace ExtraLinq.Tests
             letters.Should().HaveCount(3);
         }
 
-        [Test]
+        [Fact]
         public void ReturnsCollectionWithoutSpecifiedItems()
         {
             IEnumerable<char> letters = "abcd";
@@ -71,7 +66,7 @@ namespace ExtraLinq.Tests
             letters.Should().HaveCount(2);
         }
 
-        [Test]
+        [Fact]
         public void ReturnsUnmodifiedCollectionWhenCollectionDoesNotContainItem()
         {
             IEnumerable<char> letters = "abcd";
@@ -82,37 +77,34 @@ namespace ExtraLinq.Tests
             letters.Should().HaveCount(4);
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNullWithEqualityComparer()
         {
             IEnumerable<char> nullCollection = null;
             IEqualityComparer<char> stringLengthEqualityComparer = new StringLengthEqualityComparer<char>();
 
-            nullCollection.Without(stringLengthEqualityComparer, 'c');
+            Assert.Throws<ArgumentNullException>(() => nullCollection.Without(stringLengthEqualityComparer, 'c'));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void EagerlyThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNullWithEqualityComparer()
         {
             IEnumerable<char> letters = "abcd";
             IEqualityComparer<char> stringLengthEqualityComparer = new StringLengthEqualityComparer<char>();
 
-            letters.Without(stringLengthEqualityComparer, null);
+            Assert.Throws<ArgumentNullException>(() => letters.Without(stringLengthEqualityComparer, null));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void EagerlyThrowsArgumentNullExceptionWhenEqualityComparerIsNull()
         {
             IEnumerable<char> letters = "abcd";
             IEqualityComparer<char> nullEqualityComparer = null;
 
-            letters.Without(nullEqualityComparer, 'c');
+            Assert.Throws<ArgumentNullException>(() => letters.Without(nullEqualityComparer, 'c'));
         }
 
-        [Test]
+        [Fact]
         public void ReturnsCollectionWithoutItemsEqualToPassedItem()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana", "cherry" };
@@ -126,7 +118,7 @@ namespace ExtraLinq.Tests
             fruits.Should().HaveCount(2);
         }
 
-        [Test]
+        [Fact]
         public void DoesNotRemoveItemsThatDoNotMatchThePassedItemButEachOther()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana", "cherry" };
@@ -138,7 +130,7 @@ namespace ExtraLinq.Tests
             fruitsWithoutItem.Should().HaveCount(3);
         }
 
-        [Test]
+        [Fact]
         public void ReturnsUnmodifiedCollectionWhenCollectionDoesNotContainItemWithEqualityComparer()
         {
             IEnumerable<string> stringNumbers = new[] { "1", "22", "333", "4444" };

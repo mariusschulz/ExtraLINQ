@@ -2,23 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestFixture]
     public class ShuffleTests
     {
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<char> nullCollection = null;
 
-            nullCollection.Shuffle();
+            Assert.Throws<ArgumentNullException>(() => nullCollection.Shuffle());
         }
 
-        [Test]
+        [Fact]
         public void OnlyReturnsItemsContainedWithinCollection()
         {
             char[] letters = "abcde".ToCharArray();
@@ -33,26 +31,24 @@ namespace ExtraLinq.Tests
             shuffledLetters.Should().HaveCount(letters.Length);
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNullWithRandom()
         {
             IEnumerable<char> nullCollection = null;
             var random = new Random();
 
-            nullCollection.Shuffle(random).ToList();
+            Assert.Throws<ArgumentNullException>(() => nullCollection.Shuffle(random));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void EagerlyThrowsArgumentNullExceptionWhenRandomIsNull()
         {
             IEnumerable<char> letters = "abcde";
 
-            letters.Shuffle(null).ToList();
+            Assert.Throws<ArgumentNullException>(() => letters.Shuffle(null));
         }
 
-        [Test]
+        [Fact]
         public void UsesTheSpecifiedRandomNumberGenerator()
         {
             IEnumerable<char> letters = "abcde";

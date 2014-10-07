@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestFixture]
     public class IsNullOrEmptyTests
     {
-        [Test]
+        [Fact]
         public void ReturnsTrueWhenCollectionIsNull()
         {
             IEnumerable<object> nullCollection = null;
@@ -17,7 +16,7 @@ namespace ExtraLinq.Tests
             isNullOrEmpty.Should().BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ReturnsTrueWhenCollectionIsEmpty()
         {
             IEnumerable<string> emptyArray = new string[0];
@@ -27,7 +26,7 @@ namespace ExtraLinq.Tests
             isNullOrEmpty.Should().BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ReturnsFalseWhenCollectionContainsElements()
         {
             IEnumerable<string> singleElementArray = new[] { "test" };

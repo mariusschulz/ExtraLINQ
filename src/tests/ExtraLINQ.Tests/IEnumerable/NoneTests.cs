@@ -1,34 +1,31 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestFixture]
     public class NoneTests
     {
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<object> nullCollection = null;
             Func<object, bool> alwaysTruePredicate = _ => true;
 
-            nullCollection.None(alwaysTruePredicate);
+            Assert.Throws<ArgumentNullException>(() => nullCollection.None(alwaysTruePredicate));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenPredicateIsNull()
         {
             string[] validCollection = { string.Empty };
             Func<object, bool> nullPredicate = null;
 
-            validCollection.None(nullPredicate);
+            Assert.Throws<ArgumentNullException>(() => validCollection.None(nullPredicate));
         }
 
-        [Test]
+        [Fact]
         public void ReturnsTrueWhenNoItemMatches()
         {
             string[] strings = { string.Empty };
@@ -39,7 +36,7 @@ namespace ExtraLinq.Tests
             noMatchFound.Should().BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ReturnsFalseWhenAtLeastOneItemMatches()
         {
             string[] strings = { "Non-empty string" };

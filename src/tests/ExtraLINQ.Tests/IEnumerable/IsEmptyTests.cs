@@ -1,19 +1,17 @@
 using System;
 using System.Collections.Generic;
-using NUnit.Framework;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestFixture]
     public class IsEmptyTests
     {
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<object> nullCollection = null;
 
-            nullCollection.IsEmpty();
+            Assert.Throws<ArgumentNullException>(() => nullCollection.IsEmpty());
         }
     }
 }

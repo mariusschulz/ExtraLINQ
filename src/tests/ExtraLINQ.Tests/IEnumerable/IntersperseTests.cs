@@ -2,23 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestFixture]
     public class IntersperseTests
     {
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<string> nullCollection = null;
 
-            nullCollection.Intersperse("c");
+            Assert.Throws<ArgumentNullException>(() => nullCollection.Intersperse("c"));
         }
 
-        [Test]
+        [Fact]
         public void InsertsSeparatorCorrectly()
         {
             int[] numbers = { 1, 2, 3, 4, 5 };

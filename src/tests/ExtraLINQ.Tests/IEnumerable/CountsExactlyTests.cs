@@ -2,32 +2,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestFixture]
     public class CountsExactlyTests
     {
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<object> nullCollection = null;
 
-            nullCollection.CountsExactly(1);
+            Assert.Throws<ArgumentNullException>(() => nullCollection.CountsExactly(1));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Fact]
         public void ThrowsArgumentOutOfRangeExceptionWhenExpectedCountIsNegative()
         {
             IEnumerable<char> letters = "abcde";
 
-            letters.CountsExactly(-10);
+            Assert.Throws<ArgumentOutOfRangeException>(() => letters.CountsExactly(-10));
         }
 
-        [Test]
+        [Fact]
         public void ReturnsTrueWhenActualCountEqualsExpectedCount()
         {
             IEnumerable<char> letters = "abcd";
@@ -38,7 +35,7 @@ namespace ExtraLinq.Tests
             letters.ToList().CountsExactly(4).Should().BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ReturnsFalseWhenActualCountDoesNotEqualExpectedCount()
         {
             IEnumerable<char> letters = "abcd";
@@ -49,36 +46,33 @@ namespace ExtraLinq.Tests
             letters.ToList().CountsExactly(100).Should().BeFalse();
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithPredicate()
         {
             IEnumerable<object> nullCollection = null;
             Func<object, bool> alwaysTruePredicate = _ => true;
 
-            nullCollection.CountsExactly(1, alwaysTruePredicate);
+            Assert.Throws<ArgumentNullException>(() => nullCollection.CountsExactly(1, alwaysTruePredicate));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenPredicateIsNull()
         {
             IEnumerable<char> validCollection = "abcd";
 
-            validCollection.CountsExactly(1, null);
+            Assert.Throws<ArgumentNullException>(() => validCollection.CountsExactly(1, null));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Fact]
         public void ThrowsArgumentOutOfRangeExceptionWhenExpectedCountIsNegativeAndPredicateIsValid()
         {
             IEnumerable<char> letters = "abcde";
             Func<char, bool> alwaysTruePredicate = _ => true;
 
-            letters.CountsExactly(-10, alwaysTruePredicate);
+            Assert.Throws<ArgumentOutOfRangeException>(() => letters.CountsExactly(-10, alwaysTruePredicate));
         }
 
-        [Test]
+        [Fact]
         public void ReturnsTrueWhenActualCountEqualsExpectedCountWithPredicate()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
@@ -88,7 +82,7 @@ namespace ExtraLinq.Tests
             fruits.CountsExactly(0, fruit => fruit.StartsWith("c")).Should().BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ReturnsTrueWhenActualCountDoesNotEqualExpectedCountWithPredicate()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };

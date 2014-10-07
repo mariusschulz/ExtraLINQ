@@ -2,32 +2,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestFixture]
     public class CountsMaxTests
     {
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<object> nullCollection = null;
 
-            nullCollection.CountsMax(1);
+            Assert.Throws<ArgumentNullException>(() => nullCollection.CountsMax(1));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Fact]
         public void ThrowsArgumentOutOfRangeExceptionWhenExpectedCountIsNegative()
         {
             IEnumerable<char> letters = "abcde";
 
-            letters.CountsMax(-10);
+            Assert.Throws<ArgumentOutOfRangeException>(() => letters.CountsMax(-10));
         }
 
-        [Test]
+        [Fact]
         public void ReturnsTrueWhenActualCountIsEqualToOrLowerThanExpectedCount()
         {
             IEnumerable<char> letters = "abcd";
@@ -43,7 +40,7 @@ namespace ExtraLinq.Tests
             emptyCollection.ToList().CountsMax(0).Should().BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ReturnsFalseWhenActualCountIsGreaterThanExpectedMaxCount()
         {
             IEnumerable<char> letters = "abcd";
@@ -56,36 +53,33 @@ namespace ExtraLinq.Tests
             letters.ToList().CountsMax(5).Should().BeTrue();
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithPredicate()
         {
             IEnumerable<object> nullCollection = null;
             Func<object, bool> alwaysTruePredicate = _ => true;
 
-            nullCollection.CountsMax(1, alwaysTruePredicate);
+            Assert.Throws<ArgumentNullException>(() => nullCollection.CountsMax(1, alwaysTruePredicate));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenPredicateIsNull()
         {
             IEnumerable<char> validCollection = "abcd";
 
-            validCollection.CountsMax(1, null);
+            Assert.Throws<ArgumentNullException>(() => validCollection.CountsMax(1, null));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Fact]
         public void ThrowsArgumentOutOfRangeExceptionWhenExpectedMaxCountIsNegative()
         {
             IEnumerable<char> validCollection = "abcd";
             Func<char, bool> validPredicate = c => c == 'a';
 
-            validCollection.CountsMax(-1, validPredicate);
+            Assert.Throws<ArgumentOutOfRangeException>(() => validCollection.CountsMax(-1, validPredicate));
         }
 
-        [Test]
+        [Fact]
         public void ReturnsTrueWhenActualCountIsEqualToOrLowerThanExpectedCountWithPredicate()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
@@ -96,7 +90,7 @@ namespace ExtraLinq.Tests
             fruits.CountsMax(int.MaxValue, startsWithLowercasedA).Should().BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ReturnsFalseWhenActualCountHigherThanExpectedCountWithPredicate()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };

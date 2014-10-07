@@ -3,22 +3,21 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using ExtraLinq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace ExtraLINQ.Tests
 {
-    [TestFixture]
     public class ToKeyValuePairsTests
     {
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             NameValueCollection collection = null;
-            IEnumerable<KeyValuePair<string, string>> keyValuePairs = collection.ToKeyValuePairs();
+
+            Assert.Throws<ArgumentNullException>(() => collection.ToKeyValuePairs());
         }
 
-        [Test]
+        [Fact]
         public void ReturnedDictionaryContainsExactlyTheElementsFromTheNameValueCollection()
         {
             var collection = new NameValueCollection
@@ -38,7 +37,7 @@ namespace ExtraLINQ.Tests
             });
         }
 
-        [Test]
+        [Fact]
         public void ReturnsAnEmptyDictionaryForAnEmptyNameValueCollection()
         {
             var emptyCollection = new NameValueCollection();

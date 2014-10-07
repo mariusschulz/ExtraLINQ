@@ -2,32 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestFixture]
     public class CountsMinTests
     {
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<object> nullCollection = null;
 
-            nullCollection.CountsMin(1);
+            Assert.Throws<ArgumentNullException>(() => nullCollection.CountsMin(1));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Fact]
         public void ThrowsArgumentOutOfRangeExceptionWhenExpectedMinCountIsNegative()
         {
             IEnumerable<char> letters = "abcd";
 
-            letters.CountsMin(-1);
+            Assert.Throws<ArgumentOutOfRangeException>(() => letters.CountsMin(-1));
         }
 
-        [Test]
+        [Fact]
         public void ReturnsTrueWhenActualCountIsGreaterThanOrEqualToExpectedMinCount()
         {
             IEnumerable<char> letters = "abcd";
@@ -42,7 +39,7 @@ namespace ExtraLinq.Tests
             letters.ToList().CountsMin(4).Should().BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ReturnsFalseWhenActualCountIsLowerThanExpectedMinCount()
         {
             IEnumerable<char> letters = "abcd";
@@ -55,37 +52,34 @@ namespace ExtraLinq.Tests
             letters.ToList().CountsMin(10).Should().BeFalse();
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithPredicate()
         {
             IEnumerable<object> nullCollection = null;
             Func<object, bool> alwaysTruePredicate = _ => true;
 
-            nullCollection.CountsMin(1, alwaysTruePredicate);
+            Assert.Throws<ArgumentNullException>(() => nullCollection.CountsMin(1, alwaysTruePredicate));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenPredicateIsNull()
         {
             IEnumerable<char> validCollection = "abcd";
             Func<char, bool> nullPredicate = null;
 
-            validCollection.CountsMin(1, nullPredicate);
+            Assert.Throws<ArgumentNullException>(() => validCollection.CountsMin(1, nullPredicate));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Fact]
         public void ThrowsArgumentOutOfRangeExceptionWhenExpectedMinCountIsNegativeWithPredicate()
         {
             IEnumerable<char> letters = "abcd";
             Func<char, bool> validPredicate = c => c == 'a';
 
-            letters.CountsMin(-1, validPredicate);
+            Assert.Throws<ArgumentOutOfRangeException>(() => letters.CountsMin(-1, validPredicate));
         }
 
-        [Test]
+        [Fact]
         public void ReturnsTrueWhenActualCountIsGreaterThanOrEqualToExpectedMinCountWithPredicate()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
@@ -98,7 +92,7 @@ namespace ExtraLinq.Tests
             emptyCollection.CountsMin(0, _ => true).Should().BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ReturnsFalseWhenActualCountIsLowerThanExpectedMinCountWithPredicate()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };

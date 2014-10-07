@@ -2,23 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestFixture]
     public class RandomTests
     {
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<char> nullCollection = null;
 
-            nullCollection.Random();
+            Assert.Throws<ArgumentNullException>(() => nullCollection.Random());
         }
 
-        [Test]
+        [Fact]
         public void ReturnsItemContainedWithinCollection()
         {
             IEnumerable<char> letters = "abcde";
@@ -28,26 +26,24 @@ namespace ExtraLinq.Tests
             letters.Should().Contain(randomCharacter);
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithRandom()
         {
             IEnumerable<char> nullCollection = null;
             var random = new Random();
 
-            nullCollection.Random(random);
+            Assert.Throws<ArgumentNullException>(() => nullCollection.Random(random));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenRandomIsNull()
         {
             IEnumerable<char> letters = "abcde";
 
-            letters.Random(null);
+            Assert.Throws<ArgumentNullException>(() => letters.Random(null));
         }
 
-        [Test]
+        [Fact]
         public void ReturnsItemContainedWithinCollectionWithRandom()
         {
             IEnumerable<char> letters = "abcde";
@@ -60,37 +56,34 @@ namespace ExtraLinq.Tests
             randomCharacter.Should().Be(expectedCharacter);
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithCount()
         {
             IEnumerable<char> nullCollection = null;
             const int validItemCount = 0;
 
-            nullCollection.Random(validItemCount);
+            Assert.Throws<ArgumentNullException>(() => nullCollection.Random(validItemCount));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Fact]
         public void ThrowsArgumentOutOfRangeExceptionWhenCountIsNegative()
         {
             IEnumerable<char> letters = "abcde";
             const int invalidItemCount = -5;
 
-            letters.Random(invalidItemCount);
+            Assert.Throws<ArgumentOutOfRangeException>(() => letters.Random(invalidItemCount));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Fact]
         public void ThrowsArgumentOutOfRangeExceptionWhenCountIsGreaterThanCollectionCount()
         {
             IEnumerable<char> letters = "abcde";
             const int invalidItemCount = 100;
 
-            letters.Random(invalidItemCount);
+            Assert.Throws<ArgumentOutOfRangeException>(() => letters.Random(invalidItemCount));
         }
 
-        [Test]
+        [Fact]
         public void ReturnsItemsContainedWithinCollection()
         {
             IEnumerable<char> letters = "abcde";
@@ -103,39 +96,36 @@ namespace ExtraLinq.Tests
             }
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithRandomAndCount()
         {
             IEnumerable<char> nullCollection = null;
             const int validItemCount = 0;
             var random = new Random();
 
-            nullCollection.Random(validItemCount, random);
+            Assert.Throws<ArgumentNullException>(() => nullCollection.Random(validItemCount, random));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Fact]
         public void ThrowsArgumentOutOfRangeExceptionWhenCountIsNegativeWithRandomAndCount()
         {
             IEnumerable<char> letters = "abcde";
             const int negativeElementsCount = -5;
             var random = new Random();
 
-            letters.Random(negativeElementsCount, random);
+            Assert.Throws<ArgumentOutOfRangeException>(() => letters.Random(negativeElementsCount, random));
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsArgumentNullExceptionWhenRandomIsNullWithRandomAndCount()
         {
             IEnumerable<char> letters = "abcde";
             const int negativeElementsCount = 2;
 
-            letters.Random(negativeElementsCount, null);
+            Assert.Throws<ArgumentNullException>(() => letters.Random(negativeElementsCount, null));
         }
 
-        [Test]
+        [Fact]
         public void ReturnsItemsContainedWithinCollectionWithRandomAndCount()
         {
             IEnumerable<char> letters = "abcde";
