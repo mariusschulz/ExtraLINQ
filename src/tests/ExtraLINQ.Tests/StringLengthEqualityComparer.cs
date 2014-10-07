@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ExtraLinq.Tests.Setup
+namespace ExtraLinq.Tests
 {
     internal class StringLengthEqualityComparer<T> : IEqualityComparer<T>
     {

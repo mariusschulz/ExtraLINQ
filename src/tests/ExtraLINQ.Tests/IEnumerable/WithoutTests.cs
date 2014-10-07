@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ExtraLinq.Tests.Setup;
 using FluentAssertions;
 using Xunit;
 

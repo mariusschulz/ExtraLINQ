@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using ExtraLinq;
 using FluentAssertions;
 using Xunit;
 
-namespace ExtraLINQ.Tests
+namespace ExtraLinq.Tests
 {
     public class ToKeyValuePairsTests
     {
