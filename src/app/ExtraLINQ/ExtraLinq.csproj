@@ -43,6 +43,7 @@
     <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="IEnumerable\Cycle.cs" />
     <Compile Include="IEnumerable\JoinWith.cs" />
+    <Compile Include="IEnumerable\Repeat.cs" />
     <Compile Include="IEnumerable\WhereNot.cs" />
     <Compile Include="IEnumerable\CountsExactly.cs" />
     <Compile Include="IEnumerable\EnumerableExtensions.cs" />

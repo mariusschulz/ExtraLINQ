@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IEnumerable\CycleTests.cs" />
+    <Compile Include="IEnumerable\RepeatTests.cs" />
     <Compile Include="IEnumerable\WhereNotTests.cs" />
     <Compile Include="IEnumerable\JoinWithTests.cs" />
     <Compile Include="IEnumerable\WithoutTests.cs" />
