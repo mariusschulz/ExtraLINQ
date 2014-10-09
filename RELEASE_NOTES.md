@@ -1,5 +1,7 @@
-#### 2.0.0-beta - 29.09.2014
+#### 2.0.0-alpha1 - 2014/10/10
 * Set up FAKE build script
-
-#### 2.0.0-alpha - 28.09.2014
-* Setting up FAKE
+* Removed `ElementAt` method accepting an `IndexingStrategy` (use `Cycle` instead)
+* Added `Cycle` method
+* Added `JoinWith` method
+* Added `Repeat` method
+* Added `WhereNot` method
