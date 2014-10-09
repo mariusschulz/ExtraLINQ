@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace ExtraLinq
 {
@@ -23,26 +22,31 @@ namespace ExtraLinq
         {
             var collection = source as ICollection<TSource>;
 
-            var enumeratedItems = collection == null
+            var itemBuffer = collection == null
                 ? new List<TSource>()
                 : new List<TSource>(collection.Count);
 
             foreach (TSource item in source)
             {
                 yield return item;
-                enumeratedItems.Add(item);
+
+                // We add this item to a local item buffer so that
+                // we don't have to enumerate the sequence multiple times
+                itemBuffer.Add(item);
             }
 
-            if (!enumeratedItems.Any())
+            if (itemBuffer.IsEmpty())
             {
+                // If the item buffer is empty, so was the source sequence.
+                // In this case, we can stop here and simply return an empty sequence.
                 yield break;
             }
 
             int index = 0;
             while (true)
             {
-                yield return enumeratedItems[index];
-                index = (index + 1) % enumeratedItems.Count;
+                yield return itemBuffer[index];
+                index = (index + 1) % itemBuffer.Count;
             }
         }
     }
