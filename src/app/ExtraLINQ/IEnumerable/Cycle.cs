@@ -5,6 +5,13 @@ namespace ExtraLinq
 {
     public static partial class EnumerableExtensions
     {
+        /// <summary>
+        /// Turns a finite sequence into a circular one, or equivalently,
+        /// repeats the original sequence indefinitely.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> to cycle through.</param>
+        /// <returns>An infinite sequence cycling through the given sequence.</returns>
         public static IEnumerable<TSource> Cycle<TSource>(this IEnumerable<TSource> source)
         {
             ThrowIf.Argument.IsNull(source, "source");
