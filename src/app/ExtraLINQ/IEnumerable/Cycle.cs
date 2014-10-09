@@ -15,10 +15,10 @@ namespace ExtraLinq
         {
             ThrowIf.Argument.IsNull(source, "source");
 
-            return EnumerateForever(source);
+            return CycleImplementation(source);
         }
 
-        private static IEnumerable<TSource> EnumerateForever<TSource>(IEnumerable<TSource> source)
+        private static IEnumerable<TSource> CycleImplementation<TSource>(IEnumerable<TSource> source)
         {
             var collection = source as ICollection<TSource>;
 
