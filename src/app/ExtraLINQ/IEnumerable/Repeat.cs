@@ -4,6 +4,13 @@ namespace ExtraLinq
 {
     public static partial class EnumerableExtensions
     {
+        /// <summary>
+        /// Repeats the given sequence <paramref name="count"/> times.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The sequence to repeat.</param>
+        /// <param name="count">The number of times to repeat the sequence.</param>
+        /// <returns>A repeated version of the original sequence.</returns>
         public static IEnumerable<TSource> Repeat<TSource>(this IEnumerable<TSource> source, int count)
         {
             ThrowIf.Argument.IsNull(source, "source");
