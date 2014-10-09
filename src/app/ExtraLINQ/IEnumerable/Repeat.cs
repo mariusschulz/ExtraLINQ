@@ -16,10 +16,10 @@ namespace ExtraLinq
             ThrowIf.Argument.IsNull(source, "source");
             ThrowIf.Argument.IsNegative(count, "count");
 
-            return RepeatImplementation(source, count);
+            return RepeatIterator(source, count);
         }
 
-        private static IEnumerable<TSource> RepeatImplementation<TSource>(this IEnumerable<TSource> source, int count)
+        private static IEnumerable<TSource> RepeatIterator<TSource>(this IEnumerable<TSource> source, int count)
         {
             if (count == 0)
             {
