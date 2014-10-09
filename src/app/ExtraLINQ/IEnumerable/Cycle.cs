@@ -21,7 +21,11 @@ namespace ExtraLinq
 
         private static IEnumerable<TSource> EnumerateForever<TSource>(IEnumerable<TSource> source)
         {
-            var enumeratedItems = new List<TSource>();
+            var collection = source as ICollection<TSource>;
+
+            var enumeratedItems = collection == null
+                ? new List<TSource>()
+                : new List<TSource>(collection.Count);
 
             foreach (TSource item in source)
             {
