@@ -49,6 +49,16 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
+        public void ReturnsTheCorrectElements()
+        {
+            int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
+
+            IEnumerable<int> everyThirdNumber = numbers.TakeEvery(3);
+
+            everyThirdNumber.Should().Equal(new[] { 1, 4, 7 });
+        }
+
+        [Fact]
         public void OnlyReturnsTheFirstElementWhenStepIsLargerThanTheSequenceLength()
         {
             int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
