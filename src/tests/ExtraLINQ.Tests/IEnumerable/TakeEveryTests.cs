@@ -53,9 +53,9 @@ namespace ExtraLinq.Tests
         {
             int[] numbers = { 1, 2, 3, 4, 5 };
 
-            IEnumerable<int> everyOtherNumber = numbers.TakeEvery(10);
+            IEnumerable<int> onlyFirstElement = numbers.TakeEvery(10);
 
-            everyOtherNumber.Should().Equal(new[] { 1 });
+            onlyFirstElement.Should().Equal(new[] { 1 });
         }
     }
 }
