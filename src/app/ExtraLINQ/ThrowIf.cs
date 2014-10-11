@@ -21,6 +21,14 @@ namespace ExtraLinq
                     throw new ArgumentOutOfRangeException(argumentName, argumentName + " must not be negative.");
                 }
             }
+
+            public static void IsZeroOrNegative(int argument, string argumentName)
+            {
+                if (argument <= 0)
+                {
+                    throw new ArgumentOutOfRangeException(argumentName, argumentName + " must be positive.");
+                }
+            }
         }
     }
 }
