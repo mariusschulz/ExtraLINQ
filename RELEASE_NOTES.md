@@ -4,5 +4,6 @@
 * Added `Cycle` method
 * Added `JoinWith` method
 * Added `Repeat` method
+* Added `SkipEvery` method
 * Added `TakeEvery` method
 * Added `WhereNot` method
