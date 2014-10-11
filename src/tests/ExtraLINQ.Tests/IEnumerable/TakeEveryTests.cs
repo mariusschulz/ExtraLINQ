@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using Xunit;
 using Xunit.Extensions;
 
@@ -25,6 +26,36 @@ namespace ExtraLinq.Tests
             int[] numbers = { 1, 2, 3 };
 
             Assert.Throws<ArgumentOutOfRangeException>(() => numbers.TakeEvery(invalidStep));
+        }
+
+        [Fact]
+        public void ReturnsEveryElementWhenStepEqualsOne()
+        {
+            int[] numbers = { 1, 2, 3, 4, 5 };
+
+            IEnumerable<int> everyNumber = numbers.TakeEvery(1);
+
+            everyNumber.Should().Equal(new[] { 1, 2, 3, 4, 5 });
+        }
+
+        [Fact]
+        public void ReturnsEveryOtherElementWhenStepEqualsTwo()
+        {
+            int[] numbers = { 1, 2, 3, 4, 5 };
+
+            IEnumerable<int> everyOtherNumber = numbers.TakeEvery(2);
+
+            everyOtherNumber.Should().Equal(new[] { 1, 3, 5 });
+        }
+
+        [Fact]
+        public void OnlyReturnsTheFirstElementWhenStepIsLargerThanTheSequenceLength()
+        {
+            int[] numbers = { 1, 2, 3, 4, 5 };
+
+            IEnumerable<int> everyOtherNumber = numbers.TakeEvery(10);
+
+            everyOtherNumber.Should().Equal(new[] { 1 });
         }
     }
 }

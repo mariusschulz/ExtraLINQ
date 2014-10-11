@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace ExtraLinq
 {
@@ -9,7 +10,7 @@ namespace ExtraLinq
             ThrowIf.Argument.IsNull(source, "source");
             ThrowIf.Argument.IsZeroOrNegative(step, "step");
 
-            return null;
+            return source.Where((item, index) => index % step == 0);
         }
     }
 }
