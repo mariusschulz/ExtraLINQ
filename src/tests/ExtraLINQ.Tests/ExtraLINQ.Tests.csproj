@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IEnumerable\CycleTests.cs" />
+    <Compile Include="IEnumerable\SkipEveryTests.cs" />
     <Compile Include="IEnumerable\TakeEveryTests.cs" />
     <Compile Include="IEnumerable\RepeatTests.cs" />
     <Compile Include="IEnumerable\WhereNotTests.cs" />
