@@ -31,27 +31,27 @@ namespace ExtraLinq.Tests
         [Fact]
         public void ReturnsEveryElementWhenStepEqualsOne()
         {
-            int[] numbers = { 1, 2, 3, 4, 5 };
+            int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
 
             IEnumerable<int> everyNumber = numbers.TakeEvery(1);
 
-            everyNumber.Should().Equal(new[] { 1, 2, 3, 4, 5 });
+            everyNumber.Should().Equal(new[] { 1, 2, 3, 4, 5, 6, 7 });
         }
 
         [Fact]
         public void ReturnsEveryOtherElementWhenStepEqualsTwo()
         {
-            int[] numbers = { 1, 2, 3, 4, 5 };
+            int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
 
             IEnumerable<int> everyOtherNumber = numbers.TakeEvery(2);
 
-            everyOtherNumber.Should().Equal(new[] { 1, 3, 5 });
+            everyOtherNumber.Should().Equal(new[] { 1, 3, 5, 7 });
         }
 
         [Fact]
         public void OnlyReturnsTheFirstElementWhenStepIsLargerThanTheSequenceLength()
         {
-            int[] numbers = { 1, 2, 3, 4, 5 };
+            int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
 
             IEnumerable<int> onlyFirstElement = numbers.TakeEvery(10);
 
