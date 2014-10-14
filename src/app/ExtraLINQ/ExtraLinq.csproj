@@ -49,6 +49,7 @@
     <Compile Include="IEnumerable\WhereNot.cs" />
     <Compile Include="IEnumerable\CountsExactly.cs" />
     <Compile Include="IEnumerable\EnumerableExtensions.cs" />
+    <Compile Include="IEnumerable\Pipe.cs" />
     <Compile Include="IEnumerable\Without.cs" />
     <Compile Include="IEnumerable\Shuffle.cs" />
     <Compile Include="IEnumerable\Random.cs" />
