@@ -21,5 +21,13 @@ namespace ExtraLinq
 
             return source.Where(item => !predicate(item));
         }
+
+        public static IEnumerable<TSource> WhereNot<TSource>(this IEnumerable<TSource> source, Func<TSource, int, bool> predicate)
+        {
+            ThrowIf.Argument.IsNull(source, "source");
+            ThrowIf.Argument.IsNull(predicate, "predicate");
+
+            return source.Where((item, index) => !predicate(item, index));
+        }
     }
 }
