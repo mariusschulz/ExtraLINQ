@@ -5,6 +5,13 @@ namespace ExtraLinq
 {
     public static partial class EnumerableExtensions
     {
+        /// <summary>
+        /// Passes every element of the sequence to the specified action and returns it afterwards.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The sequence.</param>
+        /// <param name="action">The action which is called with each element.</param>
+        /// <returns>All elements of the source sequence.</returns>
         public static IEnumerable<TSource> Pipe<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
         {
             ThrowIf.Argument.IsNull(source, "source");
