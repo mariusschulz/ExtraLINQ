@@ -15,7 +15,7 @@ let buildDir = "./build/"
 let testDir = "./tests/"
 let nugetDir = "./nuget/"
 
-let nUnitPath = "./tools/NUnit"
+let xUnitPath = "./tools/xUnit/xunit.console.clr4.exe"
 
 let releaseNotes = LoadReleaseNotes "RELEASE_NOTES.md"
 
@@ -61,11 +61,8 @@ Target "BuildTests" (fun _ ->
 
 Target "Test" (fun _ ->
     !! "tests/ExtraLINQ.Tests.dll"
-        |> NUnit (fun options ->
-            { options with 
-                ToolPath = nUnitPath
-                DisableShadowCopy = true
-                OutputFile = testDir + "TestResults.xml" })
+        |> xUnit (fun options ->
+            { options with ToolPath = xUnitPath })
 )
 
 Target "Package" (fun _ ->
