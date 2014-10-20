@@ -8,7 +8,7 @@ namespace ExtraLinq
         {
             ThrowIf.Argument.IsNull(source, "source");
 
-            return null;
+            return new HashSet<TSource>(source);
         }
     }
 }
