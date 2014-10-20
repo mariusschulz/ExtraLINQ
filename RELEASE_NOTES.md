@@ -7,4 +7,5 @@
 * Added `Repeat` method
 * Added `SkipEvery` method
 * Added `TakeEvery` method
+* Added `ToHashSet` method
 * Added `WhereNot` method
