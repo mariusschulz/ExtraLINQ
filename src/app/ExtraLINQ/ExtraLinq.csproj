@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\IntExtensions.cs" />
+    <Compile Include="IEnumerable\Partition.cs" />
     <Compile Include="IEnumerable\ToHashSet.cs" />
     <Compile Include="IEnumerable\SkipEvery.cs" />
     <Compile Include="IEnumerable\TakeEvery.cs" />
