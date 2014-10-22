@@ -13,5 +13,14 @@ namespace ExtraLinq.Tests
 
             Assert.Throws<ArgumentNullException>(() => nullCollection.Partition(char.IsUpper));
         }
+
+        [Fact]
+        public void ThrowsArgumentNullExceptionWhenPredicateIsNull()
+        {
+            int[] numbers = { 1, 2, 3 };
+            Func<int, bool> nullPredicate = null;
+
+            Assert.Throws<ArgumentNullException>(() => numbers.Partition(nullPredicate));
+        }
     }
 }
