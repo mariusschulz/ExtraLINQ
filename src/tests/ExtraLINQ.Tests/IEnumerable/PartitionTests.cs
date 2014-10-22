@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using Xunit;
+using Xunit.Extensions;
 
 namespace ExtraLinq.Tests
 {
@@ -21,6 +23,33 @@ namespace ExtraLinq.Tests
             Func<int, bool> nullPredicate = null;
 
             Assert.Throws<ArgumentNullException>(() => numbers.Partition(nullPredicate));
+        }
+
+        [Fact]
+        public void ReturnsTwoEmptySequencesForAnEmptySequences()
+        {
+            int[] numbers = { };
+            Func<int, bool> isEven = x => x % 2 == 0;
+
+            var evenAndOddNumbers = numbers.Partition(isEven);
+
+            evenAndOddNumbers.MatchingElements.Should().HaveCount(0);
+            evenAndOddNumbers.RejectedElements.Should().HaveCount(0);
+        }
+
+        [Theory]
+        [InlineData(new[] { 1 }, new int[0], new[] { 1 })]
+        [InlineData(new[] { 1, -2 }, new[] { -2 }, new[] { 1 })]
+        [InlineData(new[] { 0, 0, 0 }, new[] { 0, 0, 0 }, new int[0])]
+        [InlineData(new[] { 1, 2, 3, 4, 5 }, new[] { 2, 4 }, new[] { 1, 3, 5 })]
+        public void CorrectlyPartitionsTheGivenSequenceOfNumbersIntoEvensAndOdds(int[] numbers, int[] expectedEvens, int[] expectedOdds)
+        {
+            Func<int, bool> isEven = x => x % 2 == 0;
+
+            var evenAndOddNumbers = numbers.Partition(isEven);
+
+            evenAndOddNumbers.MatchingElements.Should().Equal(expectedEvens);
+            evenAndOddNumbers.RejectedElements.Should().Equal(expectedOdds);
         }
     }
 }
