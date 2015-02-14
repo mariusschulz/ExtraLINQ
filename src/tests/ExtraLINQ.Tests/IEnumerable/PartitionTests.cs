@@ -26,7 +26,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsTwoEmptySequencesForAnEmptySequences()
+        public void ReturnsTwoEmptySequencesForAnEmptySequence()
         {
             int[] numbers = { };
             Func<int, bool> isEven = x => x % 2 == 0;
