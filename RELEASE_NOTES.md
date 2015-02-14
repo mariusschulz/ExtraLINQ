@@ -2,7 +2,7 @@
 * Set up FAKE build script
 * Removed `ElementAt` method accepting an `IndexingStrategy` (use `Cycle` instead)
 * Added `Cycle` method
-* Added `JoinWith` method
+* Added `JoinedBy` method
 * Added `Pipe` method
 * Added `Repeat` method
 * Added `SkipEvery` method
