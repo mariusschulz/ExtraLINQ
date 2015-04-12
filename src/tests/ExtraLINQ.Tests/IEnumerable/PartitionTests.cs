@@ -33,8 +33,8 @@ namespace ExtraLinq.Tests
 
             var evenAndOddNumbers = numbers.Partition(isEven);
 
-            evenAndOddNumbers.MatchingElements.Should().HaveCount(0);
-            evenAndOddNumbers.RejectedElements.Should().HaveCount(0);
+            evenAndOddNumbers.Matches.Should().HaveCount(0);
+            evenAndOddNumbers.Mismatches.Should().HaveCount(0);
         }
 
         [Theory]
@@ -48,8 +48,8 @@ namespace ExtraLinq.Tests
 
             var evenAndOddNumbers = numbers.Partition(isEven);
 
-            evenAndOddNumbers.MatchingElements.Should().Equal(expectedEvens);
-            evenAndOddNumbers.RejectedElements.Should().Equal(expectedOdds);
+            evenAndOddNumbers.Matches.Should().Equal(expectedEvens);
+            evenAndOddNumbers.Mismatches.Should().Equal(expectedOdds);
         }
     }
 }

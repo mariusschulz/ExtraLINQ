@@ -10,22 +10,22 @@ namespace ExtraLinq
             ThrowIf.Argument.IsNull(values, "values");
             ThrowIf.Argument.IsNull(predicate, "predicate");
 
-            var matchingElements = new List<TSource>();
-            var rejectedElements = new List<TSource>();
+            var matches = new List<TSource>();
+            var mismatches = new List<TSource>();
 
             foreach (TSource value in values)
             {
                 if (predicate(value))
                 {
-                    matchingElements.Add(value);
+                    matches.Add(value);
                 }
                 else
                 {
-                    rejectedElements.Add(value);
+                    mismatches.Add(value);
                 }
             }
 
-            return new PartitionedSequence<TSource>(matchingElements, rejectedElements);
+            return new PartitionedSequence<TSource>(matches, mismatches);
         }
     }
 }
