@@ -8,79 +8,82 @@ namespace ExtraLinq.Tests
 {
     public class DistinctTests
     {
-        [Fact]
-        public static void ThrowsArgumentNullExceptionWhenSequenceIsNull()
+        public class WithoutEqualityComparer
         {
-            IEnumerable<int> numbers = null;
-
-            Assert.Throws<ArgumentNullException>(() => numbers.Distinct(n => n % 2));
-        }
-
-        [Fact]
-        public static void ThrowsArgumentNullExceptionWhenPredicateIsNull()
-        {
-            int[] numbers = { };
-            Func<int, string> predicate = null;
-
-            Assert.Throws<ArgumentNullException>(() => numbers.Distinct(predicate));
-        }
-
-        [Fact]
-        public static void ReturnsAnEmptySequenceWhenSequenceIsEmpty()
-        {
-            int[] numbers = { };
-
-            var distinctNumbers = numbers.Distinct(n => n % 2);
-
-            distinctNumbers.Should().HaveCount(0);
-        }
-
-        [Fact]
-        public static void ReturnsUnmodifiedSequenceIfSequenceHasOneElement()
-        {
-            int[] numbers = { 1 };
-
-            var distinctNumbers = numbers.Distinct(n => n % 2);
-
-            distinctNumbers.Should().Equal(1);
-        }
-
-        [Fact]
-        public static void ReturnsUnmodifiedSequenceIfSequenceHasTwoDifferentElements()
-        {
-            int[] numbers = { 1, 2 };
-
-            var distinctNumbers = numbers.Distinct(n => n % 2);
-
-            distinctNumbers.Should().Equal(1, 2);
-        }
-
-        [Fact]
-        public static void ReturnsOnlyTuplesConsideredDistinctByPredicate()
-        {
-            Tuple<int, string>[] digitNames =
+            [Fact]
+            public static void ThrowsArgumentNullExceptionWhenSequenceIsNull()
             {
-                Tuple.Create(1, "One"),
-                Tuple.Create(1, "I SHOULDN'T BE HERE"),
-                Tuple.Create(2, "Two"),
-                Tuple.Create(2, "ME NEITHER"),
-                Tuple.Create(2, "ME NEITHER"),
-                Tuple.Create(3, "Three")
-            };
+                IEnumerable<int> numbers = null;
 
-            var distinctDigitNames = digitNames.Distinct(n => n.Item1);
+                Assert.Throws<ArgumentNullException>(() => numbers.Distinct(n => n % 2));
+            }
 
-            distinctDigitNames.Select(t => t.Item2).Should().Equal("One", "Two", "Three");
-        }
+            [Fact]
+            public static void ThrowsArgumentNullExceptionWhenValueSelectorIsNull()
+            {
+                int[] numbers = { };
+                Func<int, string> valueSelector = null;
 
-        [Fact]
-        public static void ReturnsOnlyStringsConsideredDistinctByPredicate()
-        {
-            string[] spellingsOfJavaScript = { "JavaScript", "Javascript", "javascript" };
+                Assert.Throws<ArgumentNullException>(() => numbers.Distinct(valueSelector));
+            }
 
-            var distinctSpellings = spellingsOfJavaScript.Distinct(n => n.ToLower());
+            [Fact]
+            public static void ReturnsAnEmptySequenceWhenSequenceIsEmpty()
+            {
+                int[] numbers = { };
 
-            distinctSpellings.Should().Equal("JavaScript");
+                var distinctNumbers = numbers.Distinct(n => n % 2);
+
+                distinctNumbers.Should().HaveCount(0);
+            }
+
+            [Fact]
+            public static void ReturnsUnmodifiedSequenceIfSequenceHasOneElement()
+            {
+                int[] numbers = { 1 };
+
+                var distinctNumbers = numbers.Distinct(n => n % 2);
+
+                distinctNumbers.Should().Equal(1);
+            }
+
+            [Fact]
+            public static void ReturnsUnmodifiedSequenceIfSequenceHasTwoDifferentElements()
+            {
+                int[] numbers = { 1, 2 };
+
+                var distinctNumbers = numbers.Distinct(n => n % 2);
+
+                distinctNumbers.Should().Equal(1, 2);
+            }
+
+            [Fact]
+            public static void ReturnsOnlyTuplesWhoseSelectedValueIsConsideredDistinct()
+            {
+                Tuple<int, string>[] digitNames =
+                {
+                    Tuple.Create(1, "One"),
+                    Tuple.Create(1, "I SHOULDN'T BE HERE"),
+                    Tuple.Create(2, "Two"),
+                    Tuple.Create(2, "ME NEITHER"),
+                    Tuple.Create(2, "ME NEITHER"),
+                    Tuple.Create(3, "Three")
+                };
+
+                var distinctDigitNames = digitNames.Distinct(n => n.Item1);
+
+                distinctDigitNames.Select(t => t.Item2).Should().Equal("One", "Two", "Three");
+            }
+
+            [Fact]
+            public static void ReturnsOnlyStringsWhoseSelectedValueIsConsideredDistinct()
+            {
+                string[] spellingsOfJavaScript = { "JavaScript", "Javascript", "javascript" };
+
+                var distinctSpellings = spellingsOfJavaScript.Distinct(n => n.ToLower());
+
+                distinctSpellings.Should().Equal("JavaScript");
+            }
         }
     }
 }
