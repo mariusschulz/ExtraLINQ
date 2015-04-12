@@ -65,7 +65,7 @@ namespace ExtraLinq.Tests
                 Tuple.Create(2, "Two"),
                 Tuple.Create(2, "ME NEITHER"),
                 Tuple.Create(2, "ME NEITHER"),
-                Tuple.Create(3, "Three"),
+                Tuple.Create(3, "Three")
             };
 
             var distinctDigitNames = digitNames.Distinct(n => n.Item1);
