@@ -8,7 +8,7 @@ namespace ExtraLinq
         /// Creates a <see cref="HashSet{T}"/> from a given sequence.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">The sequence</param>
+        /// <param name="source">The sequence.</param>
         /// <returns>The created <see cref="HashSet{T}"/>.</returns>
         public static HashSet<TSource> ToHashSet<TSource>(this IEnumerable<TSource> source)
         {
