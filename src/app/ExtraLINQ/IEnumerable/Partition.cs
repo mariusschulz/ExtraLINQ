@@ -5,6 +5,14 @@ namespace ExtraLinq
 {
     public static partial class EnumerableExtensions
     {
+        /// <summary>
+        /// Uses the given predicate to partition the given sequence into two sequences,
+        /// one with all the matches and one with all the mismatches.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The sequence to partition.</param>
+        /// <param name="predicate">The predicate that determines whether an element is a match.</param>
+        /// <returns>An object holding the two partitions (matches and mismatches).</returns>
         public static PartitionedSequence<TSource> Partition<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
         {
             ThrowIf.Argument.IsNull(source, "values");
