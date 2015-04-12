@@ -17,6 +17,15 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
+        public static void ThrowsArgumentNullExceptionWhenPredicateIsNull()
+        {
+            int[] numbers = { };
+            Func<int, string> predicate = null;
+
+            Assert.Throws<ArgumentNullException>(() => numbers.Distinct(predicate));
+        }
+
+        [Fact]
         public static void ReturnsAnEmptySequenceWhenSequenceIsEmpty()
         {
             int[] numbers = { };
