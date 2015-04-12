@@ -4,10 +4,10 @@ namespace ExtraLinq
 {
     public class PartitionedSequence<TSource>
     {
-        public IEnumerable<TSource> Matches { get; private set; }
-        public IEnumerable<TSource> Mismatches { get; private set; }
+        public IList<TSource> Matches { get; private set; }
+        public IList<TSource> Mismatches { get; private set; }
 
-        public PartitionedSequence(IEnumerable<TSource> matches, IEnumerable<TSource> mismatches)
+        public PartitionedSequence(IList<TSource> matches, IList<TSource> mismatches)
         {
             Matches = matches;
             Mismatches = mismatches;
