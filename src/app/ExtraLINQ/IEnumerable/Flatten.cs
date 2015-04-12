@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ExtraLinq
 {
@@ -14,7 +13,13 @@ namespace ExtraLinq
 
         private static IEnumerable<TSource> FlattenIterator<TSource>(IEnumerable<IEnumerable<TSource>> source)
         {
-            throw new NotImplementedException();
+            foreach (IEnumerable<TSource> array in source)
+            {
+                foreach (TSource element in array)
+                {
+                    yield return element;
+                }
+            }
         }
     }
 }
