@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IEnumerable\CycleTests.cs" />
+    <Compile Include="IEnumerable\FlattenTests.cs" />
     <Compile Include="IEnumerable\DistinctTests.cs" />
     <Compile Include="IEnumerable\PartitionTests.cs" />
     <Compile Include="IEnumerable\ToHashSetTests.cs" />
