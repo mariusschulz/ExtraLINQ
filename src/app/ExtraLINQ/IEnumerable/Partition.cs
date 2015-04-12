@@ -5,15 +5,15 @@ namespace ExtraLinq
 {
     public static partial class EnumerableExtensions
     {
-        public static PartitionedSequence<TSource> Partition<TSource>(this IEnumerable<TSource> values, Func<TSource, bool> predicate)
+        public static PartitionedSequence<TSource> Partition<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
         {
-            ThrowIf.Argument.IsNull(values, "values");
+            ThrowIf.Argument.IsNull(source, "values");
             ThrowIf.Argument.IsNull(predicate, "predicate");
 
             var matches = new List<TSource>();
             var mismatches = new List<TSource>();
 
-            foreach (TSource value in values)
+            foreach (TSource value in source)
             {
                 if (predicate(value))
                 {
