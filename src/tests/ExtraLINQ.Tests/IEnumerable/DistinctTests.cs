@@ -56,7 +56,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public static void ReturnsOnlyElementsConsideredDistinctByPredicate()
+        public static void ReturnsOnlyTuplesConsideredDistinctByPredicate()
         {
             Tuple<int, string>[] digitNames =
             {
@@ -71,6 +71,16 @@ namespace ExtraLinq.Tests
             var distinctDigitNames = digitNames.Distinct(n => n.Item1);
 
             distinctDigitNames.Select(t => t.Item2).Should().Equal("One", "Two", "Three");
+        }
+
+        [Fact]
+        public static void ReturnsOnlyStringsConsideredDistinctByPredicate()
+        {
+            string[] spellingsOfJavaScript = { "JavaScript", "Javascript", "javascript" };
+
+            var distinctSpellings = spellingsOfJavaScript.Distinct(n => n.ToLower());
+
+            distinctSpellings.Should().Equal("JavaScript");
         }
     }
 }
