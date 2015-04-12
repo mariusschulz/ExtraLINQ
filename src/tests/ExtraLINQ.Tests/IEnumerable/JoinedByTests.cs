@@ -6,14 +6,14 @@ using Xunit.Extensions;
 
 namespace ExtraLinq.Tests
 {
-    public class JoinWithTests
+    public class JoinedByTests
     {
         [Fact]
         public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<char> nullCollection = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.JoinWith(""));
+            Assert.Throws<ArgumentNullException>(() => nullCollection.JoinedBy(""));
         }
 
         [Fact]
@@ -21,7 +21,7 @@ namespace ExtraLinq.Tests
         {
             string[] items = { "one", "two", "three" };
 
-            Assert.Throws<ArgumentNullException>(() => items.JoinWith(null));
+            Assert.Throws<ArgumentNullException>(() => items.JoinedBy(null));
         }
 
         [Theory]
@@ -32,7 +32,7 @@ namespace ExtraLinq.Tests
         {
             string[] strings = new string[0];
 
-            string joined = strings.JoinWith(separator);
+            string joined = strings.JoinedBy(separator);
 
             joined.Should().Be(string.Empty);
         }
@@ -45,7 +45,7 @@ namespace ExtraLinq.Tests
         {
             string[] strings = { "The One Ring" };
 
-            string joined = strings.JoinWith(separator);
+            string joined = strings.JoinedBy(separator);
 
             joined.Should().Be("The One Ring");
         }
@@ -55,7 +55,7 @@ namespace ExtraLinq.Tests
         {
             string[] strings = { "The", "One", "Ring" };
 
-            string joined = strings.JoinWith(" ");
+            string joined = strings.JoinedBy(" ");
 
             joined.Should().Be("The One Ring");
         }
