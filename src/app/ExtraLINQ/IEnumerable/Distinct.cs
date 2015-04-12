@@ -7,6 +7,8 @@ namespace ExtraLinq
     {
         public static IEnumerable<TSource> Distinct<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> valueSelector)
         {
+            ThrowIf.Argument.IsNull(source, "source");
+
             return source;
         }
     }
