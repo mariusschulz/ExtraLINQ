@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\IntExtensions.cs" />
+    <Compile Include="IEnumerable\Partition.cs" />
     <Compile Include="IEnumerable\ToHashSet.cs" />
     <Compile Include="IEnumerable\SkipEvery.cs" />
     <Compile Include="IEnumerable\TakeEvery.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="IEnumerable\CountsMax.cs" />
     <Compile Include="NameValueCollection\ToKeyValuePairs.cs" />
     <Compile Include="NameValueCollection\ToDictionary.cs" />
+    <Compile Include="PartitionedSequence.cs" />
     <Compile Include="ThrowIf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

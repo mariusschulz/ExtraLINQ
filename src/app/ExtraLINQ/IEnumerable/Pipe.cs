@@ -10,7 +10,7 @@ namespace ExtraLinq
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The sequence.</param>
-        /// <param name="action">The action which is called with each element.</param>
+        /// <param name="action">The action to call for each element.</param>
         /// <returns>All elements of the source sequence.</returns>
         public static IEnumerable<TSource> Pipe<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
         {
@@ -36,7 +36,7 @@ namespace ExtraLinq
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The sequence.</param>
-        /// <param name="action">The action to call on each element.</param>
+        /// <param name="action">The action to call for each element.</param>
         /// <returns>All elements of the source sequence.</returns>
         public static IEnumerable<TSource> Pipe<TSource>(this IEnumerable<TSource> source, Action<TSource, int> action)
         {

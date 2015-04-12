@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersionAttribute("2.0.0")]
 [assembly: AssemblyInformationalVersionAttribute("2.0.0")]
 [assembly: AssemblyFileVersionAttribute("2.0.0")]
-[assembly: AssemblyCopyrightAttribute("Copyright Marius Schulz 2014")]
+[assembly: AssemblyCopyrightAttribute("Copyright Marius Schulz 2015")]
 namespace System {
     internal static class AssemblyVersionInformation {
         internal const string Version = "2.0.0";
