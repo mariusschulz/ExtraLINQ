@@ -117,6 +117,47 @@ namespace ExtraLinq.Tests
 
                 Assert.Throws<ArgumentNullException>(() => numbers.Distinct(valueSelector, equalityComparer));
             }
+
+            [Fact]
+            public static void ReturnsAnEmptySequenceWhenSequenceIsEmpty()
+            {
+                int[] numbers = { };
+                Func<int, int> valueSelector = n => n % 2;
+                IEqualityComparer<int> equalityComparer = EqualityComparer<int>.Default;
+
+                var distinctNumbers = numbers.Distinct(valueSelector, equalityComparer);
+
+                distinctNumbers.Should().HaveCount(0);
+            }
+
+            [Fact]
+            public static void ReturnsUnmodifiedSequenceIfSequenceHasOneElement()
+            {
+                int[] numbers = { 1 };
+                Func<int, int> valueSelector = n => n % 2;
+                IEqualityComparer<int> equalityComparer = EqualityComparer<int>.Default;
+
+                var distinctNumbers = numbers.Distinct(valueSelector, equalityComparer);
+
+                distinctNumbers.Should().Equal(1);
+            }
+
+            [Fact]
+            public static void ReturnsOnlyTuplesWhoseSelectedStringValuesAreConsideredDistinct()
+            {
+                Tuple<int, string>[] spellingsOfJavaScript =
+                {
+                    Tuple.Create(1, "JavaScript"),
+                    Tuple.Create(2, "Javascript"),
+                    Tuple.Create(3, "javascript")
+                };
+
+                var distinctSpellings = spellingsOfJavaScript.Distinct(tuple => tuple.Item2, StringComparer.InvariantCultureIgnoreCase);
+
+                var singleTuple = distinctSpellings.Single();
+                singleTuple.Item1.Should().Be(1);
+                singleTuple.Item2.Should().Be("JavaScript");
+            }
         }
     }
 }
