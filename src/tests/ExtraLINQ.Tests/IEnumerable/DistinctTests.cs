@@ -85,5 +85,38 @@ namespace ExtraLinq.Tests
                 distinctSpellings.Should().Equal("JavaScript");
             }
         }
+
+        public class WithEqualityComparer
+        {
+            [Fact]
+            public static void ThrowsArgumentNullExceptionWhenSequenceIsNull()
+            {
+                IEnumerable<int> numbers = null;
+                Func<int, int> valueSelector = n => n % 2;
+                IEqualityComparer<int> equalityComparer = EqualityComparer<int>.Default;
+
+                Assert.Throws<ArgumentNullException>(() => numbers.Distinct(valueSelector, equalityComparer));
+            }
+
+            [Fact]
+            public static void ThrowsArgumentNullExceptionWhenValueSelectorIsNull()
+            {
+                int[] numbers = { };
+                Func<int, int> valueSelector = null;
+                IEqualityComparer<int> equalityComparer = EqualityComparer<int>.Default;
+
+                Assert.Throws<ArgumentNullException>(() => numbers.Distinct(valueSelector, equalityComparer));
+            }
+
+            [Fact]
+            public static void ThrowsArgumentNullExceptionWhenEqualityComparerIsNull()
+            {
+                int[] numbers = { };
+                Func<int, int> valueSelector = n => n % 2;
+                IEqualityComparer<int> equalityComparer = null;
+
+                Assert.Throws<ArgumentNullException>(() => numbers.Distinct(valueSelector, equalityComparer));
+            }
+        }
     }
 }

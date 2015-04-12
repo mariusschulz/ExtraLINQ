@@ -10,12 +10,21 @@ namespace ExtraLinq
             ThrowIf.Argument.IsNull(source, "source");
             ThrowIf.Argument.IsNull(valueSelector, "valueSelector");
 
-            return DistinctIterator(source, valueSelector);
+            return DistinctIterator(source, valueSelector, EqualityComparer<TResult>.Default);
         }
 
-        private static IEnumerable<TSource> DistinctIterator<TSource, TResult>(IEnumerable<TSource> source, Func<TSource, TResult> valueSelector)
+        public static IEnumerable<TSource> Distinct<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> valueSelector, IEqualityComparer<TResult> equalityComparer)
         {
-            var alreadySeenValues = new HashSet<TResult>();
+            ThrowIf.Argument.IsNull(source, "source");
+            ThrowIf.Argument.IsNull(valueSelector, "valueSelector");
+            ThrowIf.Argument.IsNull(equalityComparer, "equalityComparer");
+
+            return DistinctIterator(source, valueSelector, equalityComparer);
+        }
+
+        private static IEnumerable<TSource> DistinctIterator<TSource, TResult>(IEnumerable<TSource> source, Func<TSource, TResult> valueSelector, IEqualityComparer<TResult> equalityComparer)
+        {
+            var alreadySeenValues = new HashSet<TResult>(equalityComparer);
 
             foreach (var element in source)
             {
