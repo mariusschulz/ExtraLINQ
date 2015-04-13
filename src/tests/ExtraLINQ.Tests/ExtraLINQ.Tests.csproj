@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IEnumerable\ChunkTests.cs" />
     <Compile Include="IEnumerable\CycleTests.cs" />
     <Compile Include="IEnumerable\FlattenTests.cs" />
     <Compile Include="IEnumerable\DistinctTests.cs" />
