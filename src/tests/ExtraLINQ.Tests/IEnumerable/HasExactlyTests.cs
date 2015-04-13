@@ -6,14 +6,14 @@ using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    public class CountsExactlyTests
+    public class HasExactlyTests
     {
         [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<object> nullCollection = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.CountsExactly(1));
+            Assert.Throws<ArgumentNullException>(() => nullCollection.HasExactly(1));
         }
 
         [Fact]
@@ -21,7 +21,7 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<char> letters = "abcde";
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => letters.CountsExactly(-10));
+            Assert.Throws<ArgumentOutOfRangeException>(() => letters.HasExactly(-10));
         }
 
         [Fact]
@@ -29,10 +29,10 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<char> letters = "abcd";
 
-            letters.CountsExactly(4).Should().BeTrue();
+            letters.HasExactly(4).Should().BeTrue();
 
             // Test ICollection.Count early exit strategy
-            letters.ToList().CountsExactly(4).Should().BeTrue();
+            letters.ToList().HasExactly(4).Should().BeTrue();
         }
 
         [Fact]
@@ -40,10 +40,10 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<char> letters = "abcd";
 
-            letters.CountsExactly(100).Should().BeFalse();
+            letters.HasExactly(100).Should().BeFalse();
 
             // Test ICollection.Count early exit strategy
-            letters.ToList().CountsExactly(100).Should().BeFalse();
+            letters.ToList().HasExactly(100).Should().BeFalse();
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace ExtraLinq.Tests
             IEnumerable<object> nullCollection = null;
             Func<object, bool> alwaysTruePredicate = _ => true;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.CountsExactly(1, alwaysTruePredicate));
+            Assert.Throws<ArgumentNullException>(() => nullCollection.HasExactly(1, alwaysTruePredicate));
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<char> validCollection = "abcd";
 
-            Assert.Throws<ArgumentNullException>(() => validCollection.CountsExactly(1, null));
+            Assert.Throws<ArgumentNullException>(() => validCollection.HasExactly(1, null));
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace ExtraLinq.Tests
             IEnumerable<char> letters = "abcde";
             Func<char, bool> alwaysTruePredicate = _ => true;
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => letters.CountsExactly(-10, alwaysTruePredicate));
+            Assert.Throws<ArgumentOutOfRangeException>(() => letters.HasExactly(-10, alwaysTruePredicate));
         }
 
         [Fact]
@@ -77,9 +77,9 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
 
-            fruits.CountsExactly(2, fruit => fruit.StartsWith("a")).Should().BeTrue();
-            fruits.CountsExactly(1, fruit => fruit.StartsWith("b")).Should().BeTrue();
-            fruits.CountsExactly(0, fruit => fruit.StartsWith("c")).Should().BeTrue();
+            fruits.HasExactly(2, fruit => fruit.StartsWith("a")).Should().BeTrue();
+            fruits.HasExactly(1, fruit => fruit.StartsWith("b")).Should().BeTrue();
+            fruits.HasExactly(0, fruit => fruit.StartsWith("c")).Should().BeTrue();
         }
 
         [Fact]
@@ -87,9 +87,9 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
 
-            fruits.CountsExactly(1, fruit => fruit.StartsWith("a")).Should().BeFalse();
-            fruits.CountsExactly(2, fruit => fruit.StartsWith("b")).Should().BeFalse();
-            fruits.CountsExactly(10, fruit => fruit.StartsWith("c")).Should().BeFalse();
+            fruits.HasExactly(1, fruit => fruit.StartsWith("a")).Should().BeFalse();
+            fruits.HasExactly(2, fruit => fruit.StartsWith("b")).Should().BeFalse();
+            fruits.HasExactly(10, fruit => fruit.StartsWith("c")).Should().BeFalse();
         }
     }
 }

@@ -69,7 +69,7 @@
     <Compile Include="NameValueCollection\ToDictionaryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringLengthEqualityComparer.cs" />
-    <Compile Include="IEnumerable\CountsExactlyTests.cs" />
+    <Compile Include="IEnumerable\HasExactlyTests.cs" />
     <Compile Include="IEnumerable\CountsMaxTests.cs" />
     <Compile Include="IEnumerable\CountsMinTests.cs" />
     <Compile Include="IEnumerable\IntersperseTests.cs" />

@@ -16,7 +16,7 @@ namespace ExtraLinq
         /// <returns>
         ///   <c>true</c> if <paramref name="source"/> contains exactly <paramref name="expectedItemCount"/> items; otherwise, <c>false</c>.
         /// </returns>
-        public static bool CountsExactly<TSource>(this IEnumerable<TSource> source, int expectedItemCount)
+        public static bool HasExactly<TSource>(this IEnumerable<TSource> source, int expectedItemCount)
         {
             ThrowIf.Argument.IsNull(source, "source");
             ThrowIf.Argument.IsNegative(expectedItemCount, "expectedItemCount");
@@ -28,7 +28,7 @@ namespace ExtraLinq
                 return sourceCollection.Count == expectedItemCount;
             }
 
-            return CountsExactly(source, expectedItemCount, _ => true);
+            return HasExactly(source, expectedItemCount, _ => true);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace ExtraLinq
         /// <returns>
         ///   <c>true</c> if <paramref name="source"/> contains exactly <paramref name="expectedItemCount"/> items satisfying the condition; otherwise, <c>false</c>.
         /// </returns>
-        public static bool CountsExactly<TSource>(this IEnumerable<TSource> source, int expectedItemCount, Func<TSource, bool> predicate)
+        public static bool HasExactly<TSource>(this IEnumerable<TSource> source, int expectedItemCount, Func<TSource, bool> predicate)
         {
             ThrowIf.Argument.IsNull(source, "source");
             ThrowIf.Argument.IsNull(predicate, "predicate");

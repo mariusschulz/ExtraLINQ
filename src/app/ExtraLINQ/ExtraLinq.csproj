@@ -52,7 +52,7 @@
     <Compile Include="IEnumerable\JoinedBy.cs" />
     <Compile Include="IEnumerable\Repeat.cs" />
     <Compile Include="IEnumerable\WhereNot.cs" />
-    <Compile Include="IEnumerable\CountsExactly.cs" />
+    <Compile Include="IEnumerable\HasExactly.cs" />
     <Compile Include="IEnumerable\EnumerableExtensions.cs" />
     <Compile Include="IEnumerable\Tap.cs" />
     <Compile Include="IEnumerable\Without.cs" />
