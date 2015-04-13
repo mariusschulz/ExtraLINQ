@@ -6,7 +6,7 @@ using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    public class PipeTests
+    public class TapTests
     {
         [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
@@ -14,7 +14,7 @@ namespace ExtraLinq.Tests
             IEnumerable<object> nullCollection = null;
             Action<object> doNothing = _ => { };
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Pipe(doNothing));
+            Assert.Throws<ArgumentNullException>(() => nullCollection.Tap(doNothing));
         }
 
         [Fact]
@@ -23,7 +23,7 @@ namespace ExtraLinq.Tests
             int[] numbers = { 1, 2, 3 };
             Action<int> action = null;
 
-            Assert.Throws<ArgumentNullException>(() => numbers.Pipe(action));
+            Assert.Throws<ArgumentNullException>(() => numbers.Tap(action));
         }
 
         [Fact]
@@ -33,7 +33,7 @@ namespace ExtraLinq.Tests
             var elementsPassedToAction = new List<int>();
             Action<int> action = elementsPassedToAction.Add;
 
-            numbers.Pipe(action).ToList();
+            numbers.Tap(action).ToList();
 
             elementsPassedToAction.Should().Equal(numbers);
         }
@@ -44,7 +44,7 @@ namespace ExtraLinq.Tests
             int[] numbers = { 1, 2, 3 };
             Action<int> action = Console.WriteLine;
 
-            IEnumerable<int> returnedSequence = numbers.Pipe(action);
+            IEnumerable<int> returnedSequence = numbers.Tap(action);
 
             returnedSequence.Should().Equal(numbers);
         }
@@ -55,7 +55,7 @@ namespace ExtraLinq.Tests
             IEnumerable<object> nullCollection = null;
             Action<object, int> doNothing = (element, index) => { };
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Pipe(doNothing));
+            Assert.Throws<ArgumentNullException>(() => nullCollection.Tap(doNothing));
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace ExtraLinq.Tests
             int[] numbers = { 1, 2, 3 };
             Action<int, int> nullAction = null;
 
-            Assert.Throws<ArgumentNullException>(() => numbers.Pipe(nullAction));
+            Assert.Throws<ArgumentNullException>(() => numbers.Tap(nullAction));
         }
 
         [Fact]
@@ -79,7 +79,7 @@ namespace ExtraLinq.Tests
                 indicesPassedToAction.Add(index);
             };
 
-            numbers.Pipe(action).ToList();
+            numbers.Tap(action).ToList();
 
             elementsPassedToAction.Should().Equal(numbers);
             indicesPassedToAction.Should().Equal(new[] { 0, 1, 2 });
@@ -91,7 +91,7 @@ namespace ExtraLinq.Tests
             int[] numbers = { 1, 2, 3 };
             Action<int, int> action = (element, index) => Console.WriteLine(element);
 
-            IEnumerable<int> returnedSequence = numbers.Pipe(action);
+            IEnumerable<int> returnedSequence = numbers.Tap(action);
 
             returnedSequence.Should().Equal(numbers);
         }

@@ -12,15 +12,15 @@ namespace ExtraLinq
         /// <param name="source">The sequence.</param>
         /// <param name="action">The action to call for each element.</param>
         /// <returns>All elements of the source sequence.</returns>
-        public static IEnumerable<TSource> Pipe<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
+        public static IEnumerable<TSource> Tap<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
         {
             ThrowIf.Argument.IsNull(source, "source");
             ThrowIf.Argument.IsNull(action, "action");
 
-            return PipeImplementation(source, action);
+            return TapIterator(source, action);
         }
 
-        private static IEnumerable<TSource> PipeImplementation<TSource>(IEnumerable<TSource> source, Action<TSource> action)
+        private static IEnumerable<TSource> TapIterator<TSource>(IEnumerable<TSource> source, Action<TSource> action)
         {
             foreach (var element in source)
             {
@@ -38,15 +38,15 @@ namespace ExtraLinq
         /// <param name="source">The sequence.</param>
         /// <param name="action">The action to call for each element.</param>
         /// <returns>All elements of the source sequence.</returns>
-        public static IEnumerable<TSource> Pipe<TSource>(this IEnumerable<TSource> source, Action<TSource, int> action)
+        public static IEnumerable<TSource> Tap<TSource>(this IEnumerable<TSource> source, Action<TSource, int> action)
         {
             ThrowIf.Argument.IsNull(source, "source");
             ThrowIf.Argument.IsNull(action, "action");
 
-            return PipeImplementation(source, action);
+            return TapIterator(source, action);
         }
 
-        private static IEnumerable<TSource> PipeImplementation<TSource>(IEnumerable<TSource> source, Action<TSource, int> action)
+        private static IEnumerable<TSource> TapIterator<TSource>(IEnumerable<TSource> source, Action<TSource, int> action)
         {
             int index = 0;
 

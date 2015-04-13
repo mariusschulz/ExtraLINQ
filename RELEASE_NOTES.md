@@ -6,10 +6,10 @@
 * Added `Flatten` method
 * Added `JoinedBy` method
 * Added `Partition` method
-* Added `Pipe` method
 * Added `Repeat` method
 * Added `SkipEvery` method
 * Added `TakeEvery` method
+* Added `Tap` method
 * Added `ToHashSet` method
 * Added `WhereNot` method
 * Set up FAKE build script
