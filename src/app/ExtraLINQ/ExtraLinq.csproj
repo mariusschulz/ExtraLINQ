@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\IntExtensions.cs" />
+    <Compile Include="IEnumerable\Chunk.cs" />
     <Compile Include="IEnumerable\Flatten.cs" />
     <Compile Include="IEnumerable\Distinct.cs" />
     <Compile Include="IEnumerable\Partition.cs" />
