@@ -43,7 +43,7 @@ namespace ExtraLinq.Tests
 
             IEnumerable<KeyValuePair<string, string>> keyValuePairs = emptyCollection.ToKeyValuePairs();
 
-            keyValuePairs.Should().HaveCount(0);
+            keyValuePairs.Should().BeEmpty();
         }
     }
 }

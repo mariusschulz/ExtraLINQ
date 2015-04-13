@@ -36,7 +36,7 @@ namespace ExtraLinq.Tests
 
             var repeatedSequence = emptySequence.Repeat(count);
 
-            repeatedSequence.Should().HaveCount(0);
+            repeatedSequence.Should().BeEmpty();
         }
 
         [Fact]
@@ -46,7 +46,7 @@ namespace ExtraLinq.Tests
 
             var repeatedSequence = numbers.Repeat(0);
 
-            repeatedSequence.Should().HaveCount(0);
+            repeatedSequence.Should().BeEmpty();
         }
 
         [Fact]

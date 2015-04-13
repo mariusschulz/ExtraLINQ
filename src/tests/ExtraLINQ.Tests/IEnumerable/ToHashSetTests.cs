@@ -22,7 +22,7 @@ namespace ExtraLinq.Tests
 
             var hashSet = numbers.ToHashSet();
 
-            hashSet.Should().HaveCount(0);
+            hashSet.Should().BeEmpty();
         }
 
         [Fact]

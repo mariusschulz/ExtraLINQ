@@ -43,7 +43,7 @@ namespace ExtraLinq.Tests
 
             Dictionary<string, string> dictionary = emptyCollection.ToDictionary();
 
-            dictionary.Should().HaveCount(0);
+            dictionary.Should().BeEmpty();
         }
     }
 }

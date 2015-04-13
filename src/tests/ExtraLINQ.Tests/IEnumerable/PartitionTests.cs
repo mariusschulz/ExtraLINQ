@@ -33,8 +33,8 @@ namespace ExtraLinq.Tests
 
             var evenAndOddNumbers = numbers.Partition(isEven);
 
-            evenAndOddNumbers.Matches.Should().HaveCount(0);
-            evenAndOddNumbers.Mismatches.Should().HaveCount(0);
+            evenAndOddNumbers.Matches.Should().BeEmpty();
+            evenAndOddNumbers.Mismatches.Should().BeEmpty();
         }
 
         [Theory]

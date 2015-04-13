@@ -23,7 +23,7 @@ namespace ExtraLinq.Tests
 
             int[] cycledNumbers = numbers.Cycle().ToArray();
 
-            cycledNumbers.Should().HaveCount(0);
+            cycledNumbers.Should().BeEmpty();
         }
 
         [Fact]

@@ -34,7 +34,7 @@ namespace ExtraLinq.Tests
 
                 var distinctNumbers = numbers.Distinct(n => n % 2);
 
-                distinctNumbers.Should().HaveCount(0);
+                distinctNumbers.Should().BeEmpty();
             }
 
             [Fact]
@@ -127,7 +127,7 @@ namespace ExtraLinq.Tests
 
                 var distinctNumbers = numbers.Distinct(valueSelector, equalityComparer);
 
-                distinctNumbers.Should().HaveCount(0);
+                distinctNumbers.Should().BeEmpty();
             }
 
             [Fact]
