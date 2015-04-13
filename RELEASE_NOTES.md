@@ -2,6 +2,7 @@
 * Removed `ElementAt` method accepting an `IndexingStrategy` (use `Cycle` instead)
 * Renamed `CountsExactly` to `HasExactly`
 * Renamed `CountsMax` to `HasAtMost`
+* Renamed `CountsMin` to `HasAtLeast`
 * Added `Chunk` method
 * Added `Cycle` method
 * Added `Distinct` method

@@ -6,14 +6,14 @@ using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    public class CountsMinTests
+    public class HasAtLeastTests
     {
         [Fact]
         public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
         {
             IEnumerable<object> nullCollection = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.CountsMin(1));
+            Assert.Throws<ArgumentNullException>(() => nullCollection.HasAtLeast(1));
         }
 
         [Fact]
@@ -21,7 +21,7 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<char> letters = "abcd";
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => letters.CountsMin(-1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => letters.HasAtLeast(-1));
         }
 
         [Fact]
@@ -29,14 +29,14 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<char> letters = "abcd";
 
-            letters.CountsMin(0).Should().BeTrue();
-            letters.CountsMin(2).Should().BeTrue();
-            letters.CountsMin(4).Should().BeTrue();
+            letters.HasAtLeast(0).Should().BeTrue();
+            letters.HasAtLeast(2).Should().BeTrue();
+            letters.HasAtLeast(4).Should().BeTrue();
 
             // Test ICollection.Count early exit strategy
-            letters.ToList().CountsMin(0).Should().BeTrue();
-            letters.ToList().CountsMin(2).Should().BeTrue();
-            letters.ToList().CountsMin(4).Should().BeTrue();
+            letters.ToList().HasAtLeast(0).Should().BeTrue();
+            letters.ToList().HasAtLeast(2).Should().BeTrue();
+            letters.ToList().HasAtLeast(4).Should().BeTrue();
         }
 
         [Fact]
@@ -44,12 +44,12 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<char> letters = "abcd";
 
-            letters.CountsMin(5).Should().BeFalse();
-            letters.CountsMin(10).Should().BeFalse();
+            letters.HasAtLeast(5).Should().BeFalse();
+            letters.HasAtLeast(10).Should().BeFalse();
 
             // Test ICollection.Count early exit strategy
-            letters.ToList().CountsMin(5).Should().BeFalse();
-            letters.ToList().CountsMin(10).Should().BeFalse();
+            letters.ToList().HasAtLeast(5).Should().BeFalse();
+            letters.ToList().HasAtLeast(10).Should().BeFalse();
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace ExtraLinq.Tests
             IEnumerable<object> nullCollection = null;
             Func<object, bool> alwaysTruePredicate = _ => true;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.CountsMin(1, alwaysTruePredicate));
+            Assert.Throws<ArgumentNullException>(() => nullCollection.HasAtLeast(1, alwaysTruePredicate));
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace ExtraLinq.Tests
             IEnumerable<char> validCollection = "abcd";
             Func<char, bool> nullPredicate = null;
 
-            Assert.Throws<ArgumentNullException>(() => validCollection.CountsMin(1, nullPredicate));
+            Assert.Throws<ArgumentNullException>(() => validCollection.HasAtLeast(1, nullPredicate));
         }
 
         [Fact]
@@ -76,7 +76,7 @@ namespace ExtraLinq.Tests
             IEnumerable<char> letters = "abcd";
             Func<char, bool> validPredicate = c => c == 'a';
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => letters.CountsMin(-1, validPredicate));
+            Assert.Throws<ArgumentOutOfRangeException>(() => letters.HasAtLeast(-1, validPredicate));
         }
 
         [Fact]
@@ -85,11 +85,11 @@ namespace ExtraLinq.Tests
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
             IEnumerable<string> emptyCollection = Enumerable.Empty<string>();
 
-            fruits.CountsMin(1, fruit => fruit.StartsWith("a")).Should().BeTrue();
-            fruits.CountsMin(2, fruit => fruit.StartsWith("a")).Should().BeTrue();
-            fruits.CountsMin(1, fruit => fruit.StartsWith("b")).Should().BeTrue();
+            fruits.HasAtLeast(1, fruit => fruit.StartsWith("a")).Should().BeTrue();
+            fruits.HasAtLeast(2, fruit => fruit.StartsWith("a")).Should().BeTrue();
+            fruits.HasAtLeast(1, fruit => fruit.StartsWith("b")).Should().BeTrue();
 
-            emptyCollection.CountsMin(0, _ => true).Should().BeTrue();
+            emptyCollection.HasAtLeast(0, _ => true).Should().BeTrue();
         }
 
         [Fact]
@@ -97,8 +97,8 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
 
-            fruits.CountsMin(3, fruit => fruit.StartsWith("a")).Should().BeFalse();
-            fruits.CountsMin(2, fruit => fruit.StartsWith("b")).Should().BeFalse();
+            fruits.HasAtLeast(3, fruit => fruit.StartsWith("a")).Should().BeFalse();
+            fruits.HasAtLeast(2, fruit => fruit.StartsWith("b")).Should().BeFalse();
         }
     }
 }

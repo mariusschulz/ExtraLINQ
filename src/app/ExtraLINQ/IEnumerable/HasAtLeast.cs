@@ -16,9 +16,9 @@ namespace ExtraLinq
         /// <returns>
         ///   <c>true</c> if the item count of <paramref name="source"/> is equal to or greater than <paramref name="expectedMinItemCount"/>; otherwise, <c>false</c>.
         /// </returns>
-        public static bool CountsMin<TSource>(this IEnumerable<TSource> source, int expectedMinItemCount)
+        public static bool HasAtLeast<TSource>(this IEnumerable<TSource> source, int expectedMinItemCount)
         {
-            return CountsMin(source, expectedMinItemCount, _ => true);
+            return HasAtLeast(source, expectedMinItemCount, _ => true);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace ExtraLinq
         /// <returns>
         ///   <c>true</c> if the item count of satisfying items is equal to or greater than <paramref name="expectedMinItemCount"/>; otherwise, <c>false</c>.
         /// </returns>
-        public static bool CountsMin<TSource>(this IEnumerable<TSource> source, int expectedMinItemCount, Func<TSource, bool> predicate)
+        public static bool HasAtLeast<TSource>(this IEnumerable<TSource> source, int expectedMinItemCount, Func<TSource, bool> predicate)
         {
             ThrowIf.Argument.IsNull(source, "source");
             ThrowIf.Argument.IsNull(predicate, "predicate");

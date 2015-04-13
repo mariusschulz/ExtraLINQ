@@ -71,7 +71,7 @@
     <Compile Include="StringLengthEqualityComparer.cs" />
     <Compile Include="IEnumerable\HasExactlyTests.cs" />
     <Compile Include="IEnumerable\HasAtMostTests.cs" />
-    <Compile Include="IEnumerable\CountsMinTests.cs" />
+    <Compile Include="IEnumerable\HasAtLeastTests.cs" />
     <Compile Include="IEnumerable\IntersperseTests.cs" />
     <Compile Include="IEnumerable\IsEmptyTests.cs" />
     <Compile Include="IEnumerable\IsNullOrEmptyTests.cs" />

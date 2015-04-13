@@ -62,7 +62,7 @@
     <Compile Include="IEnumerable\IsNullOrEmpty.cs" />
     <Compile Include="IEnumerable\IsEmpty.cs" />
     <Compile Include="IEnumerable\Intersperse.cs" />
-    <Compile Include="IEnumerable\CountsMin.cs" />
+    <Compile Include="IEnumerable\HasAtLeast.cs" />
     <Compile Include="IEnumerable\HasAtMost.cs" />
     <Compile Include="NameValueCollection\ToKeyValuePairs.cs" />
     <Compile Include="NameValueCollection\ToDictionary.cs" />
