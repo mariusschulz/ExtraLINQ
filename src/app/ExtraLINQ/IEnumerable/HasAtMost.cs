@@ -16,9 +16,9 @@ namespace ExtraLinq
         /// <returns>
         ///   <c>true</c> if the item count of <paramref name="source"/> is equal to or lower than <paramref name="expectedMaxItemCount"/>; otherwise, <c>false</c>.
         /// </returns>
-        public static bool CountsMax<TSource>(this IEnumerable<TSource> source, int expectedMaxItemCount)
+        public static bool HasAtMost<TSource>(this IEnumerable<TSource> source, int expectedMaxItemCount)
         {
-            return CountsMax(source, expectedMaxItemCount, _ => true);
+            return HasAtMost(source, expectedMaxItemCount, _ => true);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace ExtraLinq
         /// <returns>
         ///   <c>true</c> if the item count of satisfying items is equal to or less than <paramref name="expectedMaxItemCount"/>; otherwise, <c>false</c>.
         /// </returns>
-        public static bool CountsMax<TSource>(this IEnumerable<TSource> source, int expectedMaxItemCount, Func<TSource, bool> predicate)
+        public static bool HasAtMost<TSource>(this IEnumerable<TSource> source, int expectedMaxItemCount, Func<TSource, bool> predicate)
         {
             ThrowIf.Argument.IsNull(source, "source");
             ThrowIf.Argument.IsNull(predicate, "predicate");

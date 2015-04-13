@@ -63,7 +63,7 @@
     <Compile Include="IEnumerable\IsEmpty.cs" />
     <Compile Include="IEnumerable\Intersperse.cs" />
     <Compile Include="IEnumerable\CountsMin.cs" />
-    <Compile Include="IEnumerable\CountsMax.cs" />
+    <Compile Include="IEnumerable\HasAtMost.cs" />
     <Compile Include="NameValueCollection\ToKeyValuePairs.cs" />
     <Compile Include="NameValueCollection\ToDictionary.cs" />
     <Compile Include="PartitionedSequence.cs" />
