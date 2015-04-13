@@ -5,6 +5,15 @@ namespace ExtraLinq
 {
     public static partial class EnumerableExtensions
     {
+        /// <summary>
+        /// Splits the given sequence into chunks of the given size.
+        /// If the sequence length isn't evenly divisible by the chunk size,
+        /// the last chunk will contain all remaining elements.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The sequence.</param>
+        /// <param name="chunkSize">The number of elements per chunk.</param>
+        /// <returns>The chunked sequence.</returns>
         public static IEnumerable<TSource[]> Chunk<TSource>(this IEnumerable<TSource> source, int chunkSize)
         {
             ThrowIf.Argument.IsNull(source, "source");
