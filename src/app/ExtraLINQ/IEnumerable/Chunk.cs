@@ -7,6 +7,7 @@ namespace ExtraLinq
         public static IEnumerable<TSource[]> Chunk<TSource>(this IEnumerable<TSource> source, int chunkLength)
         {
             ThrowIf.Argument.IsNull(source, "source");
+            ThrowIf.Argument.IsZeroOrNegative(chunkLength, "chunkLength");
 
             return ChunkIterator(source, chunkLength);
         }
