@@ -8,11 +8,11 @@ namespace ExtraLinq.Tests
     public class WithoutTests
     {
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Without('c'));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Without('c'));
         }
 
         [Fact]
@@ -34,15 +34,15 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNullWithCollection()
+        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNullWithCollection()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Without(new List<char> { 'c' }));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Without(new List<char> { 'c' }));
         }
 
         [Fact]
-        public void ReturnsCollectionWithoutSpecifiedItem()
+        public void ReturnsSequenceWithoutSpecifiedItem()
         {
             IEnumerable<char> letters = "abcd";
             const char letterToRemove = 'a';
@@ -54,7 +54,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsCollectionWithoutSpecifiedItems()
+        public void ReturnsSequenceWithoutSpecifiedItems()
         {
             IEnumerable<char> letters = "abcd";
 
@@ -66,7 +66,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsUnmodifiedCollectionWhenCollectionDoesNotContainItem()
+        public void ReturnsUnmodifiedSequenceWhenSequenceDoesNotContainAnyItemToRemove()
         {
             IEnumerable<char> letters = "abcd";
             const char letterToRemove = 'z';
@@ -77,12 +77,12 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNullWithEqualityComparer()
+        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNullWithEqualityComparer()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
             IEqualityComparer<char> stringLengthEqualityComparer = new StringLengthEqualityComparer<char>();
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Without(stringLengthEqualityComparer, 'c'));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Without(stringLengthEqualityComparer, 'c'));
         }
 
         [Fact]
@@ -104,7 +104,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsCollectionWithoutItemsEqualToPassedItem()
+        public void ReturnsSequenceWithoutItemsEqualToPassedItem()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana", "cherry" };
             const string itemToRemove = "banana";
@@ -130,7 +130,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsUnmodifiedCollectionWhenCollectionDoesNotContainItemWithEqualityComparer()
+        public void ReturnsUnmodifiedSequenceWhenSequenceDoesNotContainAnyItemToRemoveWithEqualityComparer()
         {
             IEnumerable<string> stringNumbers = new[] { "1", "22", "333", "4444" };
             const string itemToRemove = "55555";

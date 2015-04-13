@@ -9,15 +9,15 @@ namespace ExtraLinq.Tests
     public class RandomTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Random());
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Random());
         }
 
         [Fact]
-        public void ReturnsItemContainedWithinCollection()
+        public void OnlyReturnsElementFoundWithinSequence()
         {
             IEnumerable<char> letters = "abcde";
 
@@ -27,12 +27,12 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithRandom()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNullWithRandom()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
             var random = new Random();
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Random(random));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Random(random));
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsItemContainedWithinCollectionWithRandom()
+        public void OnlyReturnsElementFoundWithinSequenceWithRandom()
         {
             IEnumerable<char> letters = "abcde";
             const int arbitrarySeed = 1337;
@@ -57,12 +57,12 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithCount()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNullWithCount()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
             const int validItemCount = 0;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Random(validItemCount));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Random(validItemCount));
         }
 
         [Fact]
@@ -75,7 +75,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentOutOfRangeExceptionWhenCountIsGreaterThanCollectionCount()
+        public void ThrowsArgumentOutOfRangeExceptionWhenCountIsGreaterThanSequenceCount()
         {
             IEnumerable<char> letters = "abcde";
             const int invalidItemCount = 100;
@@ -84,7 +84,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsItemsContainedWithinCollection()
+        public void OnlyReturnsItemsFoundWithinSequence()
         {
             IEnumerable<char> letters = "abcde";
 
@@ -97,13 +97,13 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithRandomAndCount()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNullWithRandomAndCount()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
             const int validItemCount = 0;
             var random = new Random();
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Random(validItemCount, random));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Random(validItemCount, random));
         }
 
         [Fact]
@@ -126,7 +126,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsItemsContainedWithinCollectionWithRandomAndCount()
+        public void OnlyReturnsItemsFoundWithinSequenceWithRandomAndCount()
         {
             IEnumerable<char> letters = "abcde";
             const int arbitrarySeed = 1337;

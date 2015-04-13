@@ -5,12 +5,12 @@ namespace ExtraLinq
     public static partial class EnumerableExtensions
     {
         /// <summary>
-        /// Returns all elements of the specified collection separated by the given separator.
+        /// Returns all elements of the specified sequence separated by the given separator.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The <see cref="IEnumerable{TSource}"/> to intersperse the separator into.</param>
         /// <param name="separator">The separator.</param>
-        /// <returns>The collection containing the interspersed separator.</returns>
+        /// <returns>The sequence containing the interspersed separator.</returns>
         /// <example>
         /// <code>
         /// int[] numbers = { 1, 2, 3, 4 };

@@ -9,11 +9,11 @@ namespace ExtraLinq.Tests
     public class HasExactlyTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<object> nullCollection = null;
+            IEnumerable<object> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.HasExactly(1));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.HasExactly(1));
         }
 
         [Fact]
@@ -47,20 +47,20 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithPredicate()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNullWithPredicate()
         {
-            IEnumerable<object> nullCollection = null;
+            IEnumerable<object> nullSequence = null;
             Func<object, bool> alwaysTruePredicate = _ => true;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.HasExactly(1, alwaysTruePredicate));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.HasExactly(1, alwaysTruePredicate));
         }
 
         [Fact]
         public void ThrowsArgumentNullExceptionWhenPredicateIsNull()
         {
-            IEnumerable<char> validCollection = "abcd";
+            IEnumerable<char> characters = "abcd";
 
-            Assert.Throws<ArgumentNullException>(() => validCollection.HasExactly(1, null));
+            Assert.Throws<ArgumentNullException>(() => characters.HasExactly(1, null));
         }
 
         [Fact]

@@ -8,11 +8,11 @@ namespace ExtraLinq
     public static partial class EnumerableExtensions
     {
         /// <summary>
-        /// Determines whether the specified collection contains exactly the specified number of items.
+        /// Determines whether the specified sequence contains exactly the specified number of items.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The <see cref="IEnumerable{TSource}"/> to count.</param>
-        /// <param name="expectedItemCount">The number of items the specified collection is expected to contain.</param>
+        /// <param name="expectedItemCount">The number of items the specified sequence is expected to contain.</param>
         /// <returns>
         ///   <c>true</c> if <paramref name="source"/> contains exactly <paramref name="expectedItemCount"/> items; otherwise, <c>false</c>.
         /// </returns>
@@ -32,11 +32,11 @@ namespace ExtraLinq
         }
 
         /// <summary>
-        /// Determines whether the specified collection contains exactly the specified number of items satisfying the specified condition.
+        /// Determines whether the specified sequence contains exactly the specified number of items satisfying the specified condition.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The <see cref="IEnumerable{TSource}"/> to count satisfying items.</param>
-        /// <param name="expectedItemCount">The number of matching items the specified collection is expected to contain.</param>
+        /// <param name="expectedItemCount">The number of matching items the specified sequence is expected to contain.</param>
         /// <param name="predicate">A function to test each element for a condition.</param>
         /// <returns>
         ///   <c>true</c> if <paramref name="source"/> contains exactly <paramref name="expectedItemCount"/> items satisfying the condition; otherwise, <c>false</c>.

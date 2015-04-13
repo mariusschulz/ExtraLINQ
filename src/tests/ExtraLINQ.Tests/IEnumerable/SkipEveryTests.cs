@@ -9,11 +9,11 @@ namespace ExtraLinq.Tests
     public class SkipEveryTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.SkipEvery(2));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.SkipEvery(2));
         }
 
         [Theory]

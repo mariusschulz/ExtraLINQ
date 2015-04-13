@@ -29,11 +29,11 @@ namespace ExtraLinq
         /// <param name="source">The <see cref="IEnumerable{TSource}"/> to return the elements from.</param>
         /// <param name="elementCount">The number of random elements to return.</param>
         /// <returns>
-        /// A collection of distinct random elements from <paramref name="source"/>.
+        /// A sequence of distinct random elements from <paramref name="source"/>.
         /// </returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>   
         /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when <paramref name="elementCount"/> is negative or greater than the collection's element count.
+        /// Thrown when <paramref name="elementCount"/> is negative or greater than the sequence's element count.
         ///   </exception>
         public static IEnumerable<TSource> Random<TSource>(this IEnumerable<TSource> source, int elementCount)
         {
@@ -83,7 +83,7 @@ namespace ExtraLinq
         /// <param name="elementCount">The number of random elements to return.</param>
         /// <param name="random">The random number generator used to select random elements.</param>
         /// <returns>
-        /// A collection of random elements from <paramref name="source"/>.
+        /// A sequence of random elements from <paramref name="source"/>.
         /// </returns>
         /// <exception cref="ArgumentNullException">
         ///   <para><paramref name="source"/> is null.</para>
@@ -91,7 +91,7 @@ namespace ExtraLinq
         ///   <para><paramref name="random"/> is null.</para>
         ///   </exception>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when <paramref name="elementCount"/> is negative or greater than the collection's element count.
+        /// Thrown when <paramref name="elementCount"/> is negative or greater than the sequence's element count.
         /// </exception>
         public static IEnumerable<TSource> Random<TSource>(this IEnumerable<TSource> source, int elementCount, Random random)
         {
@@ -124,10 +124,10 @@ namespace ExtraLinq
 
         private static IEnumerable<TSource> PickRandomElements<TSource>(IEnumerable<TSource> source, int elementCount, Random random)
         {
-            return ShuffleCollection(source, random).Take(elementCount);
+            return ShuffleSequence(source, random).Take(elementCount);
         }
 
-        public static IEnumerable<TSource> ShuffleCollection<TSource>(IEnumerable<TSource> source, Random random)
+        public static IEnumerable<TSource> ShuffleSequence<TSource>(IEnumerable<TSource> source, Random random)
         {
             TSource[] items = source.ToArray();
 

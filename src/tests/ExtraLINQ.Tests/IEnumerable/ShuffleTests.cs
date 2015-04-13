@@ -9,15 +9,15 @@ namespace ExtraLinq.Tests
     public class ShuffleTests
     {
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Shuffle());
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Shuffle());
         }
 
         [Fact]
-        public void OnlyReturnsItemsContainedWithinCollection()
+        public void OnlyReturnsItemsFoundWithinSequence()
         {
             char[] letters = "abcde".ToCharArray();
 
@@ -32,12 +32,12 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNullWithRandom()
+        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNullWithRandom()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
             var random = new Random();
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Shuffle(random));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Shuffle(random));
         }
 
         [Fact]

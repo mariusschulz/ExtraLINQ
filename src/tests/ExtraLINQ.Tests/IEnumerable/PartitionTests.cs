@@ -9,11 +9,11 @@ namespace ExtraLinq.Tests
     public class PartitionTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Partition(char.IsUpper));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Partition(char.IsUpper));
         }
 
         [Fact]

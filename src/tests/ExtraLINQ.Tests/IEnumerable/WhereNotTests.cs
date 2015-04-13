@@ -8,11 +8,11 @@ namespace ExtraLinq.Tests
     public class WhereNotTests
     {
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.WhereNot(_ => true));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.WhereNot(_ => true));
         }
 
         [Fact]
@@ -37,12 +37,12 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNullForPredicateWithIndex()
+        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNullForPredicateWithIndex()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
             Func<char, int, bool> predicate = (index, character) => true;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.WhereNot(predicate));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.WhereNot(predicate));
         }
 
         [Fact]

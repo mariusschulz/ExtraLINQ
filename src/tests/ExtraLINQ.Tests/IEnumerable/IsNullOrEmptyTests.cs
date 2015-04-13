@@ -7,17 +7,17 @@ namespace ExtraLinq.Tests
     public class IsNullOrEmptyTests
     {
         [Fact]
-        public void ReturnsTrueWhenCollectionIsNull()
+        public void ReturnsTrueWhenSequenceIsNull()
         {
-            IEnumerable<object> nullCollection = null;
+            IEnumerable<object> nullSequence = null;
 
-            bool isNullOrEmpty = nullCollection.IsNullOrEmpty();
+            bool isNullOrEmpty = nullSequence.IsNullOrEmpty();
 
             isNullOrEmpty.Should().BeTrue();
         }
 
         [Fact]
-        public void ReturnsTrueWhenCollectionIsEmpty()
+        public void ReturnsTrueWhenSequenceIsEmpty()
         {
             IEnumerable<string> emptyArray = new string[0];
 
@@ -27,7 +27,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsFalseWhenCollectionContainsElements()
+        public void ReturnsFalseWhenSequenceContainsElements()
         {
             IEnumerable<string> singleElementArray = new[] { "test" };
 

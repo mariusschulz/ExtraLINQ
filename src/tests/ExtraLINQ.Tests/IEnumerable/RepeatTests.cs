@@ -10,11 +10,11 @@ namespace ExtraLinq.Tests
     public class RepeatTests
     {
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Repeat(1));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Repeat(1));
         }
 
         [Fact]

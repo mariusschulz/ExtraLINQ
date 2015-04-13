@@ -10,11 +10,11 @@ namespace ExtraLinq.Tests
     public class ChunkTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<object> nullCollection = null;
+            IEnumerable<object> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Chunk(2));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Chunk(2));
         }
 
         [Theory]

@@ -6,7 +6,7 @@ namespace ExtraLinq
     public static partial class EnumerableExtensions
     {
         /// <summary>
-        /// Determines whether the specified collection is empty.
+        /// Determines whether the given sequence is empty.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The <see cref="IEnumerable{TSource}"/> to check for emptiness.</param>

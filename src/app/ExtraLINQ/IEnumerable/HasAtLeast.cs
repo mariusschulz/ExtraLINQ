@@ -8,11 +8,11 @@ namespace ExtraLinq
     public static partial class EnumerableExtensions
     {
         /// <summary>
-        /// Determines whether the specified collection's item count is equal to or greater than <paramref name="expectedMinItemCount"/>.
+        /// Determines whether the specified sequence's item count is equal to or greater than <paramref name="expectedMinItemCount"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The <see cref="IEnumerable{TSource}"/> whose items to count.</param>
-        /// <param name="expectedMinItemCount">The minimum number of items the specified collection is expected to contain.</param>
+        /// <param name="expectedMinItemCount">The minimum number of items the specified sequence is expected to contain.</param>
         /// <returns>
         ///   <c>true</c> if the item count of <paramref name="source"/> is equal to or greater than <paramref name="expectedMinItemCount"/>; otherwise, <c>false</c>.
         /// </returns>
@@ -22,11 +22,11 @@ namespace ExtraLinq
         }
 
         /// <summary>
-        /// Determines whether the specified collection contains exactly <paramref name="expectedMinItemCount"/> or more items satisfying a condition.
+        /// Determines whether the specified sequence contains exactly <paramref name="expectedMinItemCount"/> or more items satisfying a condition.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The <see cref="IEnumerable{TSource}"/> whose items to count.</param>
-        /// <param name="expectedMinItemCount">The minimum number of items satisfying the specified condition the specified collection is expected to contain.</param>
+        /// <param name="expectedMinItemCount">The minimum number of items satisfying the specified condition the specified sequence is expected to contain.</param>
         /// <param name="predicate">A function to test each element for a condition.</param>
         /// <returns>
         ///   <c>true</c> if the item count of satisfying items is equal to or greater than <paramref name="expectedMinItemCount"/>; otherwise, <c>false</c>.

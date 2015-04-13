@@ -8,21 +8,21 @@ namespace ExtraLinq.Tests
     public class NoneTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<object> nullCollection = null;
+            IEnumerable<object> nullSequence = null;
             Func<object, bool> alwaysTruePredicate = _ => true;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.None(alwaysTruePredicate));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.None(alwaysTruePredicate));
         }
 
         [Fact]
         public void ThrowsArgumentNullExceptionWhenPredicateIsNull()
         {
-            string[] validCollection = { string.Empty };
+            string[] strings = { string.Empty };
             Func<object, bool> nullPredicate = null;
 
-            Assert.Throws<ArgumentNullException>(() => validCollection.None(nullPredicate));
+            Assert.Throws<ArgumentNullException>(() => strings.None(nullPredicate));
         }
 
         [Fact]

@@ -9,12 +9,12 @@ namespace ExtraLinq.Tests
     public class TapTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<object> nullCollection = null;
+            IEnumerable<object> nullSequence = null;
             Action<object> doNothing = _ => { };
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Tap(doNothing));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Tap(doNothing));
         }
 
         [Fact]
@@ -50,12 +50,12 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNullForActionWithIndex()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNullForActionWithIndex()
         {
-            IEnumerable<object> nullCollection = null;
+            IEnumerable<object> nullSequence = null;
             Action<object, int> doNothing = (element, index) => { };
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Tap(doNothing));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Tap(doNothing));
         }
 
         [Fact]

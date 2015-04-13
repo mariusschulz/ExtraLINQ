@@ -9,11 +9,11 @@ namespace ExtraLinq.Tests
     public class CycleTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<object> nullCollection = null;
+            IEnumerable<object> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Cycle());
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Cycle());
         }
 
         [Fact]

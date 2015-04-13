@@ -9,11 +9,11 @@ namespace ExtraLinq.Tests
     public class TakeEveryTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.TakeEvery(2));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.TakeEvery(2));
         }
 
         [Theory]

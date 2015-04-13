@@ -9,11 +9,11 @@ namespace ExtraLinq.Tests
     public class JoinedByTests
     {
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<char> nullCollection = null;
+            IEnumerable<char> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.JoinedBy(""));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.JoinedBy(""));
         }
 
         [Fact]

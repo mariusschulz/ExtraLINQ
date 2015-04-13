@@ -9,11 +9,11 @@ namespace ExtraLinq.Tests
     public class IntersperseTests
     {
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<string> nullCollection = null;
+            IEnumerable<string> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.Intersperse("c"));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.Intersperse("c"));
         }
 
         [Fact]

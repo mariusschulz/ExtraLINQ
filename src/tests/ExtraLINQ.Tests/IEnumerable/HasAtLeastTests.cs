@@ -9,11 +9,11 @@ namespace ExtraLinq.Tests
     public class HasAtLeastTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<object> nullCollection = null;
+            IEnumerable<object> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.HasAtLeast(1));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.HasAtLeast(1));
         }
 
         [Fact]
@@ -53,21 +53,21 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithPredicate()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNullWithPredicate()
         {
-            IEnumerable<object> nullCollection = null;
+            IEnumerable<object> nullSequence = null;
             Func<object, bool> alwaysTruePredicate = _ => true;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.HasAtLeast(1, alwaysTruePredicate));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.HasAtLeast(1, alwaysTruePredicate));
         }
 
         [Fact]
         public void ThrowsArgumentNullExceptionWhenPredicateIsNull()
         {
-            IEnumerable<char> validCollection = "abcd";
+            IEnumerable<char> letters = "abcd";
             Func<char, bool> nullPredicate = null;
 
-            Assert.Throws<ArgumentNullException>(() => validCollection.HasAtLeast(1, nullPredicate));
+            Assert.Throws<ArgumentNullException>(() => letters.HasAtLeast(1, nullPredicate));
         }
 
         [Fact]
@@ -83,13 +83,13 @@ namespace ExtraLinq.Tests
         public void ReturnsTrueWhenActualCountIsGreaterThanOrEqualToExpectedMinCountWithPredicate()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
-            IEnumerable<string> emptyCollection = Enumerable.Empty<string>();
+            IEnumerable<string> emptySequence = Enumerable.Empty<string>();
 
             fruits.HasAtLeast(1, fruit => fruit.StartsWith("a")).Should().BeTrue();
             fruits.HasAtLeast(2, fruit => fruit.StartsWith("a")).Should().BeTrue();
             fruits.HasAtLeast(1, fruit => fruit.StartsWith("b")).Should().BeTrue();
 
-            emptyCollection.HasAtLeast(0, _ => true).Should().BeTrue();
+            emptySequence.HasAtLeast(0, _ => true).Should().BeTrue();
         }
 
         [Fact]

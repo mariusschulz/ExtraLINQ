@@ -9,11 +9,11 @@ namespace ExtraLinq.Tests
     public class HasAtMostTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
         {
-            IEnumerable<object> nullCollection = null;
+            IEnumerable<object> nullSequence = null;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.HasAtMost(1));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.HasAtMost(1));
         }
 
         [Fact]
@@ -28,16 +28,16 @@ namespace ExtraLinq.Tests
         public void ReturnsTrueWhenActualCountIsEqualToOrLowerThanExpectedCount()
         {
             IEnumerable<char> letters = "abcd";
-            IEnumerable<char> emptyCollection = Enumerable.Empty<char>();
+            IEnumerable<char> emptySequence = Enumerable.Empty<char>();
 
             letters.HasAtMost(4).Should().BeTrue();
             letters.HasAtMost(5).Should().BeTrue();
-            emptyCollection.HasAtMost(0).Should().BeTrue();
+            emptySequence.HasAtMost(0).Should().BeTrue();
 
             // Test ICollection.Count early exit strategy
             letters.ToList().HasAtMost(4).Should().BeTrue();
             letters.ToList().HasAtMost(5).Should().BeTrue();
-            emptyCollection.ToList().HasAtMost(0).Should().BeTrue();
+            emptySequence.ToList().HasAtMost(0).Should().BeTrue();
         }
 
         [Fact]
@@ -54,29 +54,29 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNullWithPredicate()
+        public void ThrowsArgumentNullExceptionWhenSequenceIsNullWithPredicate()
         {
-            IEnumerable<object> nullCollection = null;
+            IEnumerable<object> nullSequence = null;
             Func<object, bool> alwaysTruePredicate = _ => true;
 
-            Assert.Throws<ArgumentNullException>(() => nullCollection.HasAtMost(1, alwaysTruePredicate));
+            Assert.Throws<ArgumentNullException>(() => nullSequence.HasAtMost(1, alwaysTruePredicate));
         }
 
         [Fact]
         public void ThrowsArgumentNullExceptionWhenPredicateIsNull()
         {
-            IEnumerable<char> validCollection = "abcd";
+            IEnumerable<char> letters = "abcd";
 
-            Assert.Throws<ArgumentNullException>(() => validCollection.HasAtMost(1, null));
+            Assert.Throws<ArgumentNullException>(() => letters.HasAtMost(1, null));
         }
 
         [Fact]
         public void ThrowsArgumentOutOfRangeExceptionWhenExpectedMaxCountIsNegative()
         {
-            IEnumerable<char> validCollection = "abcd";
+            IEnumerable<char> letters = "abcd";
             Func<char, bool> validPredicate = c => c == 'a';
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => validCollection.HasAtMost(-1, validPredicate));
+            Assert.Throws<ArgumentOutOfRangeException>(() => letters.HasAtMost(-1, validPredicate));
         }
 
         [Fact]
