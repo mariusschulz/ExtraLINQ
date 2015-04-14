@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\IntExtensions.cs" />
+    <Compile Include="IntExtensions.cs" />
     <Compile Include="IEnumerable\Chunk.cs" />
     <Compile Include="IEnumerable\Flatten.cs" />
     <Compile Include="IEnumerable\Distinct.cs" />
@@ -53,7 +53,7 @@
     <Compile Include="IEnumerable\Repeat.cs" />
     <Compile Include="IEnumerable\WhereNot.cs" />
     <Compile Include="IEnumerable\HasExactly.cs" />
-    <Compile Include="IEnumerable\EnumerableExtensions.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="IEnumerable\Tap.cs" />
     <Compile Include="IEnumerable\Without.cs" />
     <Compile Include="IEnumerable\Shuffle.cs" />
