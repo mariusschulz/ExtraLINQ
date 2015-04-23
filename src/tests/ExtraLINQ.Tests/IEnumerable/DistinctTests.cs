@@ -58,7 +58,7 @@ namespace ExtraLinq.Tests
             }
 
             [Fact]
-            public static void Returns_only_tuples_whose_selected_value_is_considered_distinct()
+            public static void Returns_only_tuples_whose_selected_values_are_considered_distinct()
             {
                 Tuple<int, string>[] digitNames =
                 {
@@ -76,7 +76,7 @@ namespace ExtraLinq.Tests
             }
 
             [Fact]
-            public static void Returns_only_strings_whose_selected_value_is_considered_distinct()
+            public static void Returns_only_strings_whose_selected_values_are_considered_distinct()
             {
                 string[] spellingsOfJavaScript = { "JavaScript", "Javascript", "javascript" };
 
