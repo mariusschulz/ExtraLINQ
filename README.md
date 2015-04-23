@@ -3,6 +3,13 @@
 ExtraLINQ provides additional extension methods for working with .NET collections.
 
 
+## Installation
+
+ExtraLINQ is [available as a NuGet package](http://www.nuget.org/packages/ExtraLINQ):
+
+    Install-Package ExtraLINQ
+
+
 ## Extensions
 
 Extensions for collections of type `IEnumerable<T>`:
@@ -22,10 +29,3 @@ Extensions for collections of type `NameValueCollection`:
 
 - `ToDictionary` — Returns a new dictionary from the specified collection.
 - `ToKeyValuePairs` — Enumerates the specified collection as a sequence of key-value pairs.
-
-
-## Installation
-
-ExtraLINQ is [available as a NuGet package](http://www.nuget.org/packages/ExtraLINQ):
-
-    Install-Package ExtraLINQ
