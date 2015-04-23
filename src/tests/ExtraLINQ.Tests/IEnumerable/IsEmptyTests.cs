@@ -7,7 +7,7 @@ namespace ExtraLinq.Tests
     public class IsEmptyTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
+        public void Throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<object> nullSequence = null;
 

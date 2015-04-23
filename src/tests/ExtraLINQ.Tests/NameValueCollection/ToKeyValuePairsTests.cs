@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using FluentAssertions;
@@ -9,7 +9,7 @@ namespace ExtraLinq.Tests
     public class ToKeyValuePairsTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenCollectionIsNull()
+        public void Throws_ArgumentNullException_when_collection_is_null()
         {
             NameValueCollection collection = null;
 
@@ -17,7 +17,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnedDictionaryContainsExactlyTheElementsFromTheNameValueCollection()
+        public void Returned_dictionary_contains_exactly_the_elements_from_the_name_value_collection()
         {
             var collection = new NameValueCollection
             {
@@ -37,7 +37,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsAnEmptyDictionaryForAnEmptyNameValueCollection()
+        public void Returns_an_empty_dictionary_for_an_empty_name_value_collection()
         {
             var emptyCollection = new NameValueCollection();
 

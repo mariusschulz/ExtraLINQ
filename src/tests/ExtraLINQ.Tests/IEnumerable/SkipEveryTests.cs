@@ -9,7 +9,7 @@ namespace ExtraLinq.Tests
     public class SkipEveryTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
+        public void Throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<char> nullSequence = null;
 
@@ -29,7 +29,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsAnEmptySequenceWhenStepEqualsOne()
+        public void Returns_an_empty_sequence_when_step_equals_one()
         {
             int[] numbers = { 1, 2, 3, 4, 5 };
 
@@ -39,7 +39,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsEveryOtherElementWhenStepEqualsTwo()
+        public void Returns_every_other_element_when_step_equals_two()
         {
             int[] numbers = { 1, 2, 3, 4, 5 };
 
@@ -49,7 +49,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void SkipsElementsCorrectly()
+        public void Skips_elements_correctly()
         {
             int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
 
@@ -59,7 +59,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsAllElementsWhenStepIsLargerThanTheSequenceLength()
+        public void Returns_all_elements_when_step_is_larger_than_the_sequence_length()
         {
             int[] numbers = { 1, 2, 3, 4, 5 };
 

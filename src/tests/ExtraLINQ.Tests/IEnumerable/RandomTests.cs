@@ -9,7 +9,7 @@ namespace ExtraLinq.Tests
     public class RandomTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
+        public void Throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<char> nullSequence = null;
 
@@ -17,7 +17,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void OnlyReturnsElementFoundWithinSequence()
+        public void Only_returns_element_found_within_sequence()
         {
             IEnumerable<char> letters = "abcde";
 
@@ -27,7 +27,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenSequenceIsNullWithRandom()
+        public void Throws_ArgumentNullException_when_sequence_is_null_with_random()
         {
             IEnumerable<char> nullSequence = null;
             var random = new Random();
@@ -36,7 +36,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenRandomIsNull()
+        public void Throws_ArgumentNullException_when_random_is_null()
         {
             IEnumerable<char> letters = "abcde";
 
@@ -44,7 +44,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void OnlyReturnsElementFoundWithinSequenceWithRandom()
+        public void Only_returns_element_found_within_sequence_with_random()
         {
             IEnumerable<char> letters = "abcde";
             const int arbitrarySeed = 1337;
@@ -57,7 +57,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenSequenceIsNullWithCount()
+        public void Throws_ArgumentNullException_when_sequence_is_null_with_count()
         {
             IEnumerable<char> nullSequence = null;
             const int validItemCount = 0;
@@ -66,7 +66,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentOutOfRangeExceptionWhenCountIsNegative()
+        public void Throws_ArgumentOutOfRangeException_when_count_is_negative()
         {
             IEnumerable<char> letters = "abcde";
             const int invalidItemCount = -5;
@@ -75,7 +75,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentOutOfRangeExceptionWhenCountIsGreaterThanSequenceCount()
+        public void Throws_ArgumentOutOfRangeException_when_count_is_greater_than_sequence_count()
         {
             IEnumerable<char> letters = "abcde";
             const int invalidItemCount = 100;
@@ -84,7 +84,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void OnlyReturnsItemsFoundWithinSequence()
+        public void Only_returns_items_found_within_sequence()
         {
             IEnumerable<char> letters = "abcde";
 
@@ -97,7 +97,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenSequenceIsNullWithRandomAndCount()
+        public void Throws_ArgumentNullException_when_sequence_is_null_with_random_and_count()
         {
             IEnumerable<char> nullSequence = null;
             const int validItemCount = 0;
@@ -107,7 +107,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentOutOfRangeExceptionWhenCountIsNegativeWithRandomAndCount()
+        public void Throws_ArgumentOutOfRangeException_when_count_is_negative_with_random_and_count()
         {
             IEnumerable<char> letters = "abcde";
             const int negativeElementsCount = -5;
@@ -117,7 +117,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenRandomIsNullWithRandomAndCount()
+        public void Throws_ArgumentNullException_when_random_is_null_with_random_and_count()
         {
             IEnumerable<char> letters = "abcde";
             const int negativeElementsCount = 2;
@@ -126,7 +126,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void OnlyReturnsItemsFoundWithinSequenceWithRandomAndCount()
+        public void Only_returns_items_found_within_sequence_with_random_and_count()
         {
             IEnumerable<char> letters = "abcde";
             const int arbitrarySeed = 1337;

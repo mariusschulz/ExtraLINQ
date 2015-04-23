@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
@@ -8,7 +8,7 @@ namespace ExtraLinq.Tests
     public class FlattenTests
     {
         [Fact]
-        public static void ThrowsArgumentNullExceptionWhenSequenceIsNull()
+        public static void Throws_ArgumentNullException_when_sequence_is_null()
         {
             int[][] numbers = null;
 
@@ -16,7 +16,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public static void FlattensAnArrayOfArraysOfIntegers()
+        public static void Flattens_an_array_of_arrays_of_integers()
         {
             int[][] numbers =
             {
@@ -31,7 +31,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public static void ReturnsAnEmptySequenceWhenSequenceIsEmpty()
+        public static void Returns_an_empty_sequence_when_sequence_is_empty()
         {
             int[][] numbers = { };
 

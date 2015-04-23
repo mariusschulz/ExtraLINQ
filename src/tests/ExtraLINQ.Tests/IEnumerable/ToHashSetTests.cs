@@ -8,7 +8,7 @@ namespace ExtraLinq.Tests
     public class ToHashSetTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
+        public void Throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<char> nullSequence = null;
 
@@ -16,7 +16,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsAnEmptyHashSetForAnEmptySequence()
+        public void Returns_an_empty_hash_set_for_an_empty_sequence()
         {
             int[] numbers = { };
 
@@ -26,7 +26,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void TheReturnedHashSetContainsAllDistinctValues()
+        public void The_returned_hash_set_contains_all_distinct_values()
         {
             int[] numbers = { 1, 2, 2, 3, 3, 3 };
 

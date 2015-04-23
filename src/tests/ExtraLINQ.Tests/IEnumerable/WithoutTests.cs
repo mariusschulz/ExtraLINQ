@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
@@ -8,7 +8,7 @@ namespace ExtraLinq.Tests
     public class WithoutTests
     {
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNull()
+        public void Eagerly_throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<char> nullSequence = null;
 
@@ -16,7 +16,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNull()
+        public void Eagerly_throws_ArgumentNullException_when_items_to_remove_collection_is_null()
         {
             IEnumerable<char> letters = "abcd";
             IEnumerable<char> itemsToRemove = null;
@@ -25,7 +25,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNullWithArray()
+        public void Eagerly_throws_ArgumentNullException_when_items_to_remove_collection_is_null_with_array()
         {
             IEnumerable<char> letters = "abcd";
             char[] itemsToRemove = null;
@@ -34,7 +34,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNullWithCollection()
+        public void Eagerly_throws_ArgumentNullException_when_sequence_is_null_with_collection()
         {
             IEnumerable<char> nullSequence = null;
 
@@ -42,7 +42,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsSequenceWithoutSpecifiedItem()
+        public void Returns_sequence_without_specified_item()
         {
             IEnumerable<char> letters = "abcd";
             const char letterToRemove = 'a';
@@ -54,7 +54,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsSequenceWithoutSpecifiedItems()
+        public void Returns_sequence_without_specified_items()
         {
             IEnumerable<char> letters = "abcd";
 
@@ -66,7 +66,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsUnmodifiedSequenceWhenSequenceDoesNotContainAnyItemToRemove()
+        public void Returns_unmodified_sequence_when_sequence_does_not_contain_any_item_to_remove()
         {
             IEnumerable<char> letters = "abcd";
             const char letterToRemove = 'z';
@@ -77,7 +77,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNullWithEqualityComparer()
+        public void Eagerly_throws_ArgumentNullException_when_sequence_is_null_with_equality_comparer()
         {
             IEnumerable<char> nullSequence = null;
             IEqualityComparer<char> stringLengthEqualityComparer = new StringLengthEqualityComparer<char>();
@@ -86,7 +86,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenItemsToRemoveCollectionIsNullWithEqualityComparer()
+        public void Eagerly_throws_ArgumentNullException_when_items_to_remove_collection_is_null_with_equality_comparer()
         {
             IEnumerable<char> letters = "abcd";
             IEqualityComparer<char> stringLengthEqualityComparer = new StringLengthEqualityComparer<char>();
@@ -95,7 +95,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenEqualityComparerIsNull()
+        public void Eagerly_throws_ArgumentNullException_when_equality_comparer_is_null()
         {
             IEnumerable<char> letters = "abcd";
             IEqualityComparer<char> nullEqualityComparer = null;
@@ -104,7 +104,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsSequenceWithoutItemsEqualToPassedItem()
+        public void Returns_sequence_without_items_equal_to_passed_item()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana", "cherry" };
             const string itemToRemove = "banana";
@@ -118,7 +118,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void DoesNotRemoveItemsThatDoNotMatchThePassedItemButEachOther()
+        public void Does_not_remove_items_that_do_not_match_the_passed_item_but_each_other()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana", "cherry" };
             const string itemToRemove = "apricot";
@@ -130,7 +130,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsUnmodifiedSequenceWhenSequenceDoesNotContainAnyItemToRemoveWithEqualityComparer()
+        public void Returns_unmodified_sequence_when_sequence_does_not_contain_any_item_to_remove_with_equality_comparer()
         {
             IEnumerable<string> stringNumbers = new[] { "1", "22", "333", "4444" };
             const string itemToRemove = "55555";

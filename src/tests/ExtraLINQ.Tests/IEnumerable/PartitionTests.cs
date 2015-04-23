@@ -9,7 +9,7 @@ namespace ExtraLinq.Tests
     public class PartitionTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
+        public void Throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<char> nullSequence = null;
 
@@ -17,7 +17,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenPredicateIsNull()
+        public void Throws_ArgumentNullException_when_predicate_is_null()
         {
             int[] numbers = { 1, 2, 3 };
             Func<int, bool> nullPredicate = null;
@@ -26,7 +26,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsTwoEmptySequencesForAnEmptySequence()
+        public void Returns_two_empty_sequences_for_an_empty_sequence()
         {
             int[] numbers = { };
             Func<int, bool> isEven = x => x % 2 == 0;

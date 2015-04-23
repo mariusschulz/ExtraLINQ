@@ -9,7 +9,7 @@ namespace ExtraLinq.Tests
     public class HasExactlyTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
+        public void Throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<object> nullSequence = null;
 
@@ -17,7 +17,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentOutOfRangeExceptionWhenExpectedCountIsNegative()
+        public void Throws_ArgumentOutOfRangeException_when_expected_count_is_negative()
         {
             IEnumerable<char> letters = "abcde";
 
@@ -25,7 +25,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsTrueWhenActualCountEqualsExpectedCount()
+        public void Returns_true_when_actual_count_equals_expected_count()
         {
             IEnumerable<char> letters = "abcd";
 
@@ -36,7 +36,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsFalseWhenActualCountDoesNotEqualExpectedCount()
+        public void Returns_false_when_actual_count_does_not_equal_expected_count()
         {
             IEnumerable<char> letters = "abcd";
 
@@ -47,7 +47,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenSequenceIsNullWithPredicate()
+        public void Throws_ArgumentNullException_when_sequence_is_null_with_predicate()
         {
             IEnumerable<object> nullSequence = null;
             Func<object, bool> alwaysTruePredicate = _ => true;
@@ -56,7 +56,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenPredicateIsNull()
+        public void Throws_ArgumentNullException_when_predicate_is_null()
         {
             IEnumerable<char> characters = "abcd";
 
@@ -64,7 +64,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ThrowsArgumentOutOfRangeExceptionWhenExpectedCountIsNegativeAndPredicateIsValid()
+        public void Throws_ArgumentOutOfRangeException_when_expected_count_is_negative_and_predicate_is_valid()
         {
             IEnumerable<char> letters = "abcde";
             Func<char, bool> alwaysTruePredicate = _ => true;
@@ -73,7 +73,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsTrueWhenActualCountEqualsExpectedCountWithPredicate()
+        public void Returns_true_when_actual_count_equals_expected_count_with_predicate()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
 
@@ -83,7 +83,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsTrueWhenActualCountDoesNotEqualExpectedCountWithPredicate()
+        public void Returns_true_when_actual_count_does_not_equal_expected_count_with_predicate()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
 

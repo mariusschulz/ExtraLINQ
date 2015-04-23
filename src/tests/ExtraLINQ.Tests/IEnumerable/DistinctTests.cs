@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
@@ -11,7 +11,7 @@ namespace ExtraLinq.Tests
         public class WithoutEqualityComparer
         {
             [Fact]
-            public static void ThrowsArgumentNullExceptionWhenSequenceIsNull()
+            public static void Throws_ArgumentNullException_when_sequence_is_null()
             {
                 IEnumerable<int> numbers = null;
 
@@ -19,7 +19,7 @@ namespace ExtraLinq.Tests
             }
 
             [Fact]
-            public static void ThrowsArgumentNullExceptionWhenValueSelectorIsNull()
+            public static void Throws_ArgumentNullException_when_value_selector_is_null()
             {
                 int[] numbers = { };
                 Func<int, string> valueSelector = null;
@@ -28,7 +28,7 @@ namespace ExtraLinq.Tests
             }
 
             [Fact]
-            public static void ReturnsAnEmptySequenceWhenSequenceIsEmpty()
+            public static void Returns_an_empty_sequence_when_sequence_is_empty()
             {
                 int[] numbers = { };
 
@@ -38,7 +38,7 @@ namespace ExtraLinq.Tests
             }
 
             [Fact]
-            public static void ReturnsUnmodifiedSequenceIfSequenceHasOneElement()
+            public static void Returns_unmodified_sequence_if_sequence_has_one_element()
             {
                 int[] numbers = { 1 };
 
@@ -48,7 +48,7 @@ namespace ExtraLinq.Tests
             }
 
             [Fact]
-            public static void ReturnsUnmodifiedSequenceIfSequenceHasTwoDifferentElements()
+            public static void Returns_unmodified_sequence_if_sequence_has_two_different_elements()
             {
                 int[] numbers = { 1, 2 };
 
@@ -58,7 +58,7 @@ namespace ExtraLinq.Tests
             }
 
             [Fact]
-            public static void ReturnsOnlyTuplesWhoseSelectedValueIsConsideredDistinct()
+            public static void Returns_only_tuples_whose_selected_value_is_considered_distinct()
             {
                 Tuple<int, string>[] digitNames =
                 {
@@ -76,7 +76,7 @@ namespace ExtraLinq.Tests
             }
 
             [Fact]
-            public static void ReturnsOnlyStringsWhoseSelectedValueIsConsideredDistinct()
+            public static void Returns_only_strings_whose_selected_value_is_considered_distinct()
             {
                 string[] spellingsOfJavaScript = { "JavaScript", "Javascript", "javascript" };
 
@@ -89,7 +89,7 @@ namespace ExtraLinq.Tests
         public class WithEqualityComparer
         {
             [Fact]
-            public static void ThrowsArgumentNullExceptionWhenSequenceIsNull()
+            public static void Throws_ArgumentNullException_when_sequence_is_null()
             {
                 IEnumerable<int> numbers = null;
                 Func<int, int> valueSelector = n => n % 2;
@@ -99,7 +99,7 @@ namespace ExtraLinq.Tests
             }
 
             [Fact]
-            public static void ThrowsArgumentNullExceptionWhenValueSelectorIsNull()
+            public static void Throws_ArgumentNullException_when_value_selector_is_null()
             {
                 int[] numbers = { };
                 Func<int, int> valueSelector = null;
@@ -109,7 +109,7 @@ namespace ExtraLinq.Tests
             }
 
             [Fact]
-            public static void ThrowsArgumentNullExceptionWhenEqualityComparerIsNull()
+            public static void Throws_ArgumentNullException_when_equality_comparer_is_null()
             {
                 int[] numbers = { };
                 Func<int, int> valueSelector = n => n % 2;
@@ -119,7 +119,7 @@ namespace ExtraLinq.Tests
             }
 
             [Fact]
-            public static void ReturnsAnEmptySequenceWhenSequenceIsEmpty()
+            public static void Returns_an_empty_sequence_when_sequence_is_empty()
             {
                 int[] numbers = { };
                 Func<int, int> valueSelector = n => n % 2;
@@ -131,7 +131,7 @@ namespace ExtraLinq.Tests
             }
 
             [Fact]
-            public static void ReturnsUnmodifiedSequenceIfSequenceHasOneElement()
+            public static void Returns_unmodified_sequence_if_sequence_has_one_element()
             {
                 int[] numbers = { 1 };
                 Func<int, int> valueSelector = n => n % 2;
@@ -143,7 +143,7 @@ namespace ExtraLinq.Tests
             }
 
             [Fact]
-            public static void ReturnsOnlyTuplesWhoseSelectedStringValuesAreConsideredDistinct()
+            public static void Returns_only_tuples_whose_selected_string_values_are_considered_distinct()
             {
                 Tuple<int, string>[] spellingsOfJavaScript =
                 {

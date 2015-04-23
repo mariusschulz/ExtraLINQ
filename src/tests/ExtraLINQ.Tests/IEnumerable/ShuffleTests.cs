@@ -9,7 +9,7 @@ namespace ExtraLinq.Tests
     public class ShuffleTests
     {
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNull()
+        public void Eagerly_throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<char> nullSequence = null;
 
@@ -17,7 +17,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void OnlyReturnsItemsFoundWithinSequence()
+        public void Only_returns_items_found_within_sequence()
         {
             char[] letters = "abcde".ToCharArray();
 
@@ -32,7 +32,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNullWithRandom()
+        public void Eagerly_throws_ArgumentNullException_when_sequence_is_null_with_random()
         {
             IEnumerable<char> nullSequence = null;
             var random = new Random();
@@ -41,7 +41,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenRandomIsNull()
+        public void Eagerly_throws_ArgumentNullException_when_random_is_null()
         {
             IEnumerable<char> letters = "abcde";
 
@@ -49,7 +49,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void UsesTheSpecifiedRandomNumberGenerator()
+        public void Uses_the_specified_random_number_generator()
         {
             IEnumerable<char> letters = "abcde";
             const int arbitrarySeed = 1337;

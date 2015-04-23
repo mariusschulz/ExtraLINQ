@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
@@ -9,7 +9,7 @@ namespace ExtraLinq.Tests
     public class CycleTests
     {
         [Fact]
-        public void ThrowsArgumentNullExceptionWhenSequenceIsNull()
+        public void Throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<object> nullSequence = null;
 
@@ -17,7 +17,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsAnEmptySequenceWhenPassedAnEmptySequence()
+        public void Returns_an_empty_sequence_when_passed_an_empty_sequence()
         {
             int[] numbers = new int[0];
 
@@ -27,7 +27,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void CyclesThroughASequenceWithASingleItem()
+        public void Cycles_through_a_sequence_with_a_single_item()
         {
             int[] singleTen = { 10 };
 
@@ -37,7 +37,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void CyclesThroughASequenceWithMultipleItems()
+        public void Cycles_through_a_sequence_with_multiple_items()
         {
             int[] bits = { 0, 1 };
 

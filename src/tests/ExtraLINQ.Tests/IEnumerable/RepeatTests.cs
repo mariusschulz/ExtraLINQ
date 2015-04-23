@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
@@ -10,7 +10,7 @@ namespace ExtraLinq.Tests
     public class RepeatTests
     {
         [Fact]
-        public void EagerlyThrowsArgumentNullExceptionWhenSequenceIsNull()
+        public void Eagerly_throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<char> nullSequence = null;
 
@@ -18,7 +18,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void EagerlyThrowsArgumentOutOfRangeExceptionWhenCountIsNegative()
+        public void Eagerly_throws_ArgumentOutOfRangeException_when_count_is_negative()
         {
             int[] numbers = { 1, 2, 3 };
 
@@ -40,7 +40,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsAnEmptySequenceWhenCountIsZero()
+        public void Returns_an_empty_sequence_when_count_is_zero()
         {
             int[] numbers = { 1, 2, 3 };
 
@@ -50,7 +50,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void ReturnsAnIdenticalSequenceWhenCountEqualsOne()
+        public void Returns_an_identical_sequence_when_count_equals_one()
         {
             int[] numbers = { 1, 2, 3 };
 
@@ -60,7 +60,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void RepeatsASingleItemSequenceWhenCountIsGreaterThanOne()
+        public void Repeats_a_single_item_sequence_when_count_is_greater_than_one()
         {
             string[] sheldonsGreeting = { "Penny!" };
 
@@ -74,7 +74,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void RepeatsASequenceWithMultipleItemsWhenCountIsGreaterThanOne()
+        public void Repeats_a_sequence_with_multiple_items_when_count_is_greater_than_one()
         {
             string[] eatingSounds = { "om", "nom", "nom" };
 
@@ -84,7 +84,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void RepeatsTheGivenSequenceLazily()
+        public void Repeats_the_given_sequence_lazily()
         {
             IEnumerable<int> infiniteSequence = new[] { 1, 2, 3 }.Cycle();
 
