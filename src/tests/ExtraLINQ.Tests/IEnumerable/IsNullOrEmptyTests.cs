@@ -7,7 +7,7 @@ namespace ExtraLinq.Tests
     public class IsNullOrEmptyTests
     {
         [Fact]
-        public void Returns_true_when_sequence_is_null()
+        public static void Returns_true_when_sequence_is_null()
         {
             IEnumerable<object> nullSequence = null;
 
@@ -17,7 +17,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returns_true_when_sequence_is_empty()
+        public static void Returns_true_when_sequence_is_empty()
         {
             IEnumerable<string> emptyArray = new string[0];
 
@@ -27,7 +27,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returns_false_when_sequence_contains_elements()
+        public static void Returns_false_when_sequence_contains_elements()
         {
             IEnumerable<string> singleElementArray = new[] { "test" };
 

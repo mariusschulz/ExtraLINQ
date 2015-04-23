@@ -9,7 +9,7 @@ namespace ExtraLinq.Tests
     public class HasAtMostTests
     {
         [Fact]
-        public void Throws_ArgumentNullException_when_sequence_is_null()
+        public static void Throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<object> nullSequence = null;
 
@@ -17,7 +17,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Throws_ArgumentOutOfRangeException_when_expected_count_is_negative()
+        public static void Throws_ArgumentOutOfRangeException_when_expected_count_is_negative()
         {
             IEnumerable<char> letters = "abcde";
 
@@ -25,7 +25,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returns_true_when_actual_count_is_equal_to_or_lower_than_expected_count()
+        public static void Returns_true_when_actual_count_is_equal_to_or_lower_than_expected_count()
         {
             IEnumerable<char> letters = "abcd";
             IEnumerable<char> emptySequence = Enumerable.Empty<char>();
@@ -41,7 +41,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returns_false_when_actual_count_is_greater_than_expected_max_count()
+        public static void Returns_false_when_actual_count_is_greater_than_expected_max_count()
         {
             IEnumerable<char> letters = "abcd";
 
@@ -54,7 +54,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Throws_ArgumentNullException_when_sequence_is_null_with_predicate()
+        public static void Throws_ArgumentNullException_when_sequence_is_null_with_predicate()
         {
             IEnumerable<object> nullSequence = null;
             Func<object, bool> alwaysTruePredicate = _ => true;
@@ -63,7 +63,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Throws_ArgumentNullException_when_predicate_is_null()
+        public static void Throws_ArgumentNullException_when_predicate_is_null()
         {
             IEnumerable<char> letters = "abcd";
 
@@ -71,7 +71,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Throws_ArgumentOutOfRangeException_when_expected_max_count_is_negative()
+        public static void Throws_ArgumentOutOfRangeException_when_expected_max_count_is_negative()
         {
             IEnumerable<char> letters = "abcd";
             Func<char, bool> validPredicate = c => c == 'a';
@@ -80,7 +80,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returns_true_when_actual_count_is_equal_to_or_lower_than_expected_count_with_predicate()
+        public static void Returns_true_when_actual_count_is_equal_to_or_lower_than_expected_count_with_predicate()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
             Func<string, bool> startsWithLowercasedA = fruit => fruit.StartsWith("a");
@@ -91,7 +91,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returns_false_when_actual_count_higher_than_expected_count_with_predicate()
+        public static void Returns_false_when_actual_count_higher_than_expected_count_with_predicate()
         {
             IEnumerable<string> fruits = new[] { "apple", "apricot", "banana" };
             Func<string, bool> startsWithLowercasedA = fruit => fruit.StartsWith("a");

@@ -9,7 +9,7 @@ namespace ExtraLinq.Tests
     public class ToDictionaryTests
     {
         [Fact]
-        public void Throws_ArgumentNullException_when_collection_is_null()
+        public static void Throws_ArgumentNullException_when_collection_is_null()
         {
             NameValueCollection collection = null;
 
@@ -17,7 +17,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returned_dictionary_contains_exactly_the_elements_from_the_name_value_collection()
+        public static void Returned_dictionary_contains_exactly_the_elements_from_the_name_value_collection()
         {
             var collection = new NameValueCollection
             {
@@ -37,7 +37,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returns_an_empty_dictionary_for_an_empty_name_value_collection()
+        public static void Returns_an_empty_dictionary_for_an_empty_name_value_collection()
         {
             var emptyCollection = new NameValueCollection();
 

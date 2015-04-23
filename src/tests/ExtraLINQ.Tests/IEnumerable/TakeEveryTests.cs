@@ -9,7 +9,7 @@ namespace ExtraLinq.Tests
     public class TakeEveryTests
     {
         [Fact]
-        public void Throws_ArgumentNullException_when_sequence_is_null()
+        public static void Throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<char> nullSequence = null;
 
@@ -29,7 +29,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returns_every_element_when_step_equals_one()
+        public static void Returns_every_element_when_step_equals_one()
         {
             int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
 
@@ -39,7 +39,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returns_every_other_element_when_step_equals_two()
+        public static void Returns_every_other_element_when_step_equals_two()
         {
             int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
 
@@ -49,7 +49,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returns_the_correct_elements()
+        public static void Returns_the_correct_elements()
         {
             int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
 
@@ -59,7 +59,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Only_returns_the_first_element_when_step_is_larger_than_the_sequence_length()
+        public static void Only_returns_the_first_element_when_step_is_larger_than_the_sequence_length()
         {
             int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
 

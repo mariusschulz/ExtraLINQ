@@ -9,7 +9,7 @@ namespace ExtraLinq.Tests
     public class TapTests
     {
         [Fact]
-        public void Throws_ArgumentNullException_when_sequence_is_null()
+        public static void Throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<object> nullSequence = null;
             Action<object> doNothing = _ => { };
@@ -18,7 +18,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Throws_ArgumentNullException_when_action_is_null()
+        public static void Throws_ArgumentNullException_when_action_is_null()
         {
             int[] numbers = { 1, 2, 3 };
             Action<int> action = null;
@@ -27,7 +27,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Calls_the_specified_action_for_each_element_when_enumerated()
+        public static void Calls_the_specified_action_for_each_element_when_enumerated()
         {
             int[] numbers = { 1, 2, 3 };
             var elementsPassedToAction = new List<int>();
@@ -39,7 +39,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returns_all_elements_of_the_source_sequence_without_modification()
+        public static void Returns_all_elements_of_the_source_sequence_without_modification()
         {
             int[] numbers = { 1, 2, 3 };
             Action<int> action = Console.WriteLine;
@@ -50,7 +50,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Throws_ArgumentNullException_when_sequence_is_null_for_action_with_index()
+        public static void Throws_ArgumentNullException_when_sequence_is_null_for_action_with_index()
         {
             IEnumerable<object> nullSequence = null;
             Action<object, int> doNothing = (element, index) => { };
@@ -59,7 +59,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Throws_ArgumentNullException_when_action_with_index_is_null()
+        public static void Throws_ArgumentNullException_when_action_with_index_is_null()
         {
             int[] numbers = { 1, 2, 3 };
             Action<int, int> nullAction = null;
@@ -68,7 +68,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Calls_the_specified_action_with_index_for_each_element_when_enumerated()
+        public static void Calls_the_specified_action_with_index_for_each_element_when_enumerated()
         {
             int[] numbers = { 3, 4, 5 };
             var elementsPassedToAction = new List<int>();
@@ -86,7 +86,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returns_all_elements_of_the_source_sequence_without_modification_for_action_with_index()
+        public static void Returns_all_elements_of_the_source_sequence_without_modification_for_action_with_index()
         {
             int[] numbers = { 1, 2, 3 };
             Action<int, int> action = (element, index) => Console.WriteLine(element);

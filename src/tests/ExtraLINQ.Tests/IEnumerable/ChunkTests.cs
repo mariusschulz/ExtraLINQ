@@ -10,7 +10,7 @@ namespace ExtraLinq.Tests
     public class ChunkTests
     {
         [Fact]
-        public void Throws_ArgumentNullException_when_sequence_is_null()
+        public static void Throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<object> nullSequence = null;
 
@@ -31,7 +31,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returns_an_empty_sequence_when_passed_an_empty_sequence()
+        public static void Returns_an_empty_sequence_when_passed_an_empty_sequence()
         {
             int[] numbers = new int[0];
 
@@ -55,7 +55,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Correctly_splits_a_sequence_into_single_element_chunks()
+        public static void Correctly_splits_a_sequence_into_single_element_chunks()
         {
             int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
             int[][] expectedChunks =
@@ -83,7 +83,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Correctly_splits_a_sequence_into_two_element_chunks()
+        public static void Correctly_splits_a_sequence_into_two_element_chunks()
         {
             int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
             int[][] expectedChunks =

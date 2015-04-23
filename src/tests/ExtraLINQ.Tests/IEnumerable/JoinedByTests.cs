@@ -9,7 +9,7 @@ namespace ExtraLinq.Tests
     public class JoinedByTests
     {
         [Fact]
-        public void Eagerly_throws_ArgumentNullException_when_sequence_is_null()
+        public static void Eagerly_throws_ArgumentNullException_when_sequence_is_null()
         {
             IEnumerable<char> nullSequence = null;
 
@@ -17,7 +17,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Throws_ArgumentNullException_when_separator_is_null()
+        public static void Throws_ArgumentNullException_when_separator_is_null()
         {
             string[] items = { "one", "two", "three" };
 
@@ -51,7 +51,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public void Returns_a_string_containing_all_items_joined_by_the_given_separator()
+        public static void Returns_a_string_containing_all_items_joined_by_the_given_separator()
         {
             string[] strings = { "The", "One", "Ring" };
 
