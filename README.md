@@ -7,7 +7,9 @@ ExtraLINQ provides additional extension methods for working with .NET collection
 
 ExtraLINQ is [available as a NuGet package](http://www.nuget.org/packages/ExtraLINQ):
 
-    Install-Package ExtraLINQ
+```powershell
+Install-Package ExtraLINQ
+```
 
 
 ## Extensions
