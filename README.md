@@ -1,6 +1,6 @@
 # ExtraLINQ
 
-ExtraLINQ provides additional extension methods for working with .NET collections.
+ExtraLINQ provides a set of extension methods for various .NET sequence types.
 
 
 ## Installation
