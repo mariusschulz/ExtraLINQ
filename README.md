@@ -275,7 +275,14 @@ string[] cookieMonsterSounds = eatingSounds.Repeat(3).JoinedBy(" ");
 
 #### `Shuffle`
 
-Returns the items of the given collection in random order.
+Enumerates the specified input sequence and returns a new sequence which contains all input elements in random order.
+
+```csharp
+string[] hobbits = { "Frodo", "Sam", "Merry", "Pippin" };
+string[] shuffledHobbits = hobbits.Shuffle().ToArray();
+
+// e.g. shuffledHobbits = ["Sam", "Pippin", "Frodo", "Merry"]
+```
 
 
 #### `SkipEvery`
