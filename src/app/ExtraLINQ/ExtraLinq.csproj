@@ -52,7 +52,7 @@
     <Compile Include="IEnumerable\WhereNot.cs" />
     <Compile Include="IEnumerable\HasExactly.cs" />
     <Compile Include="EnumerableExtensions.cs" />
-    <Compile Include="IEnumerable\Tap.cs" />
+    <Compile Include="IEnumerable\Each.cs" />
     <Compile Include="IEnumerable\Without.cs" />
     <Compile Include="IEnumerable\Shuffle.cs" />
     <Compile Include="IEnumerable\Random.cs" />

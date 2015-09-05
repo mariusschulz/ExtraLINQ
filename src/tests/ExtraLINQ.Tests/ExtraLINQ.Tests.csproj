@@ -61,7 +61,7 @@
     <Compile Include="IEnumerable\RepeatTests.cs" />
     <Compile Include="IEnumerable\WhereNotTests.cs" />
     <Compile Include="IEnumerable\JoinedByTests.cs" />
-    <Compile Include="IEnumerable\TapTests.cs" />
+    <Compile Include="IEnumerable\EachTests.cs" />
     <Compile Include="IEnumerable\WithoutTests.cs" />
     <Compile Include="NameValueCollection\ToKeyValuePairsTests.cs" />
     <Compile Include="NameValueCollection\ToDictionaryTests.cs" />
