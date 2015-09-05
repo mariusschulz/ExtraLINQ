@@ -133,20 +133,20 @@ int[] flattenedNumbers = numbers.Flatten().ToArray();
 Determines whether a collection contains at least a certain number of items.
 
 ```csharp
-string letters = "abcd";
+string[] theThreeRings = { "Narya", "Nenya", "Vilya" };
 
-letters.HasAtLeast(0) // true
-letters.HasAtLeast(2) // true
-letters.HasAtLeast(4) // true
+theThreeRings.HasAtLeast(0) // true
+theThreeRings.HasAtLeast(2) // true
+theThreeRings.HasAtLeast(4) // false
 ```
 
 Optionally, a predicate can be passed that is called for every element:
 
 ```csharp
-string[] fruits = { "apple", "apricot", "banana" };
+string[] theThreeRings = { "Narya", "Nenya", "Vilya" };
 
-fruits.HasAtLeast(2, fruit => fruit.StartsWith("a")) // true
-fruits.HasAtLeast(3, fruit => fruit.StartsWith("a")) // false
+theThreeRings.HasAtLeast(2, ring => ring.StartsWith("N")) // true
+theThreeRings.HasAtLeast(3, ring => ring.StartsWith("N")) // false
 ```
 
 
@@ -155,20 +155,20 @@ fruits.HasAtLeast(3, fruit => fruit.StartsWith("a")) // false
 Determines whether a collection contains at most a certain number of items.
 
 ```csharp
-string letters = "abcd";
+string[] theThreeRings = { "Narya", "Nenya", "Vilya" };
 
-letters.HasAtMost(3) // false
-letters.HasAtMost(4) // true
-letters.HasAtMost(5) // true
+theThreeRings.HasAtMost(2) // false
+theThreeRings.HasAtMost(3) // true
+theThreeRings.HasAtMost(4) // true
 ```
 
 Optionally, a predicate can be passed that is called for every element:
 
 ```csharp
-string[] fruits = { "apple", "apricot", "banana" };
+string[] theThreeRings = { "Narya", "Nenya", "Vilya" };
 
-fruits.HasAtMost(1, fruit => fruit.StartsWith("a")) // false
-fruits.HasAtMost(2, fruit => fruit.StartsWith("a")) // true
+theThreeRings.HasAtMost(1, ring => ring.StartsWith("N")) // false
+theThreeRings.HasAtMost(2, ring => ring.StartsWith("N")) // true
 ```
 
 
@@ -177,21 +177,21 @@ fruits.HasAtMost(2, fruit => fruit.StartsWith("a")) // true
 Determines whether a collection contains exactly a given number of items.
 
 ```csharp
-string letters = "abcd";
+string[] theThreeRings = { "Narya", "Nenya", "Vilya" };
 
-letters.HasExactly(3) // false
-letters.HasExactly(4) // true
-letters.HasExactly(5) // false
+theThreeRings.HasExactly(2) // false
+theThreeRings.HasExactly(3) // true
+theThreeRings.HasExactly(4) // false
 ```
 
 Optionally, a predicate can be passed that is called for every element:
 
 ```csharp
-string[] fruits = { "apple", "apricot", "banana" };
+string[] theThreeRings = { "Narya", "Nenya", "Vilya" };
 
-fruits.HasExactly(1, fruit => fruit.StartsWith("a")) // false
-fruits.HasExactly(1, fruit => fruit.StartsWith("b")) // true
-fruits.HasExactly(2, fruit => fruit.StartsWith("a")) // true
+theThreeRings.HasExactly(1, ring => ring.StartsWith("N")) // false
+theThreeRings.HasExactly(1, ring => ring.StartsWith("V")) // true
+theThreeRings.HasExactly(2, ring => ring.StartsWith("N")) // true
 ```
 
 
