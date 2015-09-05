@@ -187,6 +187,11 @@ int[] separatedNumbers = numbers.Intersperse(0).ToArray();
 
 Determines whether a collection is empty.
 
+```csharp
+new int[0].IsEmpty() // true
+new[] { 1, 2, 3 }.IsEmpty() // false
+```
+
 
 #### `IsNullOrEmpty`
 
