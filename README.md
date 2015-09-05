@@ -323,7 +323,18 @@ string[] shuffledHobbits = hobbits.Shuffle().ToArray();
 
 #### `ToHashSet`
 
-...
+Creates a `HashSet` from a given sequence.
+
+```csharp
+string gollumsUtterings = "Nasty hobbitses, gollum, gollum!";
+HashSet<string> gollumsVocabulary = gollumsUtterings
+    .Split(new[] { ' ', ',', '!' }, StringSplitOptions.RemoveEmptyEntries)
+    .ToHashSet();
+
+// gollumsVocabulary = ["Nasty", "hobbitses", "gollum"]
+```
+
+Note that the main purpose of `ToHashSet` is to provide a chainable wrapper around the `HashSet` constructor.
 
 
 #### `WhereNot`
