@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IEnumerable\TakeSkip.cs" />
     <Compile Include="IntExtensions.cs" />
     <Compile Include="IEnumerable\Chunk.cs" />
     <Compile Include="IEnumerable\Flatten.cs" />
