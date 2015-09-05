@@ -88,7 +88,20 @@ string[] distinctSpellings = spellingsOfJavaScript
 
 #### `Flatten`
 
-...
+Returns a flattened sequence that contains the concatenation of all the nested sequences' elements.
+
+```csharp
+int[][] numbers =
+{
+    new[] { 1, 2, 3 },
+    new[] { 4, 5 },
+    new[] { 6 }
+};
+
+int[] flattenedNumbers = numbers.Flatten().ToArray();
+
+// flattenedNumbers = [1, 2, 3, 4, 5, 6]
+```
 
 
 #### `HasExactly`
