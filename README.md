@@ -250,6 +250,16 @@ var partitionedNumbers = numbers.Partition(n => n % 2 == 0);
 
 Returns a given number of random elements from a collection.
 
+```csharp
+int[] numbers = Enumerable.Range(1, 49).ToArray();
+int[] lottoNumbers = numbers
+    .Random(6)
+    .OrderBy(n => n)
+    .ToArray();
+
+// e.g. lottoNumbers = [5, 19, 20, 27, 38, 41]
+```
+
 
 #### `Repeat`
 
