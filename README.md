@@ -263,7 +263,14 @@ int[] lottoNumbers = numbers
 
 #### `Repeat`
 
-...
+Repeats a given sequence a given number of times.
+
+```csharp
+string[] eatingSounds = { "om", "nom", "nom" };
+string[] cookieMonsterSounds = eatingSounds.Repeat(3).JoinedBy(" ");
+
+// cookieMonsterSounds = ["om", "nom", "nom", "om", "nom", "nom", "om", "nom", "nom"]
+```
 
 
 #### `Shuffle`
