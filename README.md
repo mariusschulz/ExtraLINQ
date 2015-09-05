@@ -383,3 +383,14 @@ Dictionary<string, string> ringBearersDictionary = ringBearers.ToDictionary();
 #### `ToKeyValuePairs`
 
 Enumerates the specified collection as a sequence of key-value pairs.
+
+```csharp
+var ringBearers = new NameValueCollection
+{
+    { "Nenya", "Galadriel" },
+    { "Narya", "Gandalf" },
+    { "Vilya", "Elrond" }
+};
+
+IEnumerable<KeyValuePair<string, string>> ringBearersKeyValuePairs = ringBearers.ToKeyValuePairs();
+```
