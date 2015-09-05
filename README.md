@@ -205,7 +205,18 @@ new[] { 1, 2, 3 }.IsNullOrEmpty() // false
 
 #### `JoinedBy`
 
-...
+Concatenates all items of a sequence using the specified separator between each item.
+
+```csharp
+string[] nameParts = { "The", "One", "Ring" };
+string ringName = nameParts
+	.Select(part => part.ToUpper())
+	.JoinedBy(" ");
+
+// ringName = "THE ONE RING"
+```
+
+Note that the main purpose of `JoinedBy` is to provide a chainable wrapper around `String.Join`.
 
 
 #### `None`
