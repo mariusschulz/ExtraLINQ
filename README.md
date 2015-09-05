@@ -19,6 +19,7 @@ Extensions for collections of type `IEnumerable<T>`:
 - [`Chunk`](#chunk)
 - [`Cycle`](#cycle)
 - [`Distinct`](#distinct)
+- [`Each`](#each)
 - [`Flatten`](#flatten)
 - [`HasExactly`](#hasexactly)
 - [`HasAtMost`](#hasatmost)
@@ -32,9 +33,6 @@ Extensions for collections of type `IEnumerable<T>`:
 - [`Random`](#random)
 - [`Repeat`](#repeat)
 - [`Shuffle`](#shuffle)
-- [`SkipEvery`](#skipevery)
-- [`TakeEvery`](#takeevery)
-- [`Tap`](#tap)
 - [`ToHashSet`](#tohashset)
 - [`WhereNot`](#wherenot)
 - [`Without`](#without)
@@ -307,18 +305,6 @@ string[] shuffledHobbits = hobbits.Shuffle().ToArray();
 
 // e.g. shuffledHobbits = ["Sam", "Pippin", "Frodo", "Merry"]
 ```
-
-
-#### `SkipEvery`
-
-...
-
-
-#### `TakeEvery`
-
-...
-
-
 
 
 #### `ToHashSet`
