@@ -33,6 +33,7 @@ Extensions for collections of type `IEnumerable<T>`:
 - [`Random`](#random)
 - [`Repeat`](#repeat)
 - [`Shuffle`](#shuffle)
+- [`TakeSkip`](#takeskip)
 - [`ToHashSet`](#tohashset)
 - [`WhereNot`](#wherenot)
 - [`Without`](#without)
@@ -304,6 +305,30 @@ string[] hobbits = { "Frodo", "Sam", "Merry", "Pippin" };
 string[] shuffledHobbits = hobbits.Shuffle().ToArray();
 
 // e.g. shuffledHobbits = ["Sam", "Pippin", "Frodo", "Merry"]
+```
+
+
+#### `TakeSkip`
+
+Iterates over the given sequence and repeatedly returns a specified number of elements before skipping a specified number of elements.
+
+```csharp
+string[] fellowship =
+{
+    "Frodo",
+    "Sam",
+    "Merry",
+    "Pippin",
+    "Aragorn",
+    "Legolas",
+    "Gimli",
+    "Boromir",
+    "Gandalf"
+};
+
+string[] everyOtherFellow = fellowship.TakeSkip(1, 1).ToArray();
+
+// everyOtherFellow = ["Frodo", "Merry", "Aragorn", "Gimli", "Gandalf"]
 ```
 
 
