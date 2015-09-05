@@ -104,9 +104,26 @@ int[] flattenedNumbers = numbers.Flatten().ToArray();
 ```
 
 
-#### `HasExactly`
+#### `HasAtLeast`
 
-Determines whether a collection contains exactly a given number of items.
+Determines whether a collection contains at least a certain number of items.
+
+```csharp
+string letters = "abcd";
+
+letters.HasAtLeast(0) // true
+letters.HasAtLeast(2) // true
+letters.HasAtLeast(4) // true
+```
+
+Optionally, a predicate can be passed that is called for every element:
+
+```csharp
+string[] fruits = { "apple", "apricot", "banana" };
+
+fruits.HasAtLeast(2, fruit => fruit.StartsWith("a")) // true
+fruits.HasAtLeast(3, fruit => fruit.StartsWith("a")) // false
+```
 
 
 #### `HasAtMost`
@@ -114,9 +131,9 @@ Determines whether a collection contains exactly a given number of items.
 Determines whether a collection contains at most a certain number of items.
 
 
-#### `HasAtLeast`
+#### `HasExactly`
 
-Determines whether a collection contains at least a certain number of items.
+Determines whether a collection contains exactly a given number of items.
 
 
 #### `Intersperse`
