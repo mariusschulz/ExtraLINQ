@@ -86,6 +86,30 @@ string[] distinctSpellings = spellingsOfJavaScript
 ```
 
 
+#### `Each`
+
+Passes every element of the sequence to the specified action and returns it afterwards.
+
+```csharp
+string[] ringInscriptionLines =
+{
+	"One Ring to rule them all",
+	"One Ring to find them",
+	"One Ring to bring them all",
+	"and in the darkness bind them"
+};
+
+ringInscriptionLines.Each(Console.WriteLine);
+
+// Console output:
+//
+// One Ring to rule them all
+// One Ring to find them
+// One Ring to bring them all
+// and in the darkness bind them
+```
+
+
 #### `Flatten`
 
 Returns a flattened sequence that contains the concatenation of all the nested sequences' elements.
@@ -295,9 +319,6 @@ string[] shuffledHobbits = hobbits.Shuffle().ToArray();
 ...
 
 
-#### `Tap`
-
-...
 
 
 #### `ToHashSet`
