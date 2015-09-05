@@ -223,6 +223,15 @@ Note that the main purpose of `JoinedBy` is to provide a chainable wrapper aroun
 
 Determines whether a collection doesn't contain any elements matching certain criteria.
 
+```csharp
+string[] theThreeRings = { "Narya", "Nenya", "Vilya" };
+bool allRingsNamed = theThreeRings.None(string.IsNullOrWhiteSpace);
+
+// allRingsNamed = true
+```
+
+The `None` method is equivalent to a negated version of `Any`.
+
 
 #### `Partition`
 
