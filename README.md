@@ -339,8 +339,15 @@ Note that the main purpose of `ToHashSet` is to provide a chainable wrapper arou
 
 #### `WhereNot`
 
-...
+Filters a sequence of values based on a given predicate and returns those values that don't match the predicate.
 
+```csharp
+string[] theThreeRings = { "Narya", "Nenya", "Vilya" };
+Func<string, bool> startsWithN = value => value.StartsWith("N");
+string vilya = theThreeRings.WhereNot(startsWithN).Single();
+
+// vilya = "Vilya"
+```
 
 #### `Without`
 
