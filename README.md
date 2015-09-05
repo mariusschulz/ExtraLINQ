@@ -235,7 +235,15 @@ The `None` method is equivalent to a negated version of `Any`.
 
 #### `Partition`
 
-...
+Uses the given predicate to partition the given sequence into two sequences, one with all the matches and one with all the mismatches.
+
+```csharp
+int[] numbers = { 1, 2, 3, 4, 5 };
+var partitionedNumbers = numbers.Partition(n => n % 2 == 0);
+
+// partitionedNumbers.Matches = [2, 4]
+// partitionedNumbers.Mismatches = [1, 3, 5]
+```
 
 
 #### `Random`
