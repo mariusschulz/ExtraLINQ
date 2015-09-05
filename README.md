@@ -50,7 +50,14 @@ Extensions for collections of type `NameValueCollection`:
 
 #### `Chunk`
 
-...
+Splits the given sequence into chunks of the given size. If the sequence length isn't evenly divisible by the chunk size, the last chunk will contain all remaining elements.
+
+```csharp
+int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
+int[][] chunks = numbers.Chunk(3).ToArray();
+
+// chunks = [[1, 2, 3], [4, 5, 6], [7]]
+```
 
 
 #### `Cycle`
