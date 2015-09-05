@@ -130,6 +130,23 @@ fruits.HasAtLeast(3, fruit => fruit.StartsWith("a")) // false
 
 Determines whether a collection contains at most a certain number of items.
 
+```csharp
+string letters = "abcd";
+
+letters.HasAtMost(3) // false
+letters.HasAtMost(4) // true
+letters.HasAtMost(5) // true
+```
+
+Optionally, a predicate can be passed that is called for every element:
+
+```csharp
+string[] fruits = { "apple", "apricot", "banana" };
+
+fruits.HasAtMost(1, fruit => fruit.StartsWith("a")) // false
+fruits.HasAtMost(2, fruit => fruit.StartsWith("a")) // true
+```
+
 
 #### `HasExactly`
 
