@@ -175,6 +175,13 @@ fruits.HasExactly(2, fruit => fruit.StartsWith("a")) // true
 
 Returns all elements of the collection separated by the given separator.
 
+```csharp
+int[] numbers = { 1, 2, 3, 4, 5 };
+int[] separatedNumbers = numbers.Intersperse(0).ToArray();
+
+// separatedNumbers = [1, 0, 2, 0, 3, 0, 4, 0, 5]
+```
+
 
 #### `IsEmpty`
 
