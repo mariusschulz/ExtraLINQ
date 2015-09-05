@@ -152,6 +152,24 @@ fruits.HasAtMost(2, fruit => fruit.StartsWith("a")) // true
 
 Determines whether a collection contains exactly a given number of items.
 
+```csharp
+string letters = "abcd";
+
+letters.HasExactly(3) // false
+letters.HasExactly(4) // true
+letters.HasExactly(5) // false
+```
+
+Optionally, a predicate can be passed that is called for every element:
+
+```csharp
+string[] fruits = { "apple", "apricot", "banana" };
+
+fruits.HasExactly(1, fruit => fruit.StartsWith("a")) // false
+fruits.HasExactly(1, fruit => fruit.StartsWith("b")) // true
+fruits.HasExactly(2, fruit => fruit.StartsWith("a")) // true
+```
+
 
 #### `Intersperse`
 
