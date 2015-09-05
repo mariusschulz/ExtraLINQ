@@ -74,7 +74,16 @@ int[] alternatingBits = bits.Cycle().Take(5).ToArray();
 
 #### `Distinct`
 
-...
+Returns distinct elements from the given sequence using the default equality comparer to compare projected values.
+
+```csharp
+string[] spellingsOfJavaScript = { "JavaScript", "Javascript", "javascript" };
+string[] distinctSpellings = spellingsOfJavaScript
+	.Distinct(n => n.ToLower())
+	.ToArray();
+
+// distinctSpellings = ["JavaScript"]
+```
 
 
 #### `Flatten`
