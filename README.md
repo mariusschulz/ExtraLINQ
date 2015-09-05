@@ -197,6 +197,11 @@ new[] { 1, 2, 3 }.IsEmpty() // false
 
 Determines whether a collection is null or empty.
 
+```csharp
+(null as int[]).IsNullOrEmpty() // true
+new int[0].IsNullOrEmpty() // true
+new[] { 1, 2, 3 }.IsNullOrEmpty() // false
+```
 
 #### `JoinedBy`
 
