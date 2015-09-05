@@ -353,6 +353,13 @@ string vilya = theThreeRings.WhereNot(startsWithN).Single();
 
 Returns the specified collection without the specified items.
 
+```csharp
+string[] hobbits = { "Frodo", "Sam", "Merry", "Pippin" };
+string[] mainHobbits = hobbits.Without("Merry", "Pippin").ToArray();
+
+// mainHobbits = ["Frodo", "Sam"]
+```
+
 
 ### Extensions for `NameValueCollection`
 
