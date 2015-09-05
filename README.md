@@ -79,8 +79,8 @@ Returns distinct elements from the given sequence using the default equality com
 ```csharp
 string[] spellingsOfJavaScript = { "JavaScript", "Javascript", "javascript" };
 string[] distinctSpellings = spellingsOfJavaScript
-	.Distinct(n => n.ToLower())
-	.ToArray();
+    .Distinct(n => n.ToLower())
+    .ToArray();
 
 // distinctSpellings = ["JavaScript"]
 ```
@@ -93,10 +93,10 @@ Passes every element of the sequence to the specified action and returns it afte
 ```csharp
 string[] ringInscriptionLines =
 {
-	"One Ring to rule them all",
-	"One Ring to find them",
-	"One Ring to bring them all",
-	"and in the darkness bind them"
+    "One Ring to rule them all",
+    "One Ring to find them",
+    "One Ring to bring them all",
+    "and in the darkness bind them"
 };
 
 ringInscriptionLines.Each(Console.WriteLine);
@@ -234,8 +234,8 @@ Concatenates all items of a sequence using the specified separator between each 
 ```csharp
 string[] nameParts = { "The", "One", "Ring" };
 string ringName = nameParts
-	.Select(part => part.ToUpper())
-	.JoinedBy(" ");
+    .Select(part => part.ToUpper())
+    .JoinedBy(" ");
 
 // ringName = "THE ONE RING"
 ```
