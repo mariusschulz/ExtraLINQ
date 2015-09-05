@@ -46,8 +46,6 @@
     <Compile Include="IEnumerable\Distinct.cs" />
     <Compile Include="IEnumerable\Partition.cs" />
     <Compile Include="IEnumerable\ToHashSet.cs" />
-    <Compile Include="IEnumerable\SkipEvery.cs" />
-    <Compile Include="IEnumerable\TakeEvery.cs" />
     <Compile Include="IEnumerable\Cycle.cs" />
     <Compile Include="IEnumerable\JoinedBy.cs" />
     <Compile Include="IEnumerable\Repeat.cs" />
