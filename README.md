@@ -368,6 +368,17 @@ string[] mainHobbits = hobbits.Without("Merry", "Pippin").ToArray();
 
 Returns a new dictionary from the specified collection.
 
+```csharp
+var ringBearers = new NameValueCollection
+{
+    { "Nenya", "Galadriel" },
+    { "Narya", "Gandalf" },
+    { "Vilya", "Elrond" }
+};
+
+Dictionary<string, string> ringBearersDictionary = ringBearers.ToDictionary();
+```
+
 
 #### `ToKeyValuePairs`
 
