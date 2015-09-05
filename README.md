@@ -62,7 +62,14 @@ int[][] chunks = numbers.Chunk(3).ToArray();
 
 #### `Cycle`
 
-...
+Turns a finite sequence into a circular one, or equivalently, repeats the original sequence indefinitely.
+
+```csharp
+int[] bits = { 0, 1 };
+int[] alternatingBits = bits.Cycle().Take(5).ToArray();
+
+// alternatingBits = [0, 1, 0, 1, 0]
+```
 
 
 #### `Distinct`
