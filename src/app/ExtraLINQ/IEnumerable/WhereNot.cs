@@ -7,8 +7,8 @@ namespace ExtraLinq
     public static partial class EnumerableExtensions
     {
         /// <summary>
-        /// Filters a sequence of values based on a predicate
-        /// and returns those values that don't match the given predicate.
+        /// Filters a sequence of values based on a given predicate
+        /// and returns those values that don't match the predicate.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">An <see cref="IEnumerable{T}"/> to filter.</param>
