@@ -31,7 +31,7 @@ namespace ExtraLinq
         /// <returns>
         /// A sequence of distinct random elements from <paramref name="source"/>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>   
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> is null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">
         /// Thrown when <paramref name="elementCount"/> is negative or greater than the sequence's element count.
         ///   </exception>
@@ -129,14 +129,14 @@ namespace ExtraLinq
 
         public static IEnumerable<TSource> ShuffleSequence<TSource>(IEnumerable<TSource> source, Random random)
         {
-            TSource[] items = source.ToArray();
+            TSource[] elements = source.ToArray();
 
-            for (int n = 0; n < items.Length; n++)
+            for (int n = 0; n < elements.Length; n++)
             {
-                int k = random.Next(n, items.Length);
-                yield return items[k];
+                int k = random.Next(n, elements.Length);
+                yield return elements[k];
 
-                items[k] = items[n];
+                elements[k] = elements[n];
             }
         }
     }

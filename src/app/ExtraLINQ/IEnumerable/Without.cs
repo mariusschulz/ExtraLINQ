@@ -6,82 +6,82 @@ namespace ExtraLinq
     public static partial class EnumerableExtensions
     {
         /// <summary>
-        /// Returns all elements of <paramref name="source"/> without <paramref name="items"/>.
-        /// Does not throw an exception if <paramref name="source"/> does not contain <paramref name="items"/>.
+        /// Returns all elements of <paramref name="source"/> without <paramref name="elements"/>.
+        /// Does not throw an exception if <paramref name="source"/> does not contain <paramref name="elements"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to remove the specified items from.</param>
-        /// <param name="items">The items to remove.</param>
+        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to remove the specified elements from.</param>
+        /// <param name="elements">The elements to remove.</param>
         /// <returns>
-        /// All elements of <paramref name="source"/> except <paramref name="items"/>.
+        /// All elements of <paramref name="source"/> except <paramref name="elements"/>.
         /// </returns>
-        public static IEnumerable<TSource> Without<TSource>(this IEnumerable<TSource> source, params TSource[] items)
+        public static IEnumerable<TSource> Without<TSource>(this IEnumerable<TSource> source, params TSource[] elements)
         {
-            return Without(source, (IEnumerable<TSource>)items);
+            return Without(source, (IEnumerable<TSource>)elements);
         }
 
         /// <summary>
-        /// Returns all elements of <paramref name="source"/> without <paramref name="items"/>.
-        /// Does not throw an exception if <paramref name="source"/> does not contain <paramref name="items"/>.
+        /// Returns all elements of <paramref name="source"/> without <paramref name="elements"/>.
+        /// Does not throw an exception if <paramref name="source"/> does not contain <paramref name="elements"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to remove the specified items from.</param>
-        /// <param name="items">The items to remove.</param>
+        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to remove the specified elements from.</param>
+        /// <param name="elements">The elements to remove.</param>
         /// <returns>
-        /// All elements of <paramref name="source"/> except <paramref name="items"/>.
+        /// All elements of <paramref name="source"/> except <paramref name="elements"/>.
         /// </returns>
-        public static IEnumerable<TSource> Without<TSource>(this IEnumerable<TSource> source, IEnumerable<TSource> items)
+        public static IEnumerable<TSource> Without<TSource>(this IEnumerable<TSource> source, IEnumerable<TSource> elements)
         {
             ThrowIf.Argument.IsNull(source, "source");
-            ThrowIf.Argument.IsNull(items, "items");
+            ThrowIf.Argument.IsNull(elements, "elements");
 
-            return WithoutIterator(source, items, EqualityComparer<TSource>.Default);
+            return WithoutIterator(source, elements, EqualityComparer<TSource>.Default);
         }
 
         /// <summary>
-        /// Returns all elements of <paramref name="source"/> without <paramref name="items"/> using the specified equality comparer to compare values.
-        /// Does not throw an exception if <paramref name="source"/> does not contain <paramref name="items"/>.
+        /// Returns all elements of <paramref name="source"/> without <paramref name="elements"/> using the specified equality comparer to compare values.
+        /// Does not throw an exception if <paramref name="source"/> does not contain <paramref name="elements"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to remove the specified items from.</param>
+        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to remove the specified elements from.</param>
         /// <param name="equalityComparer">The equality comparer to use.</param>
-        /// <param name="items">The items to remove.</param>
+        /// <param name="elements">The elements to remove.</param>
         /// <returns>
-        /// All elements of <paramref name="source"/> except <paramref name="items"/>.
+        /// All elements of <paramref name="source"/> except <paramref name="elements"/>.
         /// </returns>
         public static IEnumerable<TSource> Without<TSource>(this IEnumerable<TSource> source,
-            IEqualityComparer<TSource> equalityComparer, params TSource[] items)
+            IEqualityComparer<TSource> equalityComparer, params TSource[] elements)
         {
-            return Without(source, equalityComparer, (IEnumerable<TSource>)items);
+            return Without(source, equalityComparer, (IEnumerable<TSource>)elements);
         }
 
         /// <summary>
-        /// Returns all elements of <paramref name="source"/> without <paramref name="items"/> using the specified equality comparer to compare values.
-        /// Does not throw an exception if <paramref name="source"/> does not contain <paramref name="items"/>.
+        /// Returns all elements of <paramref name="source"/> without <paramref name="elements"/> using the specified equality comparer to compare values.
+        /// Does not throw an exception if <paramref name="source"/> does not contain <paramref name="elements"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to remove the specified items from.</param>
+        /// <param name="source">The <see cref="IEnumerable{TSource}"/> to remove the specified elements from.</param>
         /// <param name="equalityComparer">The equality comparer to use.</param>
-        /// <param name="items">The items to remove.</param>
+        /// <param name="elements">The elements to remove.</param>
         /// <returns>
-        /// All elements of <paramref name="source"/> except <paramref name="items"/>.
+        /// All elements of <paramref name="source"/> except <paramref name="elements"/>.
         /// </returns>
         public static IEnumerable<TSource> Without<TSource>(this IEnumerable<TSource> source,
-            IEqualityComparer<TSource> equalityComparer, IEnumerable<TSource> items)
+            IEqualityComparer<TSource> equalityComparer, IEnumerable<TSource> elements)
         {
             ThrowIf.Argument.IsNull(source, "source");
-            ThrowIf.Argument.IsNull(items, "items");
+            ThrowIf.Argument.IsNull(elements, "elements");
             ThrowIf.Argument.IsNull(equalityComparer, "equalityComparer");
 
-            return WithoutIterator(source, items, equalityComparer);
+            return WithoutIterator(source, elements, equalityComparer);
         }
 
         private static IEnumerable<TSource> WithoutIterator<TSource>(IEnumerable<TSource> source,
-            IEnumerable<TSource> itemsToRemove, IEqualityComparer<TSource> comparer)
+            IEnumerable<TSource> elementsToRemove, IEqualityComparer<TSource> comparer)
         {
-            HashSet<TSource> itemsToRemoveSet = new HashSet<TSource>(itemsToRemove, comparer);
+            HashSet<TSource> elementsToRemoveSet = new HashSet<TSource>(elementsToRemove, comparer);
 
-            return source.Where(elem => !itemsToRemoveSet.Contains(elem));
+            return source.Where(elem => !elementsToRemoveSet.Contains(elem));
         }
     }
 }

@@ -29,7 +29,7 @@ namespace ExtraLinq
         {
             bool isFirst = true;
 
-            foreach (TSource item in source)
+            foreach (TSource element in source)
             {
                 if (!isFirst)
                 {
@@ -40,7 +40,7 @@ namespace ExtraLinq
                     isFirst = false;
                 }
 
-                yield return item;
+                yield return element;
             }
         }
     }

@@ -19,7 +19,7 @@ namespace ExtraLinq
             ThrowIf.Argument.IsNull(source, "source");
             ThrowIf.Argument.IsNull(predicate, "predicate");
 
-            return source.Where(item => !predicate(item));
+            return source.Where(element => !predicate(element));
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace ExtraLinq
             ThrowIf.Argument.IsNull(source, "source");
             ThrowIf.Argument.IsNull(predicate, "predicate");
 
-            return source.Where((item, index) => !predicate(item, index));
+            return source.Where((element, index) => !predicate(element, index));
         }
     }
 }
