@@ -22,22 +22,22 @@ namespace ExtraLinq
         {
             var collection = source as ICollection<TSource>;
 
-            var itemBuffer = collection == null
+            var elementBuffer = collection == null
                 ? new List<TSource>()
                 : new List<TSource>(collection.Count);
 
-            foreach (TSource item in source)
+            foreach (TSource element in source)
             {
-                yield return item;
+                yield return element;
 
-                // We add this item to a local item buffer so that
+                // We add this element to a local element buffer so that
                 // we don't have to enumerate the sequence multiple times
-                itemBuffer.Add(item);
+                elementBuffer.Add(element);
             }
 
-            if (itemBuffer.IsEmpty())
+            if (elementBuffer.IsEmpty())
             {
-                // If the item buffer is empty, so was the source sequence.
+                // If the element buffer is empty, so was the source sequence.
                 // In this case, we can stop here and simply return an empty sequence.
                 yield break;
             }
@@ -45,8 +45,8 @@ namespace ExtraLinq
             int index = 0;
             while (true)
             {
-                yield return itemBuffer[index];
-                index = (index + 1) % itemBuffer.Count;
+                yield return elementBuffer[index];
+                index = (index + 1) % elementBuffer.Count;
             }
         }
     }

@@ -26,10 +26,10 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public static void Returns_true_when_no_item_matches()
+        public static void Returns_true_when_no_element_matches()
         {
             string[] strings = { string.Empty };
-            Func<string, bool> stringLengthGreaterThanZero = item => item.Length > 0;
+            Func<string, bool> stringLengthGreaterThanZero = element => element.Length > 0;
 
             bool noMatchFound = strings.None(stringLengthGreaterThanZero);
 
@@ -37,10 +37,10 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public static void Returns_false_when_at_least_one_item_matches()
+        public static void Returns_false_when_at_least_one_element_matches()
         {
             string[] strings = { "Non-empty string" };
-            Func<string, bool> stringLengthGreaterThanZero = item => item.Length > 0;
+            Func<string, bool> stringLengthGreaterThanZero = element => element.Length > 0;
 
             bool noMatchFound = strings.None(stringLengthGreaterThanZero);
 

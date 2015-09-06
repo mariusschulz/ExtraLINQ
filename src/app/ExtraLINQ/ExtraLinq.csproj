@@ -40,21 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IEnumerable\TakeSkip.cs" />
     <Compile Include="IntExtensions.cs" />
     <Compile Include="IEnumerable\Chunk.cs" />
     <Compile Include="IEnumerable\Flatten.cs" />
     <Compile Include="IEnumerable\Distinct.cs" />
     <Compile Include="IEnumerable\Partition.cs" />
     <Compile Include="IEnumerable\ToHashSet.cs" />
-    <Compile Include="IEnumerable\SkipEvery.cs" />
-    <Compile Include="IEnumerable\TakeEvery.cs" />
     <Compile Include="IEnumerable\Cycle.cs" />
     <Compile Include="IEnumerable\JoinedBy.cs" />
     <Compile Include="IEnumerable\Repeat.cs" />
     <Compile Include="IEnumerable\WhereNot.cs" />
     <Compile Include="IEnumerable\HasExactly.cs" />
     <Compile Include="EnumerableExtensions.cs" />
-    <Compile Include="IEnumerable\Tap.cs" />
+    <Compile Include="IEnumerable\Each.cs" />
     <Compile Include="IEnumerable\Without.cs" />
     <Compile Include="IEnumerable\Shuffle.cs" />
     <Compile Include="IEnumerable\Random.cs" />

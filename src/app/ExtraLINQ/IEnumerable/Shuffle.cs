@@ -46,14 +46,14 @@ namespace ExtraLinq
 
         private static IEnumerable<TSource> ShuffleIterator<TSource>(IEnumerable<TSource> source, Random random)
         {
-            TSource[] items = source.ToArray();
+            TSource[] elements = source.ToArray();
 
-            for (int n = 0; n < items.Length; n++)
+            for (int n = 0; n < elements.Length; n++)
             {
-                int k = random.Next(n, items.Length);
-                yield return items[k];
+                int k = random.Next(n, elements.Length);
+                yield return elements[k];
 
-                items[k] = items[n];
+                elements[k] = elements[n];
             }
         }
     }

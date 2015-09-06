@@ -28,33 +28,33 @@ namespace ExtraLinq
 
             var collection = source as ICollection<TSource>;
 
-            var itemBuffer = collection == null
+            var elementBuffer = collection == null
                 ? new List<TSource>()
                 : new List<TSource>(collection.Count);
 
-            foreach (TSource item in source)
+            foreach (TSource element in source)
             {
-                yield return item;
+                yield return element;
 
-                // We add this item to a local item buffer so that
+                // We add this element to a local element buffer so that
                 // we don't have to enumerate the sequence multiple times
-                itemBuffer.Add(item);
+                elementBuffer.Add(element);
             }
 
-            if (itemBuffer.IsEmpty())
+            if (elementBuffer.IsEmpty())
             {
-                // If the item buffer is empty, so was the source sequence.
+                // If the element buffer is empty, so was the source sequence.
                 // In this case, we can stop here and simply return an empty sequence.
                 yield break;
             }
 
-            // We already returned each item of the sequence once,
-            // so take that into account when returning the items repeatedly
+            // We already returned each element of the sequence once,
+            // so take that into account when returning the elements repeatedly
             for (int i = 0; i < count - 1; i++)
             {
-                foreach (TSource item in itemBuffer)
+                foreach (TSource element in elementBuffer)
                 {
-                    yield return item;
+                    yield return element;
                 }
             }
         }

@@ -5,7 +5,7 @@ namespace ExtraLinq
     public static partial class EnumerableExtensions
     {
         /// <summary>
-        /// Concatenates all items of a sequence using the specified separator between each item.
+        /// Concatenates all elements of a sequence using the specified separator between each element.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="values"/>.</typeparam>
         /// <param name="values">A sequence that contains the objects to concatenate.</param>

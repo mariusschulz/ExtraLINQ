@@ -27,7 +27,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public static void Cycles_through_a_sequence_with_a_single_item()
+        public static void Cycles_through_a_sequence_with_a_single_element()
         {
             int[] singleTen = { 10 };
 
@@ -37,7 +37,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public static void Cycles_through_a_sequence_with_multiple_items()
+        public static void Cycles_through_a_sequence_with_multiple_elements()
         {
             int[] bits = { 0, 1 };
 

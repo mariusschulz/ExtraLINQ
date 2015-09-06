@@ -19,16 +19,16 @@ namespace ExtraLinq.Tests
         [Fact]
         public static void Throws_ArgumentNullException_when_separator_is_null()
         {
-            string[] items = { "one", "two", "three" };
+            string[] elements = { "one", "two", "three" };
 
-            Assert.Throws<ArgumentNullException>(() => items.JoinedBy(null));
+            Assert.Throws<ArgumentNullException>(() => elements.JoinedBy(null));
         }
 
         [Theory]
         [InlineData("")]
         [InlineData(",")]
         [InlineData("    ")]
-        public void ReturnsAnEmptyStringForAnEmptySequence(string separator)
+        public void Returns_an_empty_string_for_an_empty_sequence(string separator)
         {
             string[] strings = new string[0];
 
@@ -41,7 +41,7 @@ namespace ExtraLinq.Tests
         [InlineData("")]
         [InlineData(",")]
         [InlineData("    ")]
-        public void ReturnsTheSingleItemForASequenceWithJustOneItem(string separator)
+        public void Returns_the_single_element_for_a_sequence_with_just_one_element(string separator)
         {
             string[] strings = { "The One Ring" };
 
@@ -51,7 +51,7 @@ namespace ExtraLinq.Tests
         }
 
         [Fact]
-        public static void Returns_a_string_containing_all_items_joined_by_the_given_separator()
+        public static void Returns_a_string_containing_all_elements_joined_by_the_given_separator()
         {
             string[] strings = { "The", "One", "Ring" };
 
