@@ -8,8 +8,8 @@ RestorePackages()
 
 let authors = ["Marius Schulz"]
 let projectName = "ExtraLINQ"
-let projectSummary = "ExtraLINQ provides additional extension methods for working with .NET collections."
-let projectDescription = "ExtraLINQ provides additional extension methods for working with .NET collections."
+let projectSummary = "ExtraLINQ provides a set of extension methods for various .NET sequence types."
+let projectDescription = "ExtraLINQ provides a set of extension methods for various .NET sequence types."
 
 let buildDir = "./build/"
 let testDir = "./tests/"
@@ -69,7 +69,7 @@ Target "Package" (fun _ ->
     let libDir = nugetDir @@ "lib/"
     CreateDir libDir
     CopyFile libDir (buildDir @@ "ExtraLINQ.dll")
-    
+
     NuGet(fun options ->
         { options with
             Authors = authors
