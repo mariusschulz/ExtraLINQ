@@ -10,13 +10,14 @@ namespace ExtraLinq
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The <see cref="IEnumerable{TSource}"/> to intersperse the separator into.</param>
         /// <param name="separator">The separator.</param>
+        /// <param name="count">The count of <paramref name="seperator"> between each element. Defaults to 1.</param>
         /// <returns>The sequence containing the interspersed separator.</returns>
         /// <example>
         /// <code>
         /// int[] numbers = { 1, 2, 3, 4 };
-        /// IEnumerable&lt;int&gt; interspersed = numbers.Intersperse(0);
+        /// IEnumerable&lt;int&gt; interspersed = numbers.Intersperse(0, 2);
         /// </code>
-        /// The <c>interspersed</c> variable, when iterated over, will yield the sequence 1, 0, 2, 0, 3, 0, 4.
+        /// The <c>interspersed</c> variable, when iterated over, will yield the sequence 1, 0, 0, 2, 0, 0, 3, 0, 0, 4.
         /// </example>
         public static IEnumerable<TSource> Intersperse<TSource>(this IEnumerable<TSource> source, TSource separator, int count = 1)
         {
