@@ -35,8 +35,10 @@ namespace ExtraLinq
             {
                 if (!isFirst)
                 {
-                    for(int i = 0; i < count; i++)
+                    for (int i = 0; i < count; i++)
+                    {
                         yield return separator;
+                    }
                 }
                 else
                 {
