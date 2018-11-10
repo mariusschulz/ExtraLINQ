@@ -26,5 +26,16 @@ namespace ExtraLinq.Tests
 
             separatedNumbers.Should().Equal(expectedNumbers);
         }
+        
+        [Fact]
+        public static void Inserts_seperator_right_amount()
+        {
+            int[] numbers = { 1, 2, 3, 4, 5 };
+            int[] expectedNumbers = { 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 4, 0, 0, 0, 5 };
+
+            int[] separatedNumbers = numbers.Intersperse(0, 3).ToArray();
+
+            separatedNumbers.Should().Equal(expectedNumbers);
+        }
     }
 }
